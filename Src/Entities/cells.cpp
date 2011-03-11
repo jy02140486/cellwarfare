@@ -14,3 +14,4 @@ void cells::draw(CL_GraphicContext *gc,float x,float y)
 {
 	_ImpDraw->draw(gc,x,y);
 }
+

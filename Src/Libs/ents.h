@@ -1,3 +1,6 @@
+#ifndef ENTS_H
+#define ENTS_H
+
 #include "../App/precomp.h"
 #include <Box2D/Box2D.h>
 
@@ -11,3 +14,5 @@ protected:
 private:
 
 };
+
+#endif

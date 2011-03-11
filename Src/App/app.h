@@ -4,6 +4,7 @@
 #include "precomp.h"
 #include "event.h"
 #include "../Entities/cells.h"
+#include "../Entities/levels.h"
 #include <list>
 #include<stdio.h>
 
@@ -17,7 +18,7 @@ public:
 	//PhyObj Manager
 	bool running;
 
-	cells *tc;
+    levels *tlv;
 
 	time_t Atime;
 	DWORD mrk;

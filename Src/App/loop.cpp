@@ -12,6 +12,7 @@ void T_App::loop()
 	{
 		double i=Btime-Atime;
 
+		tlv->Step(1.0f/60.0f,10,6);
 		time(&Atime);	
 		CL_KeepAlive::process();
 	}
