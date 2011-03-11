@@ -6,6 +6,8 @@ bool T_App::init()
 {
 	try
 	{
+		tc =new cells();
+		tc->initalize();
 		
 	//initail window description
 	mWinDesc.set_title("CellWarfare");
