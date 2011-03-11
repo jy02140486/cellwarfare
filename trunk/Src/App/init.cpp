@@ -6,9 +6,23 @@ bool T_App::init()
 {
 	try
 	{
-		tc =new cells();
-		tc->initalize();
-		
+	tlv=new levels();
+	
+	b2BodyDef bodyDef;
+
+	bodyDef.type = b2_dynamicBody;
+	bodyDef.position.Set(180.0f, 40.0f);
+
+	bodyDef.allowSleep=false;
+
+	b2Body *tbody=(b2Body*)tlv->CreateBody(&bodyDef);
+	
+	b2CircleShape tshape;
+	tshape.m_radius=8.0f;
+
+	tbody->CreateFixture(&tshape,2.0f);
+
+
 	//initail window description
 	mWinDesc.set_title("CellWarfare");
 	mWinDesc.set_allow_resize(true);
