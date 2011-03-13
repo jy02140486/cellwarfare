@@ -7,5 +7,8 @@ void T_App::render()
 	mpWinManager->draw_windows(mpDisplayWindow->get_gc());
 		
 
+
+
+	
 	mpDisplayWindow->flip();
 }
