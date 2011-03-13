@@ -18,6 +18,7 @@ public:
 	//PhyObj Manager
 	bool running;
 
+	cells *tcell;
     levels *tlv;
 
 	time_t Atime;

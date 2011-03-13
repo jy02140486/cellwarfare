@@ -5,6 +5,14 @@ void cells::initalize()
 	_ImpDraw=new drawCells();
 }
 
+void cells::initalize(b2BodyDef *def,b2World *world)
+{
+	_ImpDraw=new drawCells();
+	self=(b2Body*)world->CreateBody(def);
+	self->SetUserData(this);
+}
+
+
 void cells::update()
 {
 

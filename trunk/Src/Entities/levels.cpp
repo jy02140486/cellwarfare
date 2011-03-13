@@ -10,7 +10,7 @@ void levels::update()
 
 }
 
-levels::levels():b2World(b2Vec2(0.0f,0.0f),true)
+levels::levels():b2World(b2Vec2(0.0f,10.0f),true)
 {
 
 }
