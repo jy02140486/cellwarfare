@@ -11,17 +11,21 @@ bool T_App::init()
 	b2BodyDef bodyDef;
 
 	bodyDef.type = b2_dynamicBody;
-	bodyDef.position.Set(180.0f, 40.0f);
-
+	bodyDef.position.Set(600.0f, 40.0f);
 	bodyDef.allowSleep=false;
 
-	b2Body *tbody=(b2Body*)tlv->CreateBody(&bodyDef);
+	tcell=new cells();
+	tcell->initalize(&bodyDef,tlv);
+
+	b2CircleShape circle;
+	circle.m_radius=5.0f;
 	
-	b2CircleShape tshape;
-	tshape.m_radius=8.0f;
+	tcell->self->CreateFixture(&circle,2.0f);
 
-	tbody->CreateFixture(&tshape,2.0f);
-
+	if (tlv->GetBodyList()==NULL)
+	{
+		CL_Console::write_line("crap");
+	}
 
 	//initail window description
 	mWinDesc.set_title("CellWarfare");

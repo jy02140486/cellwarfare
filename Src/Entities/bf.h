@@ -1,7 +1,7 @@
 #ifndef BF_H
 #define BF_H
 
-#include "ents.h"
+#include "../Libs/ents.h"
 #include "../Libs/IDraw.h"
 
 class bf:public Ents,public Idraw
