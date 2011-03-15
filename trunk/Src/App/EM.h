@@ -4,6 +4,7 @@
 #include "precomp.h"
 #include "../Entities/levels.h"
 #include "../Entities/bf.h"
+#include "../Entities/defBF.h"
 
 class EM
 {
@@ -12,7 +13,9 @@ public:
 	bf *curBF;
 
 	void setcurLV(levels* ref);
-	void setcurBF();
+	void setcurBF(defBF*ref);
+
+	EM();
 protected:
 private:
 };

@@ -12,6 +12,10 @@ public:
 	void initalize(defBF *ref);
 	void update();
 	void draw(CL_GraphicContext *gc,float x,float y);
+
+	int intruders;
+	int celldeployed;
+
 protected:
 private:
 	
