@@ -3,7 +3,7 @@
 
 #include "../Libs/ents.h"
 #include "../Libs/IDraw.h"
-#include "drawCells.h"
+#include "../app/drawCells.h"
 
 class cells:public Ents,public Idraw
 {
