@@ -5,6 +5,7 @@
 #include "event.h"
 #include "../Entities/cells.h"
 #include "../Entities/levels.h"
+#include "EM.h"
 #include <list>
 #include<stdio.h>
 
@@ -20,6 +21,8 @@ public:
 
 	cells *tcell;
     levels *tlv;
+
+	EM *entites;
 
 	time_t Atime;
 	DWORD mrk;
