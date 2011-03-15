@@ -2,7 +2,7 @@
 
 void bf::initalize()
 {
-	//_ImpDraw=new drawCells();
+	_ImpDraw=new drawBF();
 }
 
 void bf::update()

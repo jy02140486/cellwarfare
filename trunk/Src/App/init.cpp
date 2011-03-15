@@ -51,6 +51,17 @@ bool T_App::init()
 
 	mpWinManager->func_repaint().set(this, &T_App::render);
 
+	//initail GUIComponet window
+	CL_DisplayWindowDescription comWindowDesc;
+	comWindowDesc.show_border(false);
+	comWindowDesc.set_allow_resize(true);
+	comWindowDesc.set_title("settings");
+	comWindowDesc.set_size(CL_Size(300, 570),false);
+	comWindowDesc.set_allow_resize(true);
+	comWindowDesc.set_layered(true);
+
+	mpComWindow = new CL_Window(&mGui, comWindowDesc);
+	mpComWindow->set_draggable(false);
 
 	//initail events
 	mInput = mpDisplayWindow->get_ic();
