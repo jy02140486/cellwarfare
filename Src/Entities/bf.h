@@ -4,7 +4,7 @@
 #include "../Libs/ents.h"
 #include "../Libs/IDraw.h"
 #include "defBF.h"
-
+#include "../App/drawBF.h"
 class bf:public Ents,public Idraw
 {
 public:
