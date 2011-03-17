@@ -8,8 +8,8 @@
 class bf:public Ents,public Idraw
 {
 public:
-	void initalize();
-	void initalize(defBF *ref);
+	void initialize();
+	void initialize(defBF *ref);
 	void update();
 	void draw(CL_GraphicContext *gc,float x,float y);
 

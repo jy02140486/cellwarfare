@@ -7,8 +7,9 @@
 class Ents
 {
 public:
- virtual void initalize()=0;
-  virtual void update()=0;
+ virtual void initialize();
+virtual void update();
+
 protected:
 
 private:
