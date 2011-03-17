@@ -61,7 +61,7 @@ bool T_App::init()
 	comWindowDesc.set_layered(true);
 
 	mpComWindow = new CL_Window(&mGui, comWindowDesc);
-	mpComWindow->set_draggable(false);
+	mpComWindow->set_draggable(true);
 
 	//initail events
 	mInput = mpDisplayWindow->get_ic();
@@ -71,6 +71,7 @@ bool T_App::init()
 
 	mpConsole = new CL_ConsoleWindow("Console", 80, 100);
 	
+
 	time(&Atime);
 	}
 	catch (CL_Exception &exception)
