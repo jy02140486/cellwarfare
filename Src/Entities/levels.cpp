@@ -1,9 +1,12 @@
 #include "levels.h"
 
-void levels::initalize()
+void levels::initialize(defLV* ref)
 {
+	lvdes=ref->deslv;
+	pills=ref->pills;
+	waves=ref->waves;
 	lvtimer=new CL_Timer();
-	lvtimer->start(60,true);
+	lvtimer->start(ref->time*1000,true);
 }
 
 void levels::update()

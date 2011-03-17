@@ -18,6 +18,8 @@ public:
 	void setcurLV(levels* ref);
 	void setcurBF(defBF*ref);
 
+	void iniLVs();
+
 	CL_Font *lvdes;
 
 	EM();

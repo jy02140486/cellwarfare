@@ -1,11 +1,11 @@
 #include "cells.h"
 
-void cells::initalize()
+void cells::initialize()
 {
 	_ImpDraw=new drawCells();
 }
 
-void cells::initalize(b2BodyDef *def,b2World *world)
+void cells::initialize(b2BodyDef *def,b2World *world)
 {
 	_ImpDraw=new drawCells();
 	self=(b2Body*)world->CreateBody(def);

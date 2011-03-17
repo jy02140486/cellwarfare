@@ -8,8 +8,7 @@ public:
 	int waves;
 	int pills;
 	CL_String *deslv;
-
-
+	int time;
 protected:
 private:
 };
