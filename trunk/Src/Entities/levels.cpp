@@ -2,7 +2,8 @@
 
 void levels::initalize()
 {
-
+	lvtimer=new CL_Timer();
+	lvtimer->start(60,true);
 }
 
 void levels::update()
