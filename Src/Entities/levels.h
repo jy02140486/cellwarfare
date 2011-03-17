@@ -14,7 +14,7 @@ public:
 	levels();
 
 	CL_Timer *lvtimer;
-	CL_Font *lvdes;
+	
 protected:
 
 private:

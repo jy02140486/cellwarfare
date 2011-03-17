@@ -6,26 +6,26 @@ bool T_App::init()
 {
 	try
 	{
-	tlv=new levels();
-	
-	b2BodyDef bodyDef;
-
-	bodyDef.type = b2_dynamicBody;
-	bodyDef.position.Set(600.0f, 40.0f);
-	bodyDef.allowSleep=false;
-
-	tcell=new cells();
-	tcell->initalize(&bodyDef,tlv);
-
-	b2CircleShape circle;
-	circle.m_radius=5.0f;
-	
-	tcell->self->CreateFixture(&circle,2.0f);
-
-	if (tlv->GetBodyList()==NULL)
-	{
-		CL_Console::write_line("crap");
-	}
+// 	tlv=new levels();
+// 	
+// 	b2BodyDef bodyDef;
+// 
+// 	bodyDef.type = b2_dynamicBody;
+// 	bodyDef.position.Set(600.0f, 40.0f);
+// 	bodyDef.allowSleep=false;
+// 
+// 	tcell=new cells();
+// 	tcell->initalize(&bodyDef,tlv);
+// 
+// 	b2CircleShape circle;
+// 	circle.m_radius=5.0f;
+// 	
+// 	tcell->self->CreateFixture(&circle,2.0f);
+// 
+// 	if (tlv->GetBodyList()==NULL)
+// 	{
+// 		CL_Console::write_line("crap");
+// 	}
 
 	//initail window description
 	mWinDesc.set_title("CellWarfare");

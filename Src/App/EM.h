@@ -18,7 +18,7 @@ public:
 	void setcurLV(levels* ref);
 	void setcurBF(defBF*ref);
 
-	
+	CL_Font *lvdes;
 
 	EM();
 protected:
