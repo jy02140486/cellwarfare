@@ -27,6 +27,11 @@ bool T_App::init()
 // 		CL_Console::write_line("crap");
 // 	}
 
+	entites=new EM();
+	entites->iniLVs();
+
+
+
 	//initail window description
 	mWinDesc.set_title("CellWarfare");
 	mWinDesc.set_allow_resize(true);
@@ -70,6 +75,8 @@ bool T_App::init()
 	//mJoystick = mInput.get_joystick();
 
 	mpConsole = new CL_ConsoleWindow("Console", 80, 100);
+
+	infos=new CL_Font(mpDisplayWindow->get_gc(),"Tahoma",22);
 	
 
 	time(&Atime);
