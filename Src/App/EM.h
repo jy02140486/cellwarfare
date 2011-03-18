@@ -25,6 +25,10 @@ public:
 	CL_Font *lvdes;
 
 	EM();
+
+	defLV lv1;
+	defLV lv2;
+	defLV lv3;
 protected:
 private:
 };
