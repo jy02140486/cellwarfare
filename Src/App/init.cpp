@@ -32,6 +32,7 @@ bool T_App::init()
 
 	testtimer=new Timer();
 	testtimer->init(20,true);
+	testtimer->begin();
 
 	//initail window description
 	mWinDesc.set_title("CellWarfare");
