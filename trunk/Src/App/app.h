@@ -19,10 +19,11 @@ public:
 	//PhyObj Manager
 	bool running;
 
-	cells *tcell;
-    levels *tlv;
+// 	cells *tcell;
+//     levels *tlv;
 
 	EM *entites;
+	CL_Font *infos;
 
 	time_t Atime;
 	DWORD mrk;
