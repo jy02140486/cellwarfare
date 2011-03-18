@@ -19,7 +19,7 @@ EM::EM()
 void EM::iniLVs()
 {
 	//def lv1
-	defLV lv1;
+	
 	lv1.deslv=new CL_String("Stage1");
 	lv1.pills=10;
 	lv1.time=20;
@@ -32,7 +32,7 @@ void EM::iniLVs()
 
 
 	//def lv2
-	defLV lv2;
+	
 	lv1.deslv=new CL_String("Stage2");
 	lv1.pills=5;
 	lv1.time=30;
@@ -44,7 +44,7 @@ void EM::iniLVs()
 	(*itrLV)->initialize(&lv2);
 // 
 	//def lv3
-	defLV lv3;
+	
 	lv1.deslv=new CL_String("Stage3");
 	lv1.pills=5;
 	lv1.time=25;
@@ -57,6 +57,7 @@ void EM::iniLVs()
 
 	curLV=*(_levels.begin());
 	itrLV=_levels.begin();
+	(*itrLV)->lvtimer->start(lv1.time*1000,true);
 
  	curBF=NULL;
 

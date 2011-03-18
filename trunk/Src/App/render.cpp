@@ -6,7 +6,7 @@ void T_App::render()
 
 	if (entites->curLV!=NULL)
 	{
-		infos->draw_text(mpDisplayWindow->get_gc(),480,200,CL_StringRef(entites->curLV->lvdes->c_str()));
+		infos->draw_text(mpComWindow->get_gc(),80,200,CL_StringRef(entites->curLV->lvdes->c_str()));
 	}else CL_Console::write_line("crap");
 
 	mpWinManager->draw_windows(mpDisplayWindow->get_gc());

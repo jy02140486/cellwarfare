@@ -16,6 +16,8 @@ public:
 	levels();
 	
 	CL_Timer *lvtimer;
+
+
 	CL_String *lvdes;
 	int pills;
 	int waves;

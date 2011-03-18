@@ -6,7 +6,9 @@ void levels::initialize(defLV* ref)
 	pills=ref->pills;
 	waves=ref->waves;
 	lvtimer=new CL_Timer();
-	lvtimer->start(ref->time*1000,true);
+	
+
+//	lvtimer->start(ref->time*1000,true);
 }
 
 void levels::update()
