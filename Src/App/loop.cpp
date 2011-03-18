@@ -10,7 +10,7 @@ void T_App::loop()
 	
 //	tlv->Step(1.0f/60.0f,10,6);
 
-	//CL_Console::write_line("%1",tcell->self->GetPosition().x);
+	CL_Console::write_line("%1",testtimer->get_curSec());
 
 	if (Btime-Atime>1/33)
 	{

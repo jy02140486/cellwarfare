@@ -5,6 +5,7 @@
 #include "event.h"
 #include "../Entities/cells.h"
 #include "../Entities/levels.h"
+#include "../Libs/timer.h"
 #include "EM.h"
 #include <list>
 #include<stdio.h>
@@ -19,8 +20,7 @@ public:
 	//PhyObj Manager
 	bool running;
 
-// 	cells *tcell;
-//     levels *tlv;
+Timer*testtimer;
 
 	EM *entites;
 	CL_Font *infos;
