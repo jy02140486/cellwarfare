@@ -30,7 +30,8 @@ bool T_App::init()
 	entites=new EM();
 	entites->iniLVs();
 
-
+	testtimer=new Timer();
+	testtimer->init(20,true);
 
 	//initail window description
 	mWinDesc.set_title("CellWarfare");
