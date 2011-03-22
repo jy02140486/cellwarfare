@@ -6,33 +6,9 @@ bool T_App::init()
 {
 	try
 	{
-// 	tlv=new levels();
-// 	
-// 	b2BodyDef bodyDef;
-// 
-// 	bodyDef.type = b2_dynamicBody;
-// 	bodyDef.position.Set(600.0f, 40.0f);
-// 	bodyDef.allowSleep=false;
-// 
-// 	tcell=new cells();
-// 	tcell->initalize(&bodyDef,tlv);
-// 
-// 	b2CircleShape circle;
-// 	circle.m_radius=5.0f;
-// 	
-// 	tcell->self->CreateFixture(&circle,2.0f);
-// 
-// 	if (tlv->GetBodyList()==NULL)
-// 	{
-// 		CL_Console::write_line("crap");
-// 	}
 
 	entites=new EM();
 	entites->iniLVs();
-
-	testtimer=new Timer();
-	testtimer->init(20,true);
-	testtimer->begin();
 
 	//initail window description
 	mWinDesc.set_title("CellWarfare");
@@ -78,7 +54,7 @@ bool T_App::init()
 
 	mpConsole = new CL_ConsoleWindow("Console", 80, 100);
 
-	infos=new CL_Font(mpDisplayWindow->get_gc(),"Tahoma",22);
+	entites->lvdes=new CL_Font(mpComWindow->get_gc(),"Tahoma",20);
 	
 
 	time(&Atime);

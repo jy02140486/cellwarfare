@@ -13,7 +13,7 @@ void EM::setcurBF(defBF*ref)
 
 EM::EM()
 {
-
+	
 }
 
 void EM::iniLVs()
@@ -57,8 +57,10 @@ void EM::iniLVs()
 
 	curLV=*(_levels.begin());
 	itrLV=_levels.begin();
-	(*itrLV)->lvtimer->start(lv1.time*1000,true);
 
- 	curBF=NULL;
+	curLV->start();
+
+
+ 
 
 }
