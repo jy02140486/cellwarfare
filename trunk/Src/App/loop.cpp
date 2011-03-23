@@ -8,7 +8,8 @@ void T_App::loop()
 
 	time(&Btime);	
 
-	CL_Console::write_line("%1",entites->curLV->lvtimer->get_curSec());
+
+// 	CL_Console::write_line("%1",entites->curLV->lvtimer->get_curSec());
 	if (Btime-Atime>1/33)
 	{
 		double i=Btime-Atime;

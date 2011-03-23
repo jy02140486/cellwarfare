@@ -22,7 +22,7 @@ void EM::iniLVs()
 	
 	lv1.deslv=new CL_String("Stage1");
 	lv1.pills=10;
-	lv1.time=20;
+	lv1.time=5;
 	lv1.waves=3;
 
 	_levels.push_back(new levels());
@@ -33,10 +33,10 @@ void EM::iniLVs()
 
 	//def lv2
 	
-	lv1.deslv=new CL_String("Stage2");
-	lv1.pills=5;
-	lv1.time=30;
-	lv1.waves=4;
+	lv2.deslv=new CL_String("Stage2");
+	lv2.pills=5;
+	lv2.time=30;
+	lv2.waves=4;
 
 	_levels.push_back(new levels());
 	itrLV=_levels.end();
@@ -45,10 +45,10 @@ void EM::iniLVs()
 // 
 	//def lv3
 	
-	lv1.deslv=new CL_String("Stage3");
-	lv1.pills=5;
-	lv1.time=25;
-	lv1.waves=5;
+	lv3.deslv=new CL_String("Stage3");
+	lv3.pills=5;
+	lv3.time=25;
+	lv3.waves=5;
 
 	_levels.push_back(new levels());
 	itrLV=_levels.end();
@@ -58,9 +58,21 @@ void EM::iniLVs()
 	curLV=*(_levels.begin());
 	itrLV=_levels.begin();
 
+	curLV->lvtimer->func_expired();
 	curLV->start();
+}
 
-
- 
-
+int EM::switchlevel(bool vic_flag)
+{
+	if (vic_flag)
+	{
+		if (itrLV++==_levels.end())
+		{
+			return -1;
+		}
+		
+		curLV=*itrLV;
+		CL_Console::write_line(CL_StringRef(*curLV->lvdes));
+		return 1;
+	}else return 0;
 }
