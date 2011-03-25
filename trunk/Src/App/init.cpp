@@ -7,9 +7,8 @@ bool T_App::init()
 	try
 	{
 
-	entites=new EM();
-	entites->iniLVs();
 
+	
 	//initail window description
 	mWinDesc.set_title("CellWarfare");
 	mWinDesc.set_allow_resize(true);
@@ -52,8 +51,12 @@ bool T_App::init()
 	mMouse = mInput.get_mouse();
 	//mJoystick = mInput.get_joystick();
 
+
 	mpConsole = new CL_ConsoleWindow("Console", 80, 100);
 
+
+	entites=new EM();
+	entites->iniLVs();
 	entites->lvdes=new CL_Font(mpComWindow->get_gc(),"Tahoma",20);
 	
 
@@ -76,6 +79,9 @@ bool T_App::init()
 
 // 	slotMouseDown = mMouse.sig_key_down().connect(this,
 // 		&T_App::onMouseDown);
+
+
+
 
 	return true;
 }

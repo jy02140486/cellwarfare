@@ -15,7 +15,7 @@ public:
 	void begin();
 	Timer();
 	
-	CL_Callback_v0 & func_expired();
+
 protected:
 private:
 };

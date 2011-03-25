@@ -6,10 +6,6 @@
 
 class T_Event
 {	 	
-	bool m_bombSpawning;
-	b2Vec2 m_bombSpawnPoint;
-	b2Body* m_bomb;
-
 public:
 	T_Event();
 
@@ -68,8 +64,6 @@ protected:
 	void onMouseMove(const CL_InputEvent &, const CL_InputState &);
 	void onMouseDown(const CL_InputEvent &, const CL_InputState &);
 	void onMouseUp(const CL_InputEvent &, const CL_InputState &);
-	void CompleteBombSpawn(const b2Vec2& p);
-	void LaunchBomb(const b2Vec2& position, const b2Vec2& velocity);
 	
 public:
 

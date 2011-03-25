@@ -58,21 +58,23 @@ void EM::iniLVs()
 	curLV=*(_levels.begin());
 	itrLV=_levels.begin();
 
-	curLV->lvtimer->func_expired();
+	curLV->lvtimer->func_expired().set(this,&EM::switchlevel);
 	curLV->start();
+
+
 }
 
-int EM::switchlevel(bool vic_flag)
+void EM::switchlevel()
 {
-	if (vic_flag)
+	if (true)
 	{
 		if (itrLV++==_levels.end())
 		{
-			return -1;
+			return;
 		}
 		
 		curLV=*itrLV;
 		CL_Console::write_line(CL_StringRef(*curLV->lvdes));
-		return 1;
-	}else return 0;
+		return;
+	}else return ;
 }
