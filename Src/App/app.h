@@ -20,7 +20,8 @@ public:
 	//PhyObj Manager
 	bool running;
 
-Timer*testtimer;
+	CL_Signal_v2<int, int> signal;
+
 
 	EM *entites;
 	CL_Font *infos;

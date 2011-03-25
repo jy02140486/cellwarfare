@@ -30,9 +30,3 @@ Timer::Timer()
 
 }
 
-CL_Callback_v0 & Timer::func_expired()
-{
-	CL_Console::write_line("aaa");
-	CL_Callback_v0 callback;
-	return callback;
-}

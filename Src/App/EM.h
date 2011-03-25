@@ -25,9 +25,7 @@ public:
 	CL_Font *lvdes;
 
 	EM();
-	int switchlevel(bool vic_flag);
-
-	CL_Callback_v0 callback;
+	void switchlevel();
 
 	defLV lv1;
 	defLV lv2;

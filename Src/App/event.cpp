@@ -11,16 +11,11 @@ T_Event::T_Event()
 int T_Event::eventInit()
 {
 	//配置事件插槽
-	slotWindowClose = mpDisplayWindow->sig_window_close().connect(this, 
-		&T_Event::onExitApp);
-	slotKeyboardUp = mKeyboard.sig_key_up().connect(this, 
-		&T_Event::onKeyboardUp);
-	slotMouseMove = mMouse.sig_pointer_move().connect(this,
-		&T_Event::onMouseMove);
-	slotMouseDown = mMouse.sig_key_down().connect(this,
-			&T_Event::onMouseDown);
-		slotMouseUp=mMouse.sig_key_up().connect(this,
-		&T_Event::onMouseUp);
+	slotWindowClose = mpDisplayWindow->sig_window_close().connect(this,&T_Event::onExitApp);
+	slotKeyboardUp = mKeyboard.sig_key_up().connect(this,&T_Event::onKeyboardUp);
+	slotMouseMove = mMouse.sig_pointer_move().connect(this,&T_Event::onMouseMove);
+	slotMouseDown = mMouse.sig_key_down().connect(this,&T_Event::onMouseDown);
+	slotMouseUp=mMouse.sig_key_up().connect(this,&T_Event::onMouseUp);
 	
 
 
