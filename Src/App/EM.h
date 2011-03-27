@@ -26,7 +26,7 @@ public:
 
 	EM();
 	void switchlevel();
-
+	void testtrigger();
 	defLV lv1;
 	defLV lv2;
 	defLV lv3;

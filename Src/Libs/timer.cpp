@@ -4,7 +4,7 @@
 void Timer::init(int seconds,bool repeatflag)
 {
 	length=seconds;
-	cursecond=0;
+    cursecond=0;
 }
 
 int Timer::get_curSec()
@@ -22,6 +22,7 @@ int Timer::get_curSec()
 void Timer::begin()
 {
 	startflag=CL_System::get_time();
+	//CL_Console::write_line("%1",length);
 	start(length*1000);
 }
 
