@@ -37,6 +37,7 @@ public:
 
 	//render the game
 	void render();
+	inline void renderdes();
 
 	//initial all
 	int eventInit(void);
@@ -47,6 +48,7 @@ public:
 	void onKeyboardUp(const CL_InputEvent &key,
 		const CL_InputState &state);
 
+	
 
 };
 
