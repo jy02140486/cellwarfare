@@ -4,8 +4,6 @@
 T_Event::T_Event()
 {
 	mQuit = false;
-	
-
 }
 
 int T_Event::eventInit()

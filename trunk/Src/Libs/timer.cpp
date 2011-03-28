@@ -23,7 +23,7 @@ void Timer::begin()
 {
 	startflag=CL_System::get_time();
 	//CL_Console::write_line("%1",length);
-	start(length*1000);
+	start(length*1000,false);
 }
 
 Timer::Timer()

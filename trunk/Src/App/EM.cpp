@@ -35,39 +35,33 @@ void EM::iniLVs()
 	
 	lv2.deslv=new CL_String("Stage2");
 	lv2.pills=5;
-	lv2.time=30;
+	lv2.time=5;
 	lv2.waves=4;
 
 	_levels.push_back(new levels());
 	itrLV=_levels.end();
 	itrLV--;
 	(*itrLV)->initialize(&lv2);
-	(*itrLV)->lvtimer->func_expired().set(this,&EM::switchlevel);
+	(*itrLV)->lvtimer->func_expired().set(this,&EM::stageclear);
 // 
 	//def lv3
 	
 	lv3.deslv=new CL_String("Stage3");
 	lv3.pills=5;
-	lv3.time=25;
+	lv3.time=5;
 	lv3.waves=5;
 
 	_levels.push_back(new levels());
 	itrLV=_levels.end();
+
 	itrLV--;
 	(*itrLV)->initialize(&lv3);
-	(*itrLV)->lvtimer->func_expired().set(this,&EM::testtrigger);
+	(*itrLV)->lvtimer->func_expired().set(this,&EM::stageclear);
 
 	curLV=*(_levels.begin());
 	itrLV=_levels.begin();
-// 
-// 	for (;itrLV!=_levels.end();itrLV++)
-// 	{
-// 		CL_Console::write_line((*itrLV)->lvdes->data());
-// 	}
-// 
-// 	itrLV=_levels.begin();
 
-	curLV->lvtimer->func_expired().set(this,&EM::switchlevel);
+	curLV->lvtimer->func_expired().set(this,&EM::stageclear);
 	curLV->start();
 
 
@@ -76,24 +70,34 @@ void EM::iniLVs()
 void EM::switchlevel()
 {
 	(*itrLV)->lvtimer->stop();
-	if (true)
-	{
-		if (itrLV++==_levels.end())
+
+		if (++itrLV==_levels.end())
 		{
+
 			return;
 		}
 
-// 		CL_Console
-// 			::write_line("%1",curLV->time);
 		curLV=*itrLV;
-		CL_Console::write_line(CL_StringRef(*curLV->lvdes));
 		curLV->start();
 
 		return;
-	}else return ;
 }
 
-void EM::testtrigger()
+void EM::stageclear()
 {
-	CL_Console::write_line("crap");
+	curLV->lvdes=new CL_String("This stage is clear.");
+	Timer *temp=new Timer();
+	temp->init(2,false);
+	temp->func_expired().set(this,&EM::switchlevel);
+	temp->begin();
 }
+
+int EM::updateall()
+{
+	if (itrLV==_levels.end())
+	{
+		return 0;
+	}
+	return 1;
+}
+

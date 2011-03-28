@@ -16,7 +16,8 @@ public:
 	void start();
 
 	levels();
-	
+	bool isVic();
+
 	Timer *lvtimer;
 
 
