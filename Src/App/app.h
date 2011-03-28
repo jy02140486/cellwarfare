@@ -24,7 +24,7 @@ public:
 
 
 	EM *entites;
-	CL_Font *infos;
+	CL_Font *words;
 
 	time_t Atime;
 	DWORD mrk;

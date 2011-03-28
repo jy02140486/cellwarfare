@@ -57,7 +57,7 @@ bool T_App::init()
 
 	entites=new EM();
 	entites->iniLVs();
-	entites->lvdes=new CL_Font(mpComWindow->get_gc(),"Tahoma",20);
+	words=new CL_Font(mpComWindow->get_gc(),"Tahoma",20);
 	
 
 	time(&Atime);

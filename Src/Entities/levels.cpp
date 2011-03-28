@@ -26,3 +26,8 @@ void levels::start()
 {
 	lvtimer->begin();
 }
+
+bool levels::isVic()
+{
+	return true;
+}

@@ -22,11 +22,13 @@ public:
 	void setcurBF(defBF*ref);
 
 	void iniLVs();
-	CL_Font *lvdes;
+
 
 	EM();
 	void switchlevel();
-	void testtrigger();
+	int updateall();
+	void stageclear();
+
 	defLV lv1;
 	defLV lv2;
 	defLV lv3;
