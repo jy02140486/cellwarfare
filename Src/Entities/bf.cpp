@@ -18,4 +18,5 @@ void bf::draw(CL_GraphicContext *gc,float x,float y)
 void bf::initialize(defBF*ref)
 {
 	_ImpDraw=new drawBF();
+
 }

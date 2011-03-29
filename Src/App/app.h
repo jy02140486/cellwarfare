@@ -48,7 +48,8 @@ public:
 	void onKeyboardUp(const CL_InputEvent &key,
 		const CL_InputState &state);
 
-	
+	//temp funcs
+	void LibDebugOnConsole();
 
 };
 
