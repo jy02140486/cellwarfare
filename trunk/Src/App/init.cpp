@@ -6,8 +6,6 @@ bool T_App::init()
 {
 	try
 	{
-
-
 	
 	//initail window description
 	mWinDesc.set_title("CellWarfare");
@@ -58,6 +56,8 @@ bool T_App::init()
 	entites=new EM();
 	entites->iniLVs();
 	words=new CL_Font(mpComWindow->get_gc(),"Tahoma",20);
+
+	LibDebugOnConsole();
 	
 
 	time(&Atime);
