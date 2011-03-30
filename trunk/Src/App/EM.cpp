@@ -9,6 +9,7 @@ void EM::setcurBF(defBF*ref)
 {
 	curBF=new bf();
 	curBF->initialize(ref);
+	
 }
 
 EM::EM()
@@ -65,6 +66,8 @@ void EM::iniLVs()
 	curLV->start();
 
 
+
+
 }
 
 void EM::switchlevel()
@@ -73,7 +76,6 @@ void EM::switchlevel()
 
 		if (++itrLV==_levels.end())
 		{
-
 			return;
 		}
 
