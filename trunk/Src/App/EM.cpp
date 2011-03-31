@@ -65,9 +65,6 @@ void EM::iniLVs()
 	curLV->lvtimer->func_expired().set(this,&EM::stageclear);
 	curLV->start();
 
-
-
-
 }
 
 void EM::switchlevel()

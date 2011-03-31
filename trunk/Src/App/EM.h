@@ -14,6 +14,7 @@ class EM
 public:
 	levels *curLV;
 	bf *curBF;
+	
 
 	std::list<levels*> _levels;
 	std::list<levels*>::iterator itrLV;

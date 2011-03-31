@@ -24,7 +24,12 @@ public:
 
 
 	EM *entites;
+	
 	CL_Font *words;
+	CL_Point offset;
+	
+	CL_Image* body;
+
 
 	time_t Atime;
 	DWORD mrk;
