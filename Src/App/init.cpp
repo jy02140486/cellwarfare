@@ -56,6 +56,10 @@ bool T_App::init()
 	entites=new EM();
 	entites->iniLVs();
 	words=new CL_Font(mpComWindow->get_gc(),"Tahoma",20);
+	offset.x=320;
+	offset.y=420;
+
+	body=new CL_Image(mpDisplayWindow->get_gc(),"../res/body.png");
 
 	LibDebugOnConsole();
 	
