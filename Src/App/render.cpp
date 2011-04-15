@@ -9,6 +9,8 @@ void T_App::render()
 
 	body->draw(mpDisplayWindow->get_gc(), 300.0f, 0.0f);
 
+	renderScrObj();
+
 
 	mpWinManager->draw_windows(mpDisplayWindow->get_gc());
 		
@@ -37,4 +39,14 @@ void T_App::renderdes()
 			//delete temp;
 		}
 	}
+}
+
+void T_App::renderScrObj()
+{
+	for (itr=head;itr!=NULL;itr=itr->next)
+	{
+		itr->draw(&mpDisplayWindow->get_gc());
+	}
+/*	head->draw(&mpDisplayWindow->get_gc());*/
+
 }

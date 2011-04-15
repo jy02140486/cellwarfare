@@ -45,7 +45,8 @@ void T_App::onMouseDown(const CL_InputEvent &, const CL_InputState &)
 
 void T_App::onMouseMove(const CL_InputEvent &, const CL_InputState &)
 {
-
+	mx->set_text(mMouse.get_x());
+	my->set_text(mMouse.get_y());
 }
 
 
@@ -69,3 +70,4 @@ void T_App::onKeyboardUp(const CL_InputEvent &key,
 {
 	
 }
+

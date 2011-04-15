@@ -61,6 +61,14 @@ bool T_App::init()
 
 	body=new CL_Image(mpDisplayWindow->get_gc(),"../res/body.png");
 
+	mx=new CL_LineEdit(mpComWindow);
+	mx->set_geometry(CL_Rect(40,40, CL_Size(80, 20)));
+
+	my=new CL_LineEdit(mpComWindow);
+	my->set_geometry(CL_Rect(40,80, CL_Size(80, 20)));
+
+	initScrObjs();
+	
 	LibDebugOnConsole();
 	
 

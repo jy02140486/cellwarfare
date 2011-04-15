@@ -7,6 +7,7 @@
 #include "../Entities/levels.h"
 #include "../Libs/timer.h"
 #include "EM.h"
+#include "../Entities/ScrObj.h"
 #include <list>
 #include<stdio.h>
 
@@ -24,12 +25,14 @@ public:
 
 
 	EM *entites;
+	ScrObj* itr,*head;
 	
 	CL_Font *words;
 	CL_Point offset;
 	
 	CL_Image* body;
 
+	CL_LineEdit* mx,*my;
 
 	time_t Atime;
 	DWORD mrk;
@@ -44,6 +47,10 @@ public:
 	void render();
 	inline void renderdes();
 
+	void initScrObjs();
+	
+	inline	void renderScrObj();
+
 	//initial all
 	int eventInit(void);
 
@@ -55,6 +62,8 @@ public:
 
 	//temp funcs
 	void LibDebugOnConsole();
+
+
 
 };
 
