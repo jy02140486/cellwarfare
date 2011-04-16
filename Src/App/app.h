@@ -7,7 +7,7 @@
 #include "../Entities/levels.h"
 #include "../Libs/timer.h"
 #include "EM.h"
-#include "../Entities/ScrObj.h"
+
 #include <list>
 #include<stdio.h>
 
@@ -25,7 +25,7 @@ public:
 
 
 	EM *entites;
-	ScrObj* itr,*head;
+	
 	
 	CL_Font *words;
 	CL_Point offset;
@@ -46,8 +46,6 @@ public:
 	//render the game
 	void render();
 	inline void renderdes();
-
-	void initScrObjs();
 	
 	inline	void renderScrObj();
 

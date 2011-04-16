@@ -15,6 +15,7 @@ void T_App::render()
 	mpWinManager->draw_windows(mpDisplayWindow->get_gc());
 		
 	mpDisplayWindow->flip();
+	
 }
 
 
@@ -43,9 +44,9 @@ void T_App::renderdes()
 
 void T_App::renderScrObj()
 {
-	for (itr=head;itr!=NULL;itr=itr->next)
+	for (entites->itr=entites->head;entites->itr!=NULL;entites->itr=entites->itr->next)
 	{
-		itr->draw(&mpDisplayWindow->get_gc());
+		entites->itr->draw(&mpDisplayWindow->get_gc());
 	}
 /*	head->draw(&mpDisplayWindow->get_gc());*/
 

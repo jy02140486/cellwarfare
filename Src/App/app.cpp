@@ -47,6 +47,8 @@ void T_App::onMouseMove(const CL_InputEvent &, const CL_InputState &)
 {
 	mx->set_text(mMouse.get_x());
 	my->set_text(mMouse.get_y());
+
+
 }
 
 
