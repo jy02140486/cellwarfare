@@ -6,7 +6,7 @@
 #include "../Entities/defLV.h"
 #include "../Entities/bf.h"
 #include "../Entities/defBF.h"
-
+#include "../Entities/ScrObj.h"
 #include <list>
 
 class EM
@@ -14,7 +14,7 @@ class EM
 public:
 	levels *curLV;
 	bf *curBF;
-	
+	ScrObj* itr,*head;
 
 	std::list<levels*> _levels;
 	std::list<levels*>::iterator itrLV;
@@ -23,12 +23,14 @@ public:
 	void setcurBF(defBF*ref);
 
 	void iniLVs();
-
-
+	
+	void initScrObjs();
 	EM();
 	void switchlevel();
 	int updateall();
 	void stageclear();
+
+	CL_Point posMouse;
 
 	defLV lv1;
 	defLV lv2;

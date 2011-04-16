@@ -58,6 +58,7 @@ bool T_App::init()
 	words=new CL_Font(mpComWindow->get_gc(),"Tahoma",20);
 	offset.x=320;
 	offset.y=420;
+	entites->initScrObjs();
 
 	body=new CL_Image(mpDisplayWindow->get_gc(),"../res/body.png");
 
@@ -66,8 +67,6 @@ bool T_App::init()
 
 	my=new CL_LineEdit(mpComWindow);
 	my->set_geometry(CL_Rect(40,80, CL_Size(80, 20)));
-
-	initScrObjs();
 	
 	LibDebugOnConsole();
 	

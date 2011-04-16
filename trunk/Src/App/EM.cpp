@@ -93,6 +93,13 @@ void EM::stageclear()
 
 int EM::updateall()
 {
+
+	for (itr=head;itr!=NULL;itr=itr->next)
+	{
+		itr->update(posMouse);
+		itr->stateSwitching();
+	}
+
 	if (itrLV==_levels.end())
 	{
 		return 0;
@@ -100,3 +107,21 @@ int EM::updateall()
 	return 1;
 }
 
+void EM::initScrObjs()
+{
+	head=new ScrObj();
+	itr=head;
+	itr->pos=new CL_Point(423,229);
+
+	head->next=new ScrObj();
+	itr=itr->next;
+	itr->pos=new CL_Point(564,174);
+
+	itr->next=new ScrObj();
+	itr=itr->next;
+	itr->pos=new CL_Point(573,258);
+
+	itr->next=new ScrObj();
+	itr=itr->next;
+	itr->pos=new CL_Point(576,363);
+}

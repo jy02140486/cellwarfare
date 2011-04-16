@@ -15,6 +15,7 @@ void T_App::loop()
 		CL_KeepAlive::process();
 	}
 
+	entites->posMouse=mMouse.get_position();
 	if (!entites->updateall())
 	{
 		mQuit=true;
