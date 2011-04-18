@@ -5,6 +5,8 @@
 #include "../Libs/ents.h"
 #include "../Libs/Timer.h"
 #include "defLV.h"
+#include "defBF.h"
+
 
 
 class levels :public Ents,public b2World
@@ -27,6 +29,8 @@ public:
 	int curwaves;
 	int time;
 	
+	defBF defbfs[4];
+
 protected:
 
 private:

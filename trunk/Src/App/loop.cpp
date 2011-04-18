@@ -16,7 +16,7 @@ void T_App::loop()
 	}
 
 	entites->posMouse=mMouse.get_position();
-	if (!entites->updateall())
+	if (!entites->updateall(global_state))
 	{
 		mQuit=true;
 	}
