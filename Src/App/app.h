@@ -7,28 +7,20 @@
 #include "../Entities/levels.h"
 #include "../Libs/timer.h"
 #include "EM.h"
+#include "globals.h"
 
 #include <list>
 #include<stdio.h>
 
-//Sub Wnds
+
 class T_App : public T_Event	
 {
-	enum GLOBAL_STATE{
-		STRATGY,
-		TATICAL,
-		LVSWITCHING
-	}global_state;
+
 
 public:
 	T_App ();
 	int  start();
-
-	//PhyObj Manager
 	bool running;
-
-	CL_Signal_v2<int, int> signal;
-
 
 	EM *entites;
 	
@@ -39,6 +31,7 @@ public:
 	CL_Image* body;
 
 	CL_LineEdit* mx,*my;
+
 
 	time_t Atime;
 	DWORD mrk;

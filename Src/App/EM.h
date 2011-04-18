@@ -7,6 +7,7 @@
 #include "../Entities/bf.h"
 #include "../Entities/defBF.h"
 #include "../Entities/ScrObj.h"
+#include "globals.h"
 #include <list>
 
 class EM
@@ -27,7 +28,8 @@ public:
 	void initScrObjs();
 	EM();
 	void switchlevel();
-	int updateall();
+
+	int updateall(GLOBAL_STATE stateref);
 	void stageclear();
 	ScrObj* ScrObjTraversal();
 	CL_Point posMouse;

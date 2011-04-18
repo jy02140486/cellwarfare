@@ -10,7 +10,9 @@ public:
 	int intruder;
 	int numCannon;
 	int timeleft;
-	
+
+	defBF();
+
 protected:
 private:
 };

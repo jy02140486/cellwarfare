@@ -48,7 +48,7 @@ void T_App::onMouseDown(const CL_InputEvent &, const CL_InputState &)
 		ScrObj*temp=entites->ScrObjTraversal();
 		if (temp!=NULL)
 		{
-			global_state=TATICAL;
+			StateSwitching(TATICAL);
 		}
 		break;
 	}
@@ -86,5 +86,18 @@ void T_App::onKeyboardUp(const CL_InputEvent &key,
 
 void T_App::StateSwitching(GLOBAL_STATE newstate)
 {
+	switch(global_state)
+	{
+	case STRATGY:
+		mpComWindow->set_visible(false);
+		break;
+	}
+
 	global_state=newstate;
+	
+	switch(global_state)
+	{
+	case TATICAL:
+		break;
+	}
 }

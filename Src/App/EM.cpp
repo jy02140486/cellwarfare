@@ -9,7 +9,6 @@ void EM::setcurBF(defBF*ref)
 {
 	curBF=new bf();
 	curBF->initialize(ref);
-	
 }
 
 EM::EM()
@@ -91,15 +90,19 @@ void EM::stageclear()
 	temp->begin();
 }
 
-int EM::updateall()
+int EM::updateall(GLOBAL_STATE stateref)
 {
-
-	for (itr=head;itr!=NULL;itr=itr->next)
+	switch(stateref)
 	{
-		itr->update(posMouse);
-		itr->stateSwitching();
+	case STRATGY:
+		for (itr=head;itr!=NULL;itr=itr->next)
+		{
+			itr->update(posMouse);
+			itr->stateSwitching();
+		}
+		break;
 	}
-
+	
 	if (itrLV==_levels.end())
 	{
 		return 0;

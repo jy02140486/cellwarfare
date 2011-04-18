@@ -90,10 +90,7 @@ bool T_App::init()
 
 // 	slotMouseDown = mMouse.sig_key_down().connect(this,
 // 		&T_App::onMouseDown);
-
-
-
-
 	return true;
 }
+
 
