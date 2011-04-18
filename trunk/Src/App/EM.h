@@ -29,7 +29,7 @@ public:
 	void switchlevel();
 	int updateall();
 	void stageclear();
-
+	ScrObj* ScrObjTraversal();
 	CL_Point posMouse;
 
 	defLV lv1;

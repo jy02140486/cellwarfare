@@ -14,6 +14,8 @@ int T_App::start()
 		return -1;
 	}
 
+	global_state=STRATGY;
+
 	int fps=FPS;
 	mrk=GetTickCount();
 
@@ -40,7 +42,16 @@ void T_App::onMouseUp(const CL_InputEvent &, const CL_InputState &)
 
 void T_App::onMouseDown(const CL_InputEvent &, const CL_InputState &)
 {
-
+	switch(global_state)
+	{
+	case STRATGY:
+		ScrObj*temp=entites->ScrObjTraversal();
+		if (temp!=NULL)
+		{
+			global_state=TATICAL;
+		}
+		break;
+	}
 }
 
 void T_App::onMouseMove(const CL_InputEvent &, const CL_InputState &)
@@ -73,3 +84,7 @@ void T_App::onKeyboardUp(const CL_InputEvent &key,
 	
 }
 
+void T_App::StateSwitching(GLOBAL_STATE newstate)
+{
+	global_state=newstate;
+}
