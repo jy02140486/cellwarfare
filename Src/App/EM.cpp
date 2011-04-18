@@ -125,3 +125,15 @@ void EM::initScrObjs()
 	itr=itr->next;
 	itr->pos=new CL_Point(576,363);
 }
+
+ScrObj* EM::ScrObjTraversal()
+{
+	for(ScrObj* temp=head;temp!=NULL;temp=temp->next)
+	{
+		if (temp->isCousurOn(posMouse))
+		{
+			return temp;
+		}
+	}
+	return NULL;
+}

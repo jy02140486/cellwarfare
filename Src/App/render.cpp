@@ -4,12 +4,18 @@
 void T_App::render()
 {
 	mpDisplayWindow->get_gc().clear(CL_Colorf::black);
+	
+	switch(global_state)
+	{
+		case STRATGY:
+			renderdes();
 
-	renderdes();
+			body->draw(mpDisplayWindow->get_gc(), 300.0f, 0.0f);
 
-	body->draw(mpDisplayWindow->get_gc(), 300.0f, 0.0f);
-
-	renderScrObj();
+			renderScrObj();
+		break;
+	}
+	
 
 
 	mpWinManager->draw_windows(mpDisplayWindow->get_gc());

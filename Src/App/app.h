@@ -14,6 +14,12 @@
 //Sub Wnds
 class T_App : public T_Event	
 {
+	enum GLOBAL_STATE{
+		STRATGY,
+		TATICAL,
+		LVSWITCHING
+	}global_state;
+
 public:
 	T_App ();
 	int  start();
@@ -60,7 +66,7 @@ public:
 
 	//temp funcs
 	void LibDebugOnConsole();
-
+	void StateSwitching(GLOBAL_STATE newstate);
 
 
 };
