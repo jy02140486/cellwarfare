@@ -15,7 +15,7 @@ class EM
 public:
 	levels *curLV;
 	bf *curBF;
-	ScrObj* itr,*head;
+	ScrObj* itr,*head,*SOselected;
 
 	std::list<levels*> _levels;
 	std::list<levels*>::iterator itrLV;

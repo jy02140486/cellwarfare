@@ -16,8 +16,14 @@ void T_App::loop()
 	}
 
 	entites->posMouse=mMouse.get_position();
+//  	if(entites->SOselected!=NULL)
+// // 	if (entites->SOselected->ObjState==ScrObj::NORMAL)
+// 	{
+// 		CL_Console::write_line("aaa");
+// 	}
 	if (!entites->updateall(global_state))
 	{
+
 		mQuit=true;
 	}
 	

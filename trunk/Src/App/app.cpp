@@ -48,10 +48,16 @@ void T_App::onMouseDown(const CL_InputEvent &, const CL_InputState &)
 		ScrObj*temp=entites->ScrObjTraversal();
 		if (temp!=NULL)
 		{
-			StateSwitching(TATICAL);
+			entites->SOselected=temp;
+			entites->SOselected->ObjState=ScrObj::SELECTED;
+			
 		}
 		break;
+
+	//default:temp;
 	}
+
+
 }
 
 void T_App::onMouseMove(const CL_InputEvent &, const CL_InputState &)
@@ -89,7 +95,8 @@ void T_App::StateSwitching(GLOBAL_STATE newstate)
 	switch(global_state)
 	{
 	case STRATGY:
-		mpComWindow->set_visible(false);
+		//mpComWindow->set_visible(false);
+		cirfirm->set_text("Quit");
 		break;
 	}
 
@@ -99,5 +106,24 @@ void T_App::StateSwitching(GLOBAL_STATE newstate)
 	{
 	case TATICAL:
 		break;
+	}
+}
+
+void T_App::ButtonClick()
+{
+	//
+	switch(global_state)
+	{
+	case STRATGY:
+		
+		//if (temp!=NULL)
+		{
+			StateSwitching(TATICAL);
+		}
+		break;
+	case TATICAL:
+		StateSwitching(STRATGY);
+		break;
+	default:;
 	}
 }

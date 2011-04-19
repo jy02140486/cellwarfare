@@ -6,8 +6,8 @@
 class ImpDraw
 {
 public:
-	virtual void draw(CL_GraphicContext *gc ,float x,float y);
-	virtual void draw(CL_GraphicContext *gc ,float x,float y,float radius);
+	 void draw(CL_GraphicContext *gc ,float x,float y);
+	 void draw(CL_GraphicContext *gc ,float x,float y,float radius);
 protected:
 private:
 };

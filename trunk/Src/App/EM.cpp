@@ -13,7 +13,7 @@ void EM::setcurBF(defBF*ref)
 
 EM::EM()
 {
-	
+	SOselected=NULL;
 }
 
 void EM::iniLVs()
