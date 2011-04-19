@@ -6,10 +6,13 @@ ScrObj::ScrObj()
 	_ImpDraw=new drawScrObj();
 	refradius =20;
 	next=NULL;
+
 }
 
 void ScrObj::draw(CL_GraphicContext *gc)
 {
+	
+	
 	CL_Draw::circle(*gc,pos->x,pos->y,refradius,CL_Colorf(255.0f,0.0f,0.0f,0.4f));
 	switch(ObjState)
 	{
