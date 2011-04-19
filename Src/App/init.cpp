@@ -62,6 +62,7 @@ bool T_App::init()
 
 	body=new CL_Image(mpDisplayWindow->get_gc(),"../res/body.png");
 
+	//init menu items
 	mx=new CL_LineEdit(mpComWindow);
 	mx->set_geometry(CL_Rect(40,40, CL_Size(80, 20)));
 
@@ -72,6 +73,37 @@ bool T_App::init()
 	cirfirm->set_text("enter");
 	cirfirm->set_geometry(CL_Rect(40,480, CL_Size(100, 30)));
 	cirfirm->func_clicked().set(this,&T_App::ButtonClick);
+
+	CL_Point lboffset(10,10);
+	CL_Size sspin(80,20);
+	CL_Size slb(80,20);
+	infoBF=new CL_Label(mpComWindow);
+	infoBF->set_geometry(CL_Rect(10,110, CL_Size(290, 570-110)));
+	infoBF->set_text("infobf");
+	
+	lbcellsdeployed=new CL_Label(infoBF);
+	lbcellsdeployed->set_geometry(CL_Rect(lboffset.x,lboffset.y+5, slb));
+	lbcellsdeployed->set_text("Cells deployed");
+	cellsdeployed=new CL_Spin(infoBF);
+	cellsdeployed->set_geometry(CL_Rect(lboffset.x+80,lboffset.y, sspin));
+	cellsdeployed->set_step_size(1);
+	cellsdeployed->set_ranges(0,100);
+
+	lbintruders=new CL_Label(infoBF);
+	lbintruders->set_geometry(CL_Rect(lboffset.x,lboffset.y+35, slb));
+	lbintruders->set_text("Intruders");
+	intruders=new CL_Spin(infoBF);
+	intruders->set_geometry(CL_Rect(lboffset.x+80,lboffset.y+30, sspin));
+
+	lbtimeleft=new CL_Label(infoBF);
+	lbtimeleft->set_geometry(CL_Rect(lboffset.x,lboffset.y+65, slb));
+	lbtimeleft->set_text("Time left");
+	timeleft=new CL_ProgressBar(infoBF);
+	timeleft->set_geometry(CL_Rect(lboffset.x+80,lboffset.y+65, slb));
+	timeleft->set_min(0);
+	timeleft->set_max(100);
+	timeleft->set_position(20);
+
 	
 	LibDebugOnConsole();
 	

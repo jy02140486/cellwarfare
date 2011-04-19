@@ -33,6 +33,12 @@ public:
 	CL_LineEdit* mx,*my;
 	CL_PushButton* cirfirm;
 
+	CL_Label* infoBF;
+	CL_Spin* cellsdeployed;
+	CL_Spin* intruders;
+
+	CL_ProgressBar* timeleft;
+	CL_Label* lbcellsdeployed,*lbintruders,*lbtimeleft;
 
 	time_t Atime;
 	DWORD mrk;
