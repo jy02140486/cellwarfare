@@ -31,6 +31,7 @@ public:
 	CL_Image* body;
 
 	CL_LineEdit* mx,*my;
+	CL_PushButton* cirfirm;
 
 
 	time_t Atime;
@@ -60,7 +61,7 @@ public:
 	//temp funcs
 	void LibDebugOnConsole();
 	void StateSwitching(GLOBAL_STATE newstate);
-
+	void ButtonClick();
 
 };
 

@@ -67,6 +67,11 @@ bool T_App::init()
 
 	my=new CL_LineEdit(mpComWindow);
 	my->set_geometry(CL_Rect(40,80, CL_Size(80, 20)));
+
+	cirfirm=new CL_PushButton(mpComWindow);
+	cirfirm->set_text("enter");
+	cirfirm->set_geometry(CL_Rect(40,480, CL_Size(100, 30)));
+	cirfirm->func_clicked().set(this,&T_App::ButtonClick);
 	
 	LibDebugOnConsole();
 	

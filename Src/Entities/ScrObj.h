@@ -11,11 +11,7 @@
 
 class ScrObj:public Idraw,public Ents
 {
-	enum {
-	NORMAL=0,
-	MOUSEON,
-	INTRUDED
-	}ObjState;
+
 
 public:
 	ScrObj();
@@ -28,6 +24,13 @@ public:
 	defBF* datas;
 	CL_Point *pos;
 	CL_Point posMouse;
+
+	enum {
+		NORMAL=0,
+		MOUSEON,
+		INTRUDED,
+		SELECTED
+	}ObjState;
 	
 };
 #endif
