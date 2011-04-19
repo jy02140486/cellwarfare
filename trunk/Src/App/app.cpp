@@ -48,6 +48,9 @@ void T_App::onMouseDown(const CL_InputEvent &, const CL_InputState &)
 		ScrObj*temp=entites->ScrObjTraversal();
 		if (temp!=NULL)
 		{
+			if(entites->SOselected!=NULL)
+				entites->SOselected->ObjState=ScrObj::NORMAL;
+			
 			entites->SOselected=temp;
 			entites->SOselected->ObjState=ScrObj::SELECTED;
 			

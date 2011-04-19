@@ -35,7 +35,8 @@ void ScrObj::stateSwitching()
 	if (isCousurOn(posMouse)&&ObjState!=SELECTED)
 	{
 		ObjState=MOUSEON;
-	}else if(ObjState!=SELECTED)ObjState=NORMAL;
+	}else if(ObjState!=SELECTED)
+		ObjState=NORMAL;
 }
 
 void ScrObj::update(CL_Point curMouse)
