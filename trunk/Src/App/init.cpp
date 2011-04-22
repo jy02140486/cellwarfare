@@ -88,6 +88,8 @@ bool T_App::init()
 	cellsdeployed->set_geometry(CL_Rect(lboffset.x+80,lboffset.y, sspin));
 	cellsdeployed->set_step_size(1);
 	cellsdeployed->set_ranges(0,100);
+	cellsdeployed->func_value_changed().set(this,&T_App::CDVChanged);
+	cellsdeployed->set_value(entites->curLV->defbfs[0].celldeployed);
 
 	lbintruders=new CL_Label(infoBF);
 	lbintruders->set_geometry(CL_Rect(lboffset.x,lboffset.y+35, slb));
@@ -131,3 +133,7 @@ bool T_App::init()
 }
 
 
+void T_App::CDVChanged()
+{
+	entites->curLV->defbfs[0].celldeployed=cellsdeployed->get_value();
+}

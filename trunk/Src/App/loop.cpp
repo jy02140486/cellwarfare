@@ -21,9 +21,10 @@ void T_App::loop()
 // 	{
 // 		CL_Console::write_line("aaa");
 // 	}
+	cellsdeployed->set_value(entites->curLV->defbfs[0].celldeployed);
 	if (!entites->updateall(global_state))
 	{
-
+		
 		mQuit=true;
 	}
 	
