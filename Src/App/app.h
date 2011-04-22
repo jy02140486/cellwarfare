@@ -68,7 +68,7 @@ public:
 	void LibDebugOnConsole();
 	void StateSwitching(GLOBAL_STATE newstate);
 	void ButtonClick();
-
+	void CDVChanged();
 };
 
 #endif

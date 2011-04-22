@@ -1,4 +1,5 @@
 #include "EM.h"
+#include "../Libs/RandomVal.h"
 
 void EM::setcurLV(levels *ref)
 {
@@ -25,6 +26,8 @@ void EM::iniLVs()
 	lv1.time=5;
 	lv1.waves=3;
 
+	
+
 	_levels.push_back(new levels());
 	itrLV=_levels.end();
 	itrLV--;
@@ -43,7 +46,7 @@ void EM::iniLVs()
 	itrLV--;
 	(*itrLV)->initialize(&lv2);
 	(*itrLV)->lvtimer->func_expired().set(this,&EM::stageclear);
-// 
+
 	//def lv3
 	
 	lv3.deslv=new CL_String("Stage3");
@@ -62,6 +65,7 @@ void EM::iniLVs()
 	itrLV=_levels.begin();
 
 	curLV->lvtimer->func_expired().set(this,&EM::stageclear);
+	curLV->defbfs[0].celldeployed=RandomVal::int_from_to(0,10);
 	curLV->start();
 
 }
@@ -76,6 +80,14 @@ void EM::switchlevel()
 		}
 
 		curLV=*itrLV;
+
+		for(int i=0;i<4;i++)
+		{
+			itr=head;
+			itr->datas=&curLV->defbfs[i];
+			itr=itr->next;
+		}
+		curLV->defbfs[0].celldeployed=RandomVal::int_from_to(0,10);
 		curLV->start();
 
 		return;
@@ -115,18 +127,22 @@ void EM::initScrObjs()
 	head=new ScrObj();
 	itr=head;
 	itr->pos=new CL_Point(423,229);
+	itr->datas=&curLV->defbfs[0];
 
 	head->next=new ScrObj();
 	itr=itr->next;
 	itr->pos=new CL_Point(564,174);
+	itr->datas=&curLV->defbfs[1];
 
 	itr->next=new ScrObj();
 	itr=itr->next;
 	itr->pos=new CL_Point(573,258);
+	itr->datas=&curLV->defbfs[2];
 
 	itr->next=new ScrObj();
 	itr=itr->next;
 	itr->pos=new CL_Point(576,363);
+	itr->datas=&curLV->defbfs[3];
 }
 
 ScrObj* EM::ScrObjTraversal()

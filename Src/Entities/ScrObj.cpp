@@ -18,6 +18,7 @@ void ScrObj::draw(CL_GraphicContext *gc)
 	{
 	case MOUSEON:
 		CL_Draw::circle(*gc,pos->x,pos->y,refradius/2,CL_Colorf(0.0f,0.0f,255.0f,0.6f));
+       
 		break;
 	case SELECTED:
 		CL_Draw::circle(*gc,pos->x,pos->y,refradius/2,CL_Colorf(0.0f,255.0f,0.0f,0.6f));
