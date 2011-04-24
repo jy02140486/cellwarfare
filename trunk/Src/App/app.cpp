@@ -59,12 +59,8 @@ void T_App::onMouseDown(const CL_InputEvent &, const CL_InputState &)
 			LibDebugOnConsole();
 		}
 		break;
-
 	//default:temp;
 	}
-
-
-
 }
 
 void T_App::onMouseMove(const CL_InputEvent &, const CL_InputState &)
@@ -122,14 +118,16 @@ void T_App::ButtonClick()
 	switch(global_state)
 	{
 	case STRATGY:
-		
-		//if (temp!=NULL)
+		if (entites->SOselected!=NULL)
 		{
+			entites->setcurBF(entites->SOselected->datas);
 			StateSwitching(TATICAL);
 		}
 		break;
 	case TATICAL:
+		
 		StateSwitching(STRATGY);
+		delete entites->curBF;
 		break;
 	default:;
 	}
@@ -139,4 +137,6 @@ void T_App::ScrObjSelect()
 {
 	ScrObj*temp=entites->SOselected;
 	cellsdeployed->set_value(temp->datas->celldeployed);
+
+
 }
