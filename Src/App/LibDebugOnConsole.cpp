@@ -36,4 +36,10 @@ void T_App::LibDebugOnConsole()
 // 		temP=*RandomVal::randomPointi(0,0,800,600);
 // 		CL_Console::write_line("the first point %1,(%2,%3)",i,temP.x,temP.y);
 // 	}
+
+	ScrObj*temp=entites->SOselected;
+
+	CL_Console::write_line("%1",temp->datas->celldeployed)
+	;
+
 }

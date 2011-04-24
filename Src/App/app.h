@@ -69,6 +69,7 @@ public:
 	void StateSwitching(GLOBAL_STATE newstate);
 	void ButtonClick();
 	void CDVChanged();
+	void ScrObjSelect();
 };
 
 #endif

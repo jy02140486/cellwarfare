@@ -89,12 +89,14 @@ void EM::switchlevel()
 		}
 		curLV->defbfs[0].celldeployed=RandomVal::int_from_to(0,10);
 		curLV->start();
-
+		
+		global_state=STRATGY;
 		return;
 }
 
 void EM::stageclear()
 {
+	global_state=LVSWITCHING;
 	curLV->lvdes=new CL_String("This stage is clear.");
 	Timer *temp=new Timer();
 	temp->init(2,false);
