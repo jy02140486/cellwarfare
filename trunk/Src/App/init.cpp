@@ -107,7 +107,7 @@ bool T_App::init()
 	timeleft->set_position(20);
 
 	
-	LibDebugOnConsole();
+	//LibDebugOnConsole();
 	
 
 	time(&Atime);

@@ -54,11 +54,15 @@ void T_App::onMouseDown(const CL_InputEvent &, const CL_InputState &)
 			entites->SOselected=temp;
 			entites->SOselected->ObjState=ScrObj::SELECTED;
 			
+			ScrObjSelect();
+
+			LibDebugOnConsole();
 		}
 		break;
 
 	//default:temp;
 	}
+
 
 
 }
@@ -129,4 +133,10 @@ void T_App::ButtonClick()
 		break;
 	default:;
 	}
+}
+
+void T_App::ScrObjSelect()
+{
+	ScrObj*temp=entites->SOselected;
+	cellsdeployed->set_value(temp->datas->celldeployed);
 }
