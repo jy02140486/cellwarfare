@@ -71,14 +71,14 @@ bool T_App::init()
 
 	cirfirm=new CL_PushButton(mpComWindow);
 	cirfirm->set_text("enter");
-	cirfirm->set_geometry(CL_Rect(40,480, CL_Size(100, 30)));
+	cirfirm->set_geometry(CL_Rect(40,480, CL_Size(150, 30)));
 	cirfirm->func_clicked().set(this,&T_App::ButtonClick);
 
 	CL_Point lboffset(10,10);
 	CL_Size sspin(80,20);
 	CL_Size slb(80,20);
 	infoBF=new CL_Label(mpComWindow);
-	infoBF->set_geometry(CL_Rect(10,110, CL_Size(290, 570-110)));
+	infoBF->set_geometry(CL_Rect(10,110, CL_Size(290, 300)));
 	infoBF->set_text("infobf");
 	
 	lbcellsdeployed=new CL_Label(infoBF);
