@@ -130,21 +130,26 @@ void EM::initScrObjs()
 	itr=head;
 	itr->pos=new CL_Point(423,229);
 	itr->datas=&curLV->defbfs[0];
+	itr->des=new CL_String("arm");
+
 
 	head->next=new ScrObj();
 	itr=itr->next;
 	itr->pos=new CL_Point(564,174);
 	itr->datas=&curLV->defbfs[1];
+	itr->des=new CL_String("mouth");
 
 	itr->next=new ScrObj();
 	itr=itr->next;
 	itr->pos=new CL_Point(573,258);
 	itr->datas=&curLV->defbfs[2];
+	itr->des=new CL_String("breast");
 
 	itr->next=new ScrObj();
 	itr=itr->next;
 	itr->pos=new CL_Point(576,363);
 	itr->datas=&curLV->defbfs[3];
+	itr->des=new CL_String("waist");
 }
 
 ScrObj* EM::ScrObjTraversal()

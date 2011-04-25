@@ -41,7 +41,7 @@ bool T_App::init()
 	comWindowDesc.set_layered(true);
 
 	mpComWindow = new CL_Window(&mGui, comWindowDesc);
-	mpComWindow->set_draggable(true);
+	mpComWindow->set_draggable(false);
 
 	//initail events
 	mInput = mpDisplayWindow->get_ic();

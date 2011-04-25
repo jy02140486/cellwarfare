@@ -48,6 +48,9 @@ void T_App::renderdes()
 	case LVSWITCHING:
 		words->draw_text(mpComWindow->get_gc(),offset.x,offset.y+20,"times up");
 		break;
+
+	case TATICAL:
+		words->draw_text(mpComWindow->get_gc(),310,20,CL_StringRef (entites->SOselected->des->data()));
 	}
 }
 
