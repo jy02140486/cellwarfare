@@ -37,9 +37,18 @@ void T_App::LibDebugOnConsole()
 // 		CL_Console::write_line("the first point %1,(%2,%3)",i,temP.x,temP.y);
 // 	}
 
-	ScrObj*temp=entites->SOselected;
+// 	ScrObj*temp=entites->SOselected;
+// 
+// 	CL_Console::write_line("%1",temp->datas->celldeployed)
+// 	;
 
-	CL_Console::write_line("%1",temp->datas->celldeployed)
-	;
+	for (b2Body* bbbb=entites->curBF->world->GetBodyList();bbbb!=NULL;bbbb=bbbb->GetNext())
+	{
+			CL_Console::write_line("%1",bbbb->GetPosition().x);
+	}
 
+	if (entites->curBF->world->GetBodyList()==NULL)
+	{
+		CL_Console::write_line("crap");
+	}
 }

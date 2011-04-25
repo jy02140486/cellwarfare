@@ -1,17 +1,25 @@
 #include "cells.h"
+#include "../Libs/RandomVal.h"
 
 void cells::initialize()
 {
 	_ImpDraw=new drawCells();
 }
 
-void cells::initialize(b2BodyDef *def,b2World *world)
+void cells::initialize(b2BodyDef *odef,b2World *world)
 {
 	_ImpDraw=new drawCells();
-	self=(b2Body*)world->CreateBody(def);
+	self=(b2Body*)world->CreateBody(odef);
 	self->SetUserData(this);
 }
 
+void cells::initialize(b2World *world)
+{
+	_ImpDraw=new drawCells();
+	self=(b2Body*)world->CreateBody(&def);
+	self->SetUserData(this);
+	self->CreateFixture(&shape,1);
+}
 
 void cells::update()
 {
@@ -25,5 +33,30 @@ void cells::draw(CL_GraphicContext *gc,float x,float y)
 
 cells::cells()
 {
+	def.type=b2_dynamicBody;
+	b2Vec2 temp;
+	CL_Point cltemp;
+	cltemp=*RandomVal::randomPointi(320,20,770,500);
+	temp.x=cltemp.x;
+	temp.y=cltemp.y;
+// 	temp.x=400;
+// 	temp.y=400;
+	def.position=temp;
+	def.allowSleep=true;
+	def.linearVelocity=b2Vec2(RandomVal::int_from_to(0,10),RandomVal::int_from_to(0,10));
+	
 
+	shape.m_radius=10;
+	
+}
+
+void cells::Draw(CL_GraphicContext *gc)
+{
+	// 	CL_Gradient color2(CL_Colorf::burlywood, CL_Colorf::honeydew);
+
+	CL_Draw::circle(*gc,
+		self->GetPosition().x,
+		self->GetPosition().y,
+		self->GetFixtureList()->GetShape()->m_radius,
+		CL_Colorf::blueviolet);
 }
