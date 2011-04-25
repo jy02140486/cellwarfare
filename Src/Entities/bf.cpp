@@ -1,8 +1,9 @@
 #include "bf.h"
+#include "cells.h"
 
 void bf::initialize()
 {
-	_ImpDraw=new drawBF();
+	
 }
 
 void bf::update()
@@ -13,23 +14,34 @@ void bf::update()
 	}
 }
 
-void bf::draw(CL_GraphicContext *gc,float x,float y)
-{
-//	_ImpDraw->draw(gc,x,y);
-}
 
 void bf::initialize(defBF*ref)
 {
-	_ImpDraw=new drawBF();
 	world=new b2World(b2Vec2(0.0f,0.0f),true);
-	for (int i=0;i<ref->celldeployed;i++)
+	
+	if (ref->celldeployed>0)
 	{
-		
+		cells* temp;
+		b2BodyDef def;
+		for (int i=0;i<ref->celldeployed;i++)
+		{
+			temp=new cells();
+			temp->initialize(world);
+		}
 	}
 }
 
 bf::bf()
 {
 	world=NULL;
-	_ImpDraw=NULL;
+
+}
+
+void bf::Draw(CL_GraphicContext *gc)
+{
+
+	for (b2Body* bbbb=world->GetBodyList();bbbb!=NULL;bbbb=bbbb->GetNext())
+	{
+			((cells*)(bbbb->GetUserData()))->Draw(gc);
+	}
 }

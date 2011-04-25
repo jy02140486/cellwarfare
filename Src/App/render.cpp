@@ -8,12 +8,14 @@ void T_App::render()
 	switch(global_state)
 	{
 		case STRATGY:
-		
-
 			body->draw(mpDisplayWindow->get_gc(), 300.0f, 0.0f);
-
 			renderScrObj();
 		break;
+
+		case TATICAL:
+			entites->curBF->Draw(&mpDisplayWindow->get_gc());
+
+			break;
 	}
 	
 	renderdes();

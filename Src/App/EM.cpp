@@ -115,6 +115,9 @@ int EM::updateall(GLOBAL_STATE stateref)
 			itr->stateSwitching();
 		}
 		break;
+
+	case TATICAL:
+		curBF->update();
 	}
 	
 	if (itrLV==_levels.end())

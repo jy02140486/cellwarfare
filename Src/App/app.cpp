@@ -55,8 +55,6 @@ void T_App::onMouseDown(const CL_InputEvent &, const CL_InputState &)
 			entites->SOselected->ObjState=ScrObj::SELECTED;
 			
 			ScrObjSelect();
-
-			LibDebugOnConsole();
 		}
 		break;
 	//default:temp;
