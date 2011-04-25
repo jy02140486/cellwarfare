@@ -13,7 +13,7 @@ void T_App::render()
 		break;
 
 		case TATICAL:
-			entites->curBF->Draw(&mpDisplayWindow->get_gc());
+			entites->curBF->Draw(mpDisplayWindow->get_gc());
 
 			break;
 	}
