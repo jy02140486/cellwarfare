@@ -17,7 +17,9 @@ public:
 	void update();
 
 	bf();
-	void Draw(CL_GraphicContext *gc);
+	void Draw(CL_GraphicContext &gc);
+	void DrawEdgy(CL_GraphicContext *gc,b2Body *bodyref);
+	void DrawObjs(CL_GraphicContext *gc,b2Body* bodyref);
 	int intruders;
 	int celldeployed;
 
