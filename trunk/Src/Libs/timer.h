@@ -13,6 +13,7 @@ public:
 	void init(int seconds,bool repeatflag);
 	int get_curSec();
 	void begin();
+	void begin(bool isRepeating);
 	Timer();
 	
 

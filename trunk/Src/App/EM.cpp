@@ -88,6 +88,7 @@ void EM::switchlevel()
 			itr=itr->next;
 		}
 		curLV->defbfs[0].celldeployed=RandomVal::int_from_to(0,10);
+		curLV->defbfs[2].intruder=RandomVal::int_from_to(0,8);
 		curLV->start();
 		
 		global_state=STRATGY;

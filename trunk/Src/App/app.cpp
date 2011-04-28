@@ -99,6 +99,9 @@ void T_App::StateSwitching(GLOBAL_STATE newstate)
 		//mpComWindow->set_visible(false);
 		cirfirm->set_text("Quit");
 		break;
+
+	case TATICAL:
+		cirfirm->set_text("Enter");
 	}
 
 	global_state=newstate;
@@ -135,6 +138,6 @@ void T_App::ScrObjSelect()
 {
 	ScrObj*temp=entites->SOselected;
 	cellsdeployed->set_value(temp->datas->celldeployed);
-
+	intruders->set_value(temp->datas->intruder);
 
 }

@@ -7,6 +7,7 @@
 
 class cells:public Ents,public Idraw
 {
+
 public:
 
 	b2Body *self;
@@ -14,10 +15,13 @@ public:
 	void initialize();
 	void initialize(b2BodyDef *odef,b2World *world);
 	void initialize(b2World *world);
+	void initialize(b2World *world,int faction);
 	void draw(CL_GraphicContext *gc,float x,float y);
 
 	b2BodyDef def;
 	b2CircleShape shape;
+	int faction;
+
 	cells();
 	void Draw(CL_GraphicContext *gc);
 protected:
