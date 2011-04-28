@@ -30,6 +30,17 @@ void bf::initialize(defBF*ref)
 		}
 	}
 
+	if (ref->intruder>0)
+	{
+		cells* temp;
+		b2BodyDef def;
+		for (int i=0;i<ref->intruder;i++)
+		{
+			temp=new cells();
+			temp->initialize(world);
+		}
+	}
+
 	b2BodyDef edgedef;
 	edgedef.type=b2_staticBody;
 	edgedef.position=b2Vec2(310,40);
@@ -59,13 +70,26 @@ bf::bf()
 void bf::DrawObjs(CL_GraphicContext *gc,b2Body* bodyref)
 {
 
-/*	((cells*)(bodyref->GetUserData()))->Draw(gc);*/
+	int faction=((cells*)(bodyref->GetUserData()))->faction;
+	
+	switch(faction)
+	{
+	case 0:
+		CL_Draw::circle(*gc,
+			bodyref->GetPosition().x,
+			bodyref->GetPosition().y,
+			bodyref->GetFixtureList()->GetShape()->m_radius,
+			CL_Colorf::white);
+		break;
+	case 1:
+		CL_Draw::circle(*gc,
+			bodyref->GetPosition().x,
+			bodyref->GetPosition().y,
+			bodyref->GetFixtureList()->GetShape()->m_radius,
+			CL_Colorf::blueviolet);
+		break;
+	}
 
-	CL_Draw::circle(*gc,
-		bodyref->GetPosition().x,
-		bodyref->GetPosition().y,
-		bodyref->GetFixtureList()->GetShape()->m_radius,
-		CL_Colorf::blueviolet);
 }
 
 void bf::DrawEdgy(CL_GraphicContext *gc,b2Body *bodyref)

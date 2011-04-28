@@ -19,7 +19,20 @@ void cells::initialize(b2World *world)
 	self=(b2Body*)world->CreateBody(&def);
 	self->SetUserData(this);
 	self->CreateFixture(&shape,1);
+	faction=0;
+	
 }
+
+//0 good;1 bad
+void cells::initialize(b2World *world,int faction)
+{
+	_ImpDraw=new drawCells();
+	self=(b2Body*)world->CreateBody(&def);
+	self->SetUserData(this);
+	self->CreateFixture(&shape,1);
+	this->faction=faction;
+}
+
 
 void cells::update()
 {
