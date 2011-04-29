@@ -65,7 +65,9 @@ void EM::iniLVs()
 	itrLV=_levels.begin();
 
 	curLV->lvtimer->func_expired().set(this,&EM::stageclear);
+
 	curLV->defbfs[0].celldeployed=RandomVal::int_from_to(0,10);
+	curLV->defbfs[0].intruder=RandomVal::int_from_to(0,8);
 	curLV->start();
 
 }

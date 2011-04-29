@@ -67,9 +67,27 @@ void cells::Draw(CL_GraphicContext *gc)
 {
 	// 	CL_Gradient color2(CL_Colorf::burlywood, CL_Colorf::honeydew);
 
-	CL_Draw::circle(*gc,
-		self->GetPosition().x,
-		self->GetPosition().y,
-		self->GetFixtureList()->GetShape()->m_radius,
-		CL_Colorf::blueviolet);
+// 	CL_Draw::circle(*gc,
+// 		self->GetPosition().x,
+// 		self->GetPosition().y,
+// 		self->GetFixtureList()->GetShape()->m_radius,
+// 		CL_Colorf::blueviolet);
+
+	switch(faction)
+	{
+	case 0:
+		CL_Draw::circle(*gc,
+			self->GetPosition().x,
+			self->GetPosition().y,
+			self->GetFixtureList()->GetShape()->m_radius,
+			CL_Colorf::white);
+		break;
+	case 1:
+		CL_Draw::circle(*gc,
+			self->GetPosition().x,
+			self->GetPosition().y,
+			self->GetFixtureList()->GetShape()->m_radius,
+			CL_Colorf::blueviolet);
+		break;
+	}
 }
