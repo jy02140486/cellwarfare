@@ -37,7 +37,7 @@ void bf::initialize(defBF*ref)
 		for (int i=0;i<ref->intruder;i++)
 		{
 			temp=new cells();
-			temp->initialize(world);
+			temp->initialize(world,1);
 		}
 	}
 
@@ -70,25 +70,9 @@ bf::bf()
 void bf::DrawObjs(CL_GraphicContext *gc,b2Body* bodyref)
 {
 
-	int faction=((cells*)(bodyref->GetUserData()))->faction;
-	
-	switch(faction)
-	{
-	case 0:
-		CL_Draw::circle(*gc,
-			bodyref->GetPosition().x,
-			bodyref->GetPosition().y,
-			bodyref->GetFixtureList()->GetShape()->m_radius,
-			CL_Colorf::white);
-		break;
-	case 1:
-		CL_Draw::circle(*gc,
-			bodyref->GetPosition().x,
-			bodyref->GetPosition().y,
-			bodyref->GetFixtureList()->GetShape()->m_radius,
-			CL_Colorf::blueviolet);
-		break;
-	}
+	cells*temp=((cells*)(bodyref->GetUserData()));
+
+	temp->Draw(gc);
 
 }
 
