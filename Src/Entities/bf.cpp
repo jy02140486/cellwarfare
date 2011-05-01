@@ -1,17 +1,39 @@
 #include "bf.h"
 #include "cells.h"
 #include "../App/DestructionListener.h"
+#include "../App/globals.h"
 
 void bf::initialize()
 {
 	
 }
 
+void bf::checkalive(){
+// 	if (global_state!=TATICAL)
+// 	{
+// 		return;
+// 	}
+	
+}
 void bf::update()
 {
 	if (world!=NULL)
 	{
 		world->Step(1/60.0f,40,40);
+	}
+
+	cells*tc;
+	for(b2Body*temp=world->GetBodyList();temp!=NULL;temp=temp->GetNext())
+	{
+		tc=(cells*)temp->GetUserData();
+
+		//	tc->living;
+
+		if (tc->living)
+		{
+			continue;
+		}
+		else world->DestroyBody(temp);
 	}
 }
 
@@ -62,6 +84,11 @@ void bf::initialize(defBF*ref)
 	edge->CreateFixture(&edgeshape,0);
 
 	world->SetContactListener(new DestructionListener());
+
+	checkTimer=new CL_Timer();
+
+	checkTimer->start(1000,true);
+	checkTimer->func_expired().set(this,&bf::checkalive);
 }
 
 bf::bf()

@@ -20,8 +20,12 @@ public:
 	void Draw(CL_GraphicContext &gc);
 	void DrawEdgy(CL_GraphicContext *gc,b2Body *bodyref);
 	void DrawObjs(CL_GraphicContext *gc,b2Body* bodyref);
+	void checkalive();
+
 	int intruders;
 	int celldeployed;
+
+	CL_Timer* checkTimer;
 
 protected:
 private:

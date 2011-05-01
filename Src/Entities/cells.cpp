@@ -11,6 +11,7 @@ void cells::initialize(b2BodyDef *odef,b2World *world)
 	_ImpDraw=new drawCells();
 	self=(b2Body*)world->CreateBody(odef);
 	self->SetUserData(this);
+	living=true;
 }
 
 void cells::initialize(b2World *world)
@@ -20,7 +21,7 @@ void cells::initialize(b2World *world)
 	self->SetUserData(this);
 	self->CreateFixture(&shape,1);
 	faction=0;
-	
+	living=true;
 }
 
 //0 good;1 bad
@@ -31,6 +32,7 @@ void cells::initialize(b2World *world,int faction)
 	self->SetUserData(this);
 	self->CreateFixture(&shape,1);
 	this->faction=faction;
+	living=true;
 }
 
 
