@@ -21,6 +21,9 @@ public:
 	b2BodyDef def;
 	b2CircleShape shape;
 	int faction;
+	bool living;
+
+	//bool isalive(){return living;}
 
 	cells();
 	void Draw(CL_GraphicContext *gc);
