@@ -1,5 +1,6 @@
 #include "bf.h"
 #include "cells.h"
+#include "../App/DestructionListener.h"
 
 void bf::initialize()
 {
@@ -59,6 +60,8 @@ void bf::initialize(defBF*ref)
 
 	edgeshape.SetAsEdge(b2Vec2(480,0),b2Vec2(480,500));
 	edge->CreateFixture(&edgeshape,0);
+
+	world->SetContactListener(new DestructionListener());
 }
 
 bf::bf()
