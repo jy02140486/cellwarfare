@@ -3,17 +3,14 @@
 #include "../App/DestructionListener.h"
 #include "../App/globals.h"
 
+int i=0;
 void bf::initialize()
 {
 	
 }
 
 void bf::checkalive(){
-// 	if (global_state!=TATICAL)
-// 	{
-// 		return;
-// 	}
-	
+	checkTimer->startflag=CL_System::get_time();
 }
 void bf::update()
 {
@@ -23,17 +20,32 @@ void bf::update()
 	}
 
 	cells*tc;
+	
+	if (checkTimer->get_curSec()==1)
 	for(b2Body*temp=world->GetBodyList();temp!=NULL;temp=temp->GetNext())
 	{
-		tc=(cells*)temp->GetUserData();
+		if (temp==NULL)
+		{
+			break;
+		}
+		if (temp->GetType()==b2_dynamicBody)
+		{
+			tc=(cells*)temp->GetUserData();
+		}
+		else continue;
 
 		//	tc->living;
-
+//		int cur=(CL_System::get_time()-checkTimer->startflag)/1000;
+//		CL_Console::write_line("%1",checkTimer->get_curSec());
 		if (tc->living)
 		{
 			continue;
 		}
-		else world->DestroyBody(temp);
+		else {
+			b2Body* t2=temp->GetNext();
+			world->DestroyBody(temp);
+			temp=t2;
+		}
 	}
 }
 
@@ -85,10 +97,11 @@ void bf::initialize(defBF*ref)
 
 	world->SetContactListener(new DestructionListener());
 
-	checkTimer=new CL_Timer();
+	checkTimer=new Timer();
 
-	checkTimer->start(1000,true);
+	checkTimer->init(2,true);
 	checkTimer->func_expired().set(this,&bf::checkalive);
+	checkTimer->begin(true);
 }
 
 bf::bf()
