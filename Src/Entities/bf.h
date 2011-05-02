@@ -4,6 +4,7 @@
 #include "../Libs/ents.h"
 #include "defBF.h"
 #include <Box2D/Box2D.h>
+#include "../Libs/timer.h"
 
 
 class bf:public Ents
@@ -25,7 +26,7 @@ public:
 	int intruders;
 	int celldeployed;
 
-	CL_Timer* checkTimer;
+	Timer* checkTimer;
 
 protected:
 private:

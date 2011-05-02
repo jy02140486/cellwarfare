@@ -7,6 +7,11 @@ void DestructionListener::EndContact(b2Contact* contact)
 	b2Body*body=contact->GetFixtureA()->GetBody();
 	b2Body*bb=contact->GetFixtureB()->GetBody();
 
+	if (body->GetType()!=b2_dynamicBody||bb->GetType()!=b2_dynamicBody)
+	{
+		return;
+	}
+
 	cells *tc=(cells*)body->GetUserData();
 	tc->living=false;
 	tc=(cells*)bb->GetUserData();

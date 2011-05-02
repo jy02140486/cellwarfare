@@ -58,7 +58,7 @@ cells::cells()
 // 	temp.y=400;
 	def.position=temp;
 	def.allowSleep=true;
-	def.linearVelocity=b2Vec2(RandomVal::int_from_to(0,10),RandomVal::int_from_to(0,10));
+	def.linearVelocity=b2Vec2(RandomVal::int_from_to(0,90),RandomVal::int_from_to(0,90));
 	
 
 	shape.m_radius=10;
