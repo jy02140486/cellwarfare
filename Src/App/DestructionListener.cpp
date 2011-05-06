@@ -12,9 +12,17 @@ void DestructionListener::BeginContact(b2Contact* contact)
 		return;
 	}
 
-	cells *tc=(cells*)body->GetUserData();
-	tc->living=false;
-	tc=(cells*)bb->GetUserData();
-	tc->living=false;
+	cells *tc=(cells*)body->GetUserData();	
+	cells*tc2=(cells*)bb->GetUserData();
+
+	if (tc->faction!=tc2->faction)
+	{
+		tc->living=false;
+
+		tc2->living=false;
+	}
+	
+	
+	
 	CL_Console::write_line("%1 bodys left",bb->GetWorld()->GetBodyCount());
 }

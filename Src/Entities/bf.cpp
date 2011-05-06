@@ -18,9 +18,9 @@ void bf::initialize()
 }
 
 void bf::checkalive(){
-//  	if (global_state==TATICAL)
-// 		if (checkTimer!=NULL)
-// 		checkTimer->startflag=CL_System::get_time();
+ 	if (global_state==TATICAL)
+		if (checkTimer!=NULL)
+		checkTimer->startflag=CL_System::get_time();
 }
 
 void bf::update()
@@ -30,34 +30,35 @@ void bf::update()
 		world->Step(1/60.0f,40,40);
 	}
 
-// 	cells*tc;
-// 	
-// // 	if (checkTimer->get_curSec()==1)
-// 	for(b2Body*temp=world->GetBodyList();temp!=NULL;temp=temp->GetNext())
-// 	{
-// 		if (temp==NULL)
-// 		{
-// 			break;
-// 		}
-// 		if (temp->GetType()==b2_dynamicBody)
-// 		{
-// 			tc=(cells*)temp->GetUserData();
-// 		}
-// 		else continue;
-// 
-// 		//	tc->living;
-// 		//int cur=(CL_System::get_time()-checkTimer->startflag)/1000;
-// //		CL_Console::write_line("%1",checkTimer->get_curSec());
-// 		if (tc->living)
-// 		{
-// 			continue;
-// 		}
-// 		else {
-// 			b2Body* t2=temp->GetNext();
-// 			world->DestroyBody(temp);
-// 			temp=t2;
-// 		}
-//  	}
+  	cells*tc=NULL;
+	int i=0;
+	for(b2Body*temp=world->GetBodyList();temp!=NULL;temp=temp->GetNext())
+	{
+		CL_Console::write_line("%1",i++);
+		if (temp==NULL)
+		{
+			break;
+		}
+		if (temp->GetType()==b2_dynamicBody)
+		{
+			tc=(cells*)temp->GetUserData();
+		}
+		else continue;
+
+		if(tc!=NULL)
+		if (tc->living)
+		{
+			continue;
+		}
+		else {
+			b2Body* t2=temp->GetNext();
+			delete temp->GetUserData();
+			world->DestroyBody(temp);
+			temp=t2;
+ 		}
+
+		
+	}
 
 // 	{b2Body*temp=world->GetBodyList();
 // 	while (temp!=NULL)
