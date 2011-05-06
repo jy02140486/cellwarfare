@@ -128,7 +128,8 @@ void T_App::ButtonClick()
 	case TATICAL:
 		
 		StateSwitching(STRATGY);
-		delete entites->curBF;
+		entites->curBF->~bf();
+	//	delete entites->curBF;
 		break;
 	default:;
 	}
