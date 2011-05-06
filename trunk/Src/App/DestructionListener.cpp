@@ -2,7 +2,7 @@
 #include <ClanLib/core.h>
 #include "../Entities/cells.h"
 
-void DestructionListener::EndContact(b2Contact* contact)
+void DestructionListener::BeginContact(b2Contact* contact)
 {
 	b2Body*body=contact->GetFixtureA()->GetBody();
 	b2Body*bb=contact->GetFixtureB()->GetBody();
@@ -16,5 +16,5 @@ void DestructionListener::EndContact(b2Contact* contact)
 	tc->living=false;
 	tc=(cells*)bb->GetUserData();
 	tc->living=false;
-	CL_Console::write_line("abc");
+	CL_Console::write_line("%1 bodys left",bb->GetWorld()->GetBodyCount());
 }

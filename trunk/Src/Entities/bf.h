@@ -22,7 +22,7 @@ public:
 	void DrawEdgy(CL_GraphicContext *gc,b2Body *bodyref);
 	void DrawObjs(CL_GraphicContext *gc,b2Body* bodyref);
 	void checkalive();
-
+	~bf();
 	int intruders;
 	int celldeployed;
 
