@@ -20,6 +20,9 @@ void DestructionListener::BeginContact(b2Contact* contact)
 		tc->living=false;
 
 		tc2->living=false;
+
+		tc->belong->celldeployed--;
+		tc->belong->intruder--;
 	}
 	
 	

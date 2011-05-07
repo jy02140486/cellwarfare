@@ -31,38 +31,10 @@ void bf::update()
 	}
 
   	cells*tc=NULL;
-	int i=0;
-	for(b2Body*temp=world->GetBodyList();temp!=NULL;temp=temp->GetNext())
-	{
-		CL_Console::write_line("%1",i++);
-		if (temp==NULL)
-		{
-			break;
-		}
-		if (temp->GetType()==b2_dynamicBody)
-		{
-			tc=(cells*)temp->GetUserData();
-		}
-		else continue;
 
-		if(tc!=NULL)
-		if (tc->living)
-		{
-			continue;
-		}
-		else {
-			b2Body* t2=temp->GetNext();
-			delete temp->GetUserData();
-			world->DestroyBody(temp);
-			temp=t2;
- 		}
-
-		
-	}
-
-// 	{b2Body*temp=world->GetBodyList();
-// 	while (temp!=NULL)
+// 	for(b2Body*temp=world->GetBodyList();temp!=NULL;temp=temp->GetNext())
 // 	{
+// 		CL_Console::write_line("%1",i++);
 // 		if (temp==NULL)
 // 		{
 // 			break;
@@ -73,20 +45,60 @@ void bf::update()
 // 		}
 // 		else continue;
 // 
-// 		//	tc->living;
-// 		//		int cur=(CL_System::get_time()-checkTimer->startflag)/1000;
-// 		//		CL_Console::write_line("%1",checkTimer->get_curSec());
+// 		if(tc!=NULL)
 // 		if (tc->living)
 // 		{
 // 			continue;
 // 		}
 // 		else {
 // 			b2Body* t2=temp->GetNext();
+// 			delete temp->GetUserData();
 // 			world->DestroyBody(temp);
 // 			temp=t2;
-// 		}
-// 		temp=temp->GetNext();
-// 	}}
+//  		}
+// 
+// 		
+// 	}
+
+	
+	b2Body*temp=world->GetBodyList();
+	while (temp!=NULL)
+	{
+	
+		if (temp==NULL)
+		{
+			break;
+		}
+		if (temp->GetType()==b2_dynamicBody)
+		{
+			tc=(cells*)temp->GetUserData();
+		}
+		else {
+			temp=temp->GetNext();
+			continue;
+		}
+
+		//	tc->living;
+		//		int cur=(CL_System::get_time()-checkTimer->startflag)/1000;
+		//		CL_Console::write_line("%1",checkTimer->get_curSec());
+		if (tc->living)
+		{
+			temp=temp->GetNext();
+			continue;
+		}
+		else {
+// 			b2Body* t2=temp->GetNext();
+// 			world->DestroyBody(temp);
+// 			temp=t2;
+
+			b2Body* t2=temp->GetNext();
+			delete temp->GetUserData();
+			world->DestroyBody(temp);
+			temp=t2;
+			continue;
+		}
+		temp=temp->GetNext();
+	}
 }
 
 
@@ -102,6 +114,7 @@ void bf::initialize(defBF*ref)
 		{
 			temp=new cells();
 			temp->initialize(world);
+			temp->belong=ref;
 		}
 	}
 
@@ -113,6 +126,7 @@ void bf::initialize(defBF*ref)
 		{
 			temp=new cells();
 			temp->initialize(world,1);
+			temp->belong=ref;
 		}
 	}
 

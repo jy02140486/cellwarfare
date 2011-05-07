@@ -4,6 +4,7 @@
 #include "../Libs/ents.h"
 #include "../Libs/IDraw.h"
 #include "../app/drawCells.h"
+#include "defBF.h"
 
 class cells:public Ents,public Idraw
 {
@@ -22,6 +23,8 @@ public:
 	b2CircleShape shape;
 	int faction;
 	bool living;
+
+	defBF *belong;
 
 	//bool isalive(){return living;}
 
