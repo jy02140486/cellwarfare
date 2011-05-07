@@ -27,6 +27,7 @@ public:
 	int celldeployed;
 
 	Timer* checkTimer;
+	
 
 protected:
 private:
