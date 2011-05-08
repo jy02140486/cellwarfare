@@ -1,5 +1,6 @@
 #include "app.h"
 #include "../libs/querryback.h"
+#include "../Libs/Conveter.h"
 #define FPS 44
 
 T_App::T_App()
@@ -37,9 +38,26 @@ void T_App::onMouseUp(const CL_InputEvent &, const CL_InputState &)
 {
 	switch(global_state)
 	{
-	case TATICAL:
+		case TATICAL:
 		{
-		
+			bf* tbf=entites->curBF;
+			if(tbf->SOselected==NULL)
+				return;
+
+			CL_Vec2i cannon(tbf->SOselected->pos->x,tbf->SOselected->pos->y);
+			CL_Vec2i mouse=mMouse.get_position();
+
+			b2Vec2 b2cannon=Conveter::Vec2from_c_to_b(cannon);
+			b2Vec2 b2mouse=Conveter::Vec2from_c_to_b(mouse);
+
+			cells*temp=new cells();
+
+			b2BodyDef tempdef;
+			tempdef.type=b2_dynamicBody;
+			tempdef.position=b2cannon;
+			
+			temp->initialize(&tempdef,tbf->world);
+			temp->self->SetLinearVelocity(b2mouse-b2cannon);
 		}break;
 	}
 }
@@ -66,11 +84,11 @@ void T_App::onMouseDown(const CL_InputEvent &, const CL_InputState &)
 		}
 
 	case TATICAL:
-		ScrObj*temp=entites->ScrObjTraversal(entites->curBF->head);
-		if (temp==NULL)
-		{
-			CL_Console::write_line("a");
-		}else CL_Console::write_line("b");
+		bf* tbf=entites->curBF;
+		ScrObj*temp=entites->ScrObjTraversal(tbf->head);
+
+		if (temp!=NULL)
+			tbf->SOselected=temp;
 		break;
 	//default:temp;
 	}

@@ -9,8 +9,12 @@ void cells::initialize()
 void cells::initialize(b2BodyDef *odef,b2World *world)
 {
 	_ImpDraw=new drawCells();
+
+
 	self=(b2Body*)world->CreateBody(odef);
 	self->SetUserData(this);
+	self->CreateFixture(&shape,1);
+	faction=0;
 	living=true;
 }
 
@@ -34,6 +38,18 @@ void cells::initialize(b2World *world,int faction)
 	this->faction=faction;
 	living=true;
 }
+
+// void cells::launch(b2World*world,b2Vec2 dir)
+// {
+// 	_ImpDraw=new drawCells();
+// 	b2BodyDef tempdef=def;
+// 	tempdef.position=
+// 	self=(b2Body*)world->CreateBody(&def);
+// 	self->SetUserData(this);
+// 	self->CreateFixture(&shape,1);
+// 	this->faction=faction;
+// 	living=true;
+// }
 
 
 void cells::update()
