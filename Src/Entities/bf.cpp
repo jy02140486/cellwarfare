@@ -78,19 +78,12 @@ void bf::update()
 			continue;
 		}
 
-		//	tc->living;
-		//		int cur=(CL_System::get_time()-checkTimer->startflag)/1000;
-		//		CL_Console::write_line("%1",checkTimer->get_curSec());
 		if (tc->living)
 		{
 			temp=temp->GetNext();
 			continue;
 		}
 		else {
-// 			b2Body* t2=temp->GetNext();
-// 			world->DestroyBody(temp);
-// 			temp=t2;
-
 			b2Body* t2=temp->GetNext();
 			delete temp->GetUserData();
 			world->DestroyBody(temp);
@@ -156,12 +149,34 @@ void bf::initialize(defBF*ref)
 	checkTimer->init(2,true);
 	checkTimer->func_expired().set(this,&bf::checkalive);
 	checkTimer->begin(true);
+
+	head=new ScrObj();
+	head->pos=RandomVal::randomPointi(330,60,780,510);
+	head->refradius=10;
+	head->ObjState=ScrObj::CANNON;
+	head->next=new ScrObj();
+	itr=head;
+	
+	for(int i=0;i<ref->numCannon;i++)
+	{
+		itr=itr->next;
+		itr->pos=RandomVal::randomPointi(330,60,780,510);
+		itr->refradius=10;
+		itr->ObjState=ScrObj::CANNON;
+		if (i==ref->numCannon-1)
+		{
+			itr->next=NULL;
+		}else
+		itr->next=new ScrObj();
+	}
+	
 }
 
 bf::bf()
 {
 	world=NULL;
 	checkTimer=NULL;
+	SOselected=NULL;
 }
 
 void bf::DrawObjs(CL_GraphicContext *gc,b2Body* bodyref)

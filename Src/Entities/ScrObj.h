@@ -31,7 +31,8 @@ public:
 		NORMAL=0,
 		MOUSEON,
 		INTRUDED,
-		SELECTED
+		SELECTED,
+		CANNON
 	}ObjState;
 	
 };
