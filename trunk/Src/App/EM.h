@@ -32,6 +32,7 @@ public:
 	int updateall(GLOBAL_STATE stateref);
 	void stageclear();
 	ScrObj* ScrObjTraversal();
+	ScrObj* ScrObjTraversal(ScrObj* listhead);
 	CL_Point posMouse;
 
 	defLV lv1;

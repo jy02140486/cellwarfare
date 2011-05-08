@@ -35,7 +35,13 @@ int T_App::start()
 
 void T_App::onMouseUp(const CL_InputEvent &, const CL_InputState &)
 {
-	
+	switch(global_state)
+	{
+	case TATICAL:
+		{
+		
+		}break;
+	}
 }
 
 
@@ -45,17 +51,26 @@ void T_App::onMouseDown(const CL_InputEvent &, const CL_InputState &)
 	switch(global_state)
 	{
 	case STRATGY:
-		ScrObj*temp=entites->ScrObjTraversal();
-		if (temp!=NULL)
 		{
-			if(entites->SOselected!=NULL)
-				entites->SOselected->ObjState=ScrObj::NORMAL;
+			ScrObj*temp=entites->ScrObjTraversal();
+			if (temp!=NULL)
+			{
+				if(entites->SOselected!=NULL)
+					entites->SOselected->ObjState=ScrObj::NORMAL;
 			
-			entites->SOselected=temp;
-			entites->SOselected->ObjState=ScrObj::SELECTED;
-			
-			ScrObjSelect();
+				entites->SOselected=temp;
+				entites->SOselected->ObjState=ScrObj::SELECTED;
+				ScrObjSelect();
+			}
+		break;
 		}
+
+	case TATICAL:
+		ScrObj*temp=entites->ScrObjTraversal(entites->curBF->head);
+		if (temp==NULL)
+		{
+			CL_Console::write_line("a");
+		}else CL_Console::write_line("b");
 		break;
 	//default:temp;
 	}

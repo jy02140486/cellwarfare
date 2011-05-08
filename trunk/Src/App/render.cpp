@@ -9,7 +9,7 @@ void T_App::render()
 	{
 		case STRATGY:
 			body->draw(mpDisplayWindow->get_gc(), 300.0f, 0.0f);
-			renderScrObj();
+			
 		break;
 
 		case TATICAL:
@@ -17,7 +17,7 @@ void T_App::render()
 
 			break;
 	}
-	
+	renderScrObj();
 	renderdes();
 
 	mpWinManager->draw_windows(mpDisplayWindow->get_gc());
@@ -58,10 +58,17 @@ void T_App::renderdes()
 
 void T_App::renderScrObj()
 {
-	for (entites->itr=entites->head;entites->itr!=NULL;entites->itr=entites->itr->next)
+	switch(global_state)
 	{
-		entites->itr->draw(&mpDisplayWindow->get_gc());
+	case STRATGY:
+		for (entites->itr=entites->head;entites->itr!=NULL;entites->itr=entites->itr->next)
+			entites->itr->draw(&mpDisplayWindow->get_gc());
+		break;
+	case TATICAL:
+		for (entites->curBF->itr=entites->curBF->head;entites->curBF->itr!=NULL;entites->curBF->itr=entites->curBF->itr->next)
+			entites->curBF->itr->draw(&mpDisplayWindow->get_gc());
 	}
+
 /*	head->draw(&mpDisplayWindow->get_gc());*/
 
 }

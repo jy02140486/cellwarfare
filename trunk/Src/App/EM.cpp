@@ -68,6 +68,7 @@ void EM::iniLVs()
 
 	curLV->defbfs[0].celldeployed=RandomVal::int_from_to(0,10);
 	curLV->defbfs[0].intruder=RandomVal::int_from_to(0,8);
+	curLV->defbfs[0].numCannon=4;
 	curLV->start();
 
 }
@@ -91,6 +92,7 @@ void EM::switchlevel()
 		}
 		curLV->defbfs[0].celldeployed=RandomVal::int_from_to(0,10);
 		curLV->defbfs[2].intruder=RandomVal::int_from_to(0,8);
+		
 		curLV->start();
 		
 		global_state=STRATGY;
@@ -161,6 +163,18 @@ void EM::initScrObjs()
 ScrObj* EM::ScrObjTraversal()
 {
 	for(ScrObj* temp=head;temp!=NULL;temp=temp->next)
+	{
+		if (temp->isCousurOn(posMouse))
+		{
+			return temp;
+		}
+	}
+	return NULL;
+}
+
+ScrObj* EM::ScrObjTraversal(ScrObj* listhead)
+{
+	for(ScrObj* temp=listhead;temp!=NULL;temp=temp->next)
 	{
 		if (temp->isCousurOn(posMouse))
 		{
