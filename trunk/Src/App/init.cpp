@@ -135,5 +135,5 @@ bool T_App::init()
 
 void T_App::CDVChanged()
 {
-	entites->curLV->defbfs[0].celldeployed=cellsdeployed->get_value();
+	entites->SOselected->datas->celldeployed=cellsdeployed->get_value();
 }

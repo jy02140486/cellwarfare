@@ -88,6 +88,8 @@ void bf::update()
 			delete temp->GetUserData();
 			world->DestroyBody(temp);
 			temp=t2;
+			celllaunched--;
+			intruders--;
 			continue;
 		}
 		temp=temp->GetNext();

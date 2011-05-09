@@ -14,20 +14,15 @@ void DestructionListener::BeginContact(b2Contact* contact)
 
 	cells *tc=(cells*)body->GetUserData();	
 	cells*tc2=(cells*)bb->GetUserData();
-
-
-	CL_Console::write_line("%1 celllaunched left",tc->belong->celllaunched);
-	CL_Console::write_line("%1 cellsdeployed left",tc->belong->celldeployed);
-	CL_Console::write_line("%1 intruders left",tc->belong->intruder);
+// 	CL_Console::write_line("%1 celllaunched left",tc->belong->celllaunched);
+// 	CL_Console::write_line("%1 cellsdeployed left",tc->belong->celldeployed);
+// 	CL_Console::write_line("%1 intruders left",tc->belong->intruder);
 
 	if (tc->faction!=tc2->faction)
 	{
 		tc->living=false;
 
 		tc2->living=false;
-
-		tc->belong->celllaunched--;
-		tc->belong->intruder--;
 	}
 
 }

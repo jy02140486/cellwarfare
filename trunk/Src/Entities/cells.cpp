@@ -9,8 +9,6 @@ void cells::initialize()
 void cells::initialize(b2BodyDef *odef,b2World *world)
 {
 	_ImpDraw=new drawCells();
-
-
 	self=(b2Body*)world->CreateBody(odef);
 	self->SetUserData(this);
 	b2Fixture *temp=self->CreateFixture(&shape,1);
