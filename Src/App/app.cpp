@@ -58,14 +58,12 @@ void T_App::onMouseUp(const CL_InputEvent &, const CL_InputState &)
 			tempdef.position=b2cannon;
 			
 			temp->initialize(&tempdef,tbf->world);
+			temp->belong=entites->curBF->SOselected->datas;
 			temp->self->SetLinearVelocity(b2mouse-b2cannon);
 
 			tbf->celllaunched++;
 			tbf->celldeployed--;
-
 			tbf->SOselected==NULL;
-
-
 		}break;
 	}
 }
