@@ -85,11 +85,20 @@ void bf::update()
 		}
 		else {
 			b2Body* t2=temp->GetNext();
+			if (tc->faction==0)
+			{
+				celllaunched--;
+			}else
+				intruders--;
 			delete temp->GetUserData();
 			world->DestroyBody(temp);
 			temp=t2;
-			celllaunched--;
-			intruders--;
+
+// 
+// 			CL_Console::write_line("%1 celllaunched left",celllaunched);
+// 			CL_Console::write_line("%1 cellsdeployed left",celldeployed);
+// 			CL_Console::write_line("%1 intruders left",intruders);
+
 			continue;
 		}
 		temp=temp->GetNext();
