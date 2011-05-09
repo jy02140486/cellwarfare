@@ -41,8 +41,17 @@ void T_App::renderdes()
 				char *temp=new char(10);
 				sprintf(temp,"%d",entites->curLV->lvtimer->get_curSec());
 				CL_StringRef str=temp;
-
 				words->draw_text(mpComWindow->get_gc(),offset.x,offset.y+20,str,CL_Colorf::yellow);
+				
+				sprintf(temp,"%d",entites->hero->HP->val);
+				str=temp;
+				words->draw_text(mpComWindow->get_gc(),offset.x,offset.y+40,"HP",CL_Colorf::yellow);
+				words->draw_text(mpComWindow->get_gc(),offset.x+40,offset.y+40,str,CL_Colorf::yellow);
+				
+				sprintf(temp,"%d",entites->hero->painkiller->val);
+				str=temp;
+				words->draw_text(mpComWindow->get_gc(),offset.x,offset.y+60,"Pills",CL_Colorf::yellow);
+				words->draw_text(mpComWindow->get_gc(),offset.x+40,offset.y+60,str,CL_Colorf::yellow);
 				//delete temp;
 		}
 		break;
