@@ -135,16 +135,20 @@ void bf::initialize(defBF*ref)
 	b2PolygonShape edgeshape;
 
 	edgeshape.SetAsEdge(b2Vec2(0,0),b2Vec2(480,0));
-	edge->CreateFixture(&edgeshape,0);
+	b2Fixture* temp=edge->CreateFixture(&edgeshape,0);
+	temp->SetRestitution(6.0);
 
 	edgeshape.SetAsEdge(b2Vec2(0,0),b2Vec2(0,500));
-	edge->CreateFixture(&edgeshape,0);
+	temp=edge->CreateFixture(&edgeshape,0);
+	temp->SetRestitution(6.0);
 
 	edgeshape.SetAsEdge(b2Vec2(0,500),b2Vec2(480,500));
-	edge->CreateFixture(&edgeshape,0);
+	temp=edge->CreateFixture(&edgeshape,0);
+	temp->SetRestitution(6.0);
 
 	edgeshape.SetAsEdge(b2Vec2(480,0),b2Vec2(480,500));
-	edge->CreateFixture(&edgeshape,0);
+	temp=edge->CreateFixture(&edgeshape,0);
+	temp->SetRestitution(6.0);
 
 	world->SetContactListener(new DestructionListener());
 

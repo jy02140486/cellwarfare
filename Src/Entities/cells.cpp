@@ -13,7 +13,8 @@ void cells::initialize(b2BodyDef *odef,b2World *world)
 
 	self=(b2Body*)world->CreateBody(odef);
 	self->SetUserData(this);
-	self->CreateFixture(&shape,1);
+	b2Fixture *temp=self->CreateFixture(&shape,1);
+	temp->SetRestitution(6.0);
 	faction=0;
 	living=true;
 }
@@ -23,7 +24,8 @@ void cells::initialize(b2World *world)
 	_ImpDraw=new drawCells();
 	self=(b2Body*)world->CreateBody(&def);
 	self->SetUserData(this);
-	self->CreateFixture(&shape,1);
+	b2Fixture *temp=self->CreateFixture(&shape,1);
+	temp->SetRestitution(6.0);
 	faction=0;
 	living=true;
 }
@@ -34,7 +36,8 @@ void cells::initialize(b2World *world,int faction)
 	_ImpDraw=new drawCells();
 	self=(b2Body*)world->CreateBody(&def);
 	self->SetUserData(this);
-	self->CreateFixture(&shape,1);
+	b2Fixture *temp=self->CreateFixture(&shape,1);
+	temp->SetRestitution(6.0);
 	this->faction=faction;
 	living=true;
 }
@@ -76,9 +79,7 @@ cells::cells()
 	def.allowSleep=true;
 	def.linearVelocity=b2Vec2(RandomVal::int_from_to(0,90),RandomVal::int_from_to(0,90));
 	
-
 	shape.m_radius=10;
-	
 }
 
 void cells::Draw(CL_GraphicContext *gc)
