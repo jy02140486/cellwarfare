@@ -69,10 +69,20 @@ void EM::iniLVs()
 	curLV->defbfs[0].celldeployed=RandomVal::int_from_to(0,10);
 	curLV->defbfs[0].intruder=RandomVal::int_from_to(0,8);
 	curLV->defbfs[0].numCannon=4;
+
+	hero=new Hero();
 	curLV->start();
 
 }
 
+void EM::intruding()
+{
+	if (global_state==STRATGY)
+	{
+		int i=RandomVal::int_from_to(0,3);
+
+	}
+}
 void EM::switchlevel()
 {
 	(*itrLV)->lvtimer->stop();

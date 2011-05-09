@@ -27,9 +27,10 @@ public:
 	void DrawObjs(CL_GraphicContext *gc,b2Body* bodyref);
 	void checkalive();
 	~bf();
-
+	void DataSynchronize(defBF*ref);
 	int intruders;
 	int celldeployed;
+	int celllaunched;
 	int cannons;
 
 	Timer* checkTimer;
