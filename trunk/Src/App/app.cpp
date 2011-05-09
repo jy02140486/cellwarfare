@@ -41,9 +41,10 @@ void T_App::onMouseUp(const CL_InputEvent &, const CL_InputState &)
 		case TATICAL:
 		{
 			bf* tbf=entites->curBF;
-			if(tbf->SOselected==NULL)
+			if(tbf->SOselected==NULL||tbf->celldeployed<=0)
 				return;
 
+			
 			CL_Vec2i cannon(tbf->SOselected->pos->x,tbf->SOselected->pos->y);
 			CL_Vec2i mouse=mMouse.get_position();
 
@@ -58,6 +59,13 @@ void T_App::onMouseUp(const CL_InputEvent &, const CL_InputState &)
 			
 			temp->initialize(&tempdef,tbf->world);
 			temp->self->SetLinearVelocity(b2mouse-b2cannon);
+
+			tbf->celllaunched++;
+			tbf->celldeployed--;
+
+			tbf->SOselected==NULL;
+
+
 		}break;
 	}
 }
@@ -161,6 +169,8 @@ void T_App::ButtonClick()
 	case TATICAL:
 		
 		StateSwitching(STRATGY);
+		entites->curBF->DataSynchronize(entites->SOselected->datas);
+
 		entites->curBF->~bf();
 	//	delete entites->curBF;
 		break;

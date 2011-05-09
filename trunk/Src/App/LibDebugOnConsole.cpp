@@ -42,13 +42,15 @@ void T_App::LibDebugOnConsole()
 // 	CL_Console::write_line("%1",temp->datas->celldeployed)
 // 	;
 
-	for (b2Body* bbbb=entites->curBF->world->GetBodyList();bbbb!=NULL;bbbb=bbbb->GetNext())
-	{
-			CL_Console::write_line("%1",bbbb->GetPosition().x);
-	}
+// 	for (b2Body* bbbb=entites->curBF->world->GetBodyList();bbbb!=NULL;bbbb=bbbb->GetNext())
+// 	{
+// 			CL_Console::write_line("%1",bbbb->GetPosition().x);
+// 	}
+// 
+// 	if (entites->curBF->world->GetBodyList()==NULL)
+// 	{
+// 		CL_Console::write_line("crap");
+// 	}
 
-	if (entites->curBF->world->GetBodyList()==NULL)
-	{
-		CL_Console::write_line("crap");
-	}
+
 }

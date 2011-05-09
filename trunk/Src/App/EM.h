@@ -7,6 +7,7 @@
 #include "../Entities/bf.h"
 #include "../Entities/defBF.h"
 #include "../Entities/ScrObj.h"
+#include "../Entities/Hero.h"
 #include "globals.h"
 #include <list>
 
@@ -20,6 +21,8 @@ public:
 	std::list<levels*> _levels;
 	std::list<levels*>::iterator itrLV;
 
+	Hero *hero;
+
 	void setcurLV(levels* ref);
 	void setcurBF(defBF*ref);
 
@@ -27,12 +30,14 @@ public:
 	
 	void initScrObjs();
 	EM();
+
 	void switchlevel();
 
 	int updateall(GLOBAL_STATE stateref);
 	void stageclear();
 	ScrObj* ScrObjTraversal();
 	ScrObj* ScrObjTraversal(ScrObj* listhead);
+	void intruding();
 	CL_Point posMouse;
 
 	defLV lv1;

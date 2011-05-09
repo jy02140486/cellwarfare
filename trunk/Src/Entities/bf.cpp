@@ -99,11 +99,11 @@ void bf::initialize(defBF*ref)
 {
 	world=new b2World(b2Vec2(0.0f,0.0f),true);
 	
-	if (ref->celldeployed>0)
+	if (ref->celllaunched>0)
 	{
 		cells* temp;
 		b2BodyDef def;
-		for (int i=0;i<ref->celldeployed;i++)
+		for (int i=0;i<ref->celllaunched;i++)
 		{
 			temp=new cells();
 			temp->initialize(world);
@@ -122,6 +122,10 @@ void bf::initialize(defBF*ref)
 			temp->belong=ref;
 		}
 	}
+
+	celldeployed=ref->celldeployed;
+	intruders=ref->intruder;
+	celllaunched=ref->celllaunched;
 
 	b2BodyDef edgedef;
 	edgedef.type=b2_staticBody;
@@ -248,4 +252,11 @@ void bf::Draw(CL_GraphicContext &gc)
 // 		bbbb->GetFixtureList()->GetShape()->m_radius,
 // 			CL_Colorf::blueviolet);
 	}
+}
+
+void bf::DataSynchronize(defBF*ref)
+{
+	ref->celllaunched=celllaunched;
+	ref->intruder=intruders;
+	ref->celldeployed=celldeployed;
 }
