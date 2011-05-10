@@ -106,9 +106,36 @@ bool T_App::init()
 	timeleft->set_max(100);
 	timeleft->set_position(20);
 
+	//tatical layer
+	TaticalBoard=new CL_Label(mpComWindow);
+	TaticalBoard->set_geometry(CL_Rect(10,110, CL_Size(290, 300)));
+	TaticalBoard->set_text("TaticalBoard");
+	TaticalBoard->set_visible(false);
+
+	lbTcellsdeployed=new CL_Label(TaticalBoard);
+	lbTcellsdeployed->set_geometry(CL_Rect(lboffset.x,lboffset.y+5, slb));
+	lbTcellsdeployed->set_text("Cells deployed");
+	lbTcellsdeployed->set_visible(true);
+
+	Tcellsdeployed=new CL_Label(TaticalBoard);
+	Tcellsdeployed->set_geometry(CL_Rect(lboffset.x+100,lboffset.y+5, slb));
+	Tcellsdeployed->set_text("Cells deployed");
+	Tcellsdeployed->set_visible(true);
+
+	lbTintruders=new CL_Label(TaticalBoard);
+	lbTintruders->set_geometry(CL_Rect(lboffset.x,lboffset.y+15, slb));
+	lbTintruders->set_text("Itruders");
+	lbTintruders->set_visible(true);
+
+	Tintruders=new CL_Label(TaticalBoard);
+	Tintruders->set_geometry(CL_Rect(lboffset.x+100,lboffset.y+15, slb));
+	Tintruders->set_text("Itruders");
+	Tintruders->set_visible(true);
+
 	entites->hero->eventTimer->func_expired().set(this,&T_App::invading_LogicLayer_Failure);
 	entites->hero->eventTimer->begin(true);
 	
+
 	//LibDebugOnConsole();
 	
 
