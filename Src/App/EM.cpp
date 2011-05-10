@@ -71,18 +71,14 @@ void EM::iniLVs()
 	curLV->defbfs[0].numCannon=4;
 
 	hero=new Hero();
+	hero->eventTimer=new Timer();
+	hero->eventTimer->init(5,true);
+//	hero->eventTimer->func_expired().set(this,&EM::intruding);
 	curLV->start();
 
 }
 
-void EM::intruding()
-{
-	if (global_state==STRATGY)
-	{
-		int i=RandomVal::int_from_to(0,3);
 
-	}
-}
 void EM::switchlevel()
 {
 	(*itrLV)->lvtimer->stop();
@@ -127,7 +123,7 @@ int EM::updateall(GLOBAL_STATE stateref)
 		for (itr=head;itr!=NULL;itr=itr->next)
 		{
 			itr->update(posMouse);
-			itr->stateSwitching();
+		//	itr->stateSwitching();
 		}
 		break;
 

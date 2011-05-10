@@ -20,10 +20,13 @@ void ScrObj::draw(CL_GraphicContext *gc)
 	case SELECTED:
 		CL_Draw::circle(*gc,pos->x,pos->y,refradius/2,CL_Colorf(0.0f,255.0f,0.0f,0.6f));
 		break;
-
 	case CANNON:
 		CL_Draw::circle(*gc,pos->x,pos->y,refradius,CL_Colorf::gray);
 		break;
+	case INTRUDED:
+		CL_Draw::circle(*gc,pos->x,pos->y,refradius,CL_Colorf::burlywood);
+		break;
+
 	}
 }
 
@@ -42,6 +45,8 @@ void ScrObj::stateSwitching()
 		ObjState=MOUSEON;
 	}else if(ObjState!=SELECTED)
 		ObjState=NORMAL;
+	if(datas->intruder>0)
+		ObjState=INTRUDED;
 }
 
 void ScrObj::update(CL_Point curMouse)

@@ -70,6 +70,7 @@ public:
 	void ButtonClick();
 	void CDVChanged();
 	void ScrObjSelect();
+	void invading_LogicLayer_Failure();
 };
 
 #endif
