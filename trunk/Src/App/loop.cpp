@@ -27,6 +27,12 @@ void T_App::loop()
 	{
 		cellsdeployed->set_value(entites->curLV->defbfs[0].celldeployed);
 	}
+
+	if (global_state==TATICAL)
+	{
+		updateBoard();
+	}
+
 	if (!entites->updateall(global_state))
 	{
 		

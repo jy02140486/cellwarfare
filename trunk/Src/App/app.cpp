@@ -139,10 +139,15 @@ void T_App::StateSwitching(GLOBAL_STATE newstate)
 	case STRATGY:
 		//mpComWindow->set_visible(false);
 		cirfirm->set_text("Quit");
+		infoBF->set_visible(false);
+		TaticalBoard->set_visible(true);
 		break;
 
 	case TATICAL:
 		cirfirm->set_text("Enter");
+		infoBF->set_visible(true);
+		TaticalBoard->set_visible(false);
+		break;
 	}
 
 	global_state=newstate;
@@ -163,14 +168,18 @@ void T_App::ButtonClick()
 		if (entites->SOselected!=NULL)
 		{
 			entites->setcurBF(entites->SOselected->datas);
+			
+			char *temp=new char(10);
+			sprintf(temp,"%d",entites->SOselected->datas->celldeployed);
+			CL_StringRef str=temp;
+			Tcellsdeployed->set_text(temp);
+
 			StateSwitching(TATICAL);
 		}
 		break;
-	case TATICAL:
-		
+	case TATICAL:	
 		StateSwitching(STRATGY);
 		entites->curBF->DataSynchronize(entites->SOselected->datas);
-
 		entites->curBF->~bf();
 	//	delete entites->curBF;
 		break;
@@ -202,4 +211,12 @@ void T_App::invading_LogicLayer_Failure()
 			temp->ObjState=ScrObj::INTRUDED;
 			CL_Console::write_line("aa");
 	}
+}
+
+void T_App::updateBoard()
+{
+	char *temp=new char(10);
+	sprintf(temp,"%d",entites->SOselected->datas->celldeployed);
+	CL_StringRef str=temp;
+	Tcellsdeployed->set_text(temp);
 }

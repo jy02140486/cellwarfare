@@ -37,6 +37,10 @@ public:
 	CL_Spin* cellsdeployed;
 	CL_Spin* intruders;
 
+	CL_Label*TaticalBoard;
+	CL_Label*lbTintruders,*lbTcellsdeployed;
+	CL_Label*Tintruders,*Tcellsdeployed;
+
 	CL_ProgressBar* timeleft;
 	CL_Label* lbcellsdeployed,*lbintruders,*lbtimeleft;
 
@@ -71,6 +75,7 @@ public:
 	void CDVChanged();
 	void ScrObjSelect();
 	void invading_LogicLayer_Failure();
+	void updateBoard();
 };
 
 #endif
