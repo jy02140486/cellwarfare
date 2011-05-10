@@ -63,7 +63,7 @@ void T_App::onMouseUp(const CL_InputEvent &, const CL_InputState &)
 
 			tbf->celllaunched++;
 			tbf->celldeployed--;
-			tbf->SOselected==NULL;
+			tbf->SOselected=NULL;
 		}break;
 	}
 }
@@ -80,7 +80,9 @@ void T_App::onMouseDown(const CL_InputEvent &, const CL_InputState &)
 			if (temp!=NULL)
 			{
 				if(entites->SOselected!=NULL)
+					if (intruders==0)					
 					entites->SOselected->ObjState=ScrObj::NORMAL;
+					else entites->SOselected->ObjState=ScrObj::INTRUDED;
 			
 				entites->SOselected=temp;
 				entites->SOselected->ObjState=ScrObj::SELECTED;
@@ -181,5 +183,23 @@ void T_App::ScrObjSelect()
 	ScrObj*temp=entites->SOselected;
 	cellsdeployed->set_value(temp->datas->celldeployed);
 	intruders->set_value(temp->datas->intruder);
+}
 
+void T_App::invading_LogicLayer_Failure()
+{
+	if (global_state==STRATGY)
+	{
+		int i=RandomVal::int_from_to(0,3);
+		int ti=RandomVal::int_from_to(1,8);
+		entites->curLV->defbfs[i].intruder=ti;
+		intruders->set_value(ti);
+
+		ScrObj*temp=entites->head;
+			for(int j=0;j<i;j++)
+			{
+				temp=temp->next;
+			}
+			temp->ObjState=ScrObj::INTRUDED;
+			CL_Console::write_line("aa");
+	}
 }

@@ -106,6 +106,8 @@ bool T_App::init()
 	timeleft->set_max(100);
 	timeleft->set_position(20);
 
+	entites->hero->eventTimer->func_expired().set(this,&T_App::invading_LogicLayer_Failure);
+	entites->hero->eventTimer->begin(true);
 	
 	//LibDebugOnConsole();
 	
