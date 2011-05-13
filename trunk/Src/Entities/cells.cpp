@@ -6,6 +6,25 @@ void cells::initialize()
 	_ImpDraw=new drawCells();
 }
 
+void cells::initialize(defCells* ref,b2World *world)
+{
+	_ImpDraw=new drawCells();
+	self=(b2Body*)world->CreateBody(&ref->def);
+	self->SetUserData(this);
+	b2Fixture *temp=self->CreateFixture(&ref->shape,1);
+	temp->SetRestitution(6.0);
+	faction=ref->faction;
+
+	switch(ref->cell_type)
+	{
+	case WC:
+		cell_type=WC;
+		break;
+	}
+	
+	living=true;
+}
+
 void cells::initialize(b2BodyDef *odef,b2World *world)
 {
 	_ImpDraw=new drawCells();

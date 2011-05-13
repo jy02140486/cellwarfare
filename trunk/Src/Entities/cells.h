@@ -5,11 +5,18 @@
 #include "../Libs/IDraw.h"
 #include "../app/drawCells.h"
 #include "defBF.h"
+#include "defCells.h"
 
 class cells:public Ents,public Idraw
 {
 
 public:
+	enum {
+		WC=0,
+		TC,
+		ARMORED,
+		NAKED
+	}cell_type;
 
 	b2Body *self;
 	void update();
@@ -17,12 +24,14 @@ public:
 	void initialize(b2BodyDef *odef,b2World *world);
 	void initialize(b2World *world);
 	void initialize(b2World *world,int faction);
+	void initialize(defCells* ref,b2World *world);
 	void draw(CL_GraphicContext *gc,float x,float y);
 
 	b2BodyDef def;
 	b2CircleShape shape;
 	int faction;
 	bool living;
+	int reflectR;
 
 	defBF *belong;
 
