@@ -11,3 +11,16 @@ CL_Point* RandomVal::randomPointi(int x1,int y1,int x2,int y2)
 	int y=y1+rand()%(y2+1-y1);
 	return new CL_Point(x,y);
 }
+
+bool RandomVal::randombool()
+{
+	int a=rand()%100+1;
+	if (a>50)
+	{
+		return true;
+	} 
+	else
+	{
+		return false;
+	}
+}

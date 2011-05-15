@@ -26,7 +26,8 @@ void ScrObj::draw(CL_GraphicContext *gc)
 	case INTRUDED:
 		CL_Draw::circle(*gc,pos->x,pos->y,refradius,CL_Colorf::burlywood);
 		break;
-
+	case LYMPH:
+		CL_Draw::circle(*gc,pos->x,pos->y,refradius,CL_Colorf::yellow);
 	}
 }
 

@@ -3,9 +3,8 @@
 defBF::defBF()
 {
 	intruder=0;
-	numCannon=1;
+	numCannon=4;
 	celldeployed=0;
 	celllaunched=0;
 	timeleft=-1;
-
 }

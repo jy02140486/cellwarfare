@@ -29,7 +29,6 @@ void T_App::render()
 
 void T_App::renderdes()
 {
-	
 	switch(global_state)
 	{
 	case STRATGY:

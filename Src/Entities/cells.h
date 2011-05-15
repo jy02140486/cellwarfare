@@ -21,14 +21,14 @@ public:
 	b2Body *self;
 	void update();
 	void initialize();
-	void initialize(b2BodyDef *odef,b2World *world);
 	void initialize(b2World *world);
-	void initialize(b2World *world,int faction);
 	void initialize(defCells* ref,b2World *world);
 	void draw(CL_GraphicContext *gc,float x,float y);
 
-	b2BodyDef def;
-	b2CircleShape shape;
+
+
+
+
 	int faction;
 	bool living;
 	int reflectR;

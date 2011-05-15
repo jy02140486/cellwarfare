@@ -1,6 +1,7 @@
 #ifndef DEFCELLS_H
 #define DEFCELLS_H
 
+#include <Box2D/Box2D.h>
 
 
 class defCells
@@ -19,6 +20,7 @@ public:
 	int faction;
 	bool living;
 	int reflectR;
+	defCells();
 
 protected:
 private:
