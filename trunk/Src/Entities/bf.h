@@ -7,7 +7,8 @@
 #include "../Libs/timer.h"
 #include "ScrObj.h"
 #include "../Libs/RandomVal.h"
-
+#include "defCells.h"
+#include "cells.h"
 
 class bf:public Ents
 {
@@ -15,7 +16,6 @@ class bf:public Ents
 public:
 	b2World* world;
 	ScrObj* itr,*head,*SOselected;
-
 
 	void initialize();
 	void initialize(defBF *ref);
@@ -27,14 +27,14 @@ public:
 	void DrawObjs(CL_GraphicContext *gc,b2Body* bodyref);
 	void checkalive();
 	~bf();
-	void DataSynchronize(defBF*ref);
-	int intruders;
-	int celldeployed;
-	int celllaunched;
-	int cannons;
+//	void DataSynchronize(defBF*ref);
+	// 	int intruders;
+// 	int celldeployed;
+// 	int celllaunched;
+// 	int cannons;
 
 	Timer* checkTimer;
-	
+	defBF *datas;
 
 protected:
 private:

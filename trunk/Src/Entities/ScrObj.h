@@ -32,7 +32,8 @@ public:
 		MOUSEON,
 		INTRUDED,
 		SELECTED,
-		CANNON
+		CANNON,
+		LYMPH
 	}ObjState;
 	
 };

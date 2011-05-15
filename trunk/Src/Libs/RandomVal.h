@@ -9,6 +9,7 @@ class RandomVal
 public:
 	static	int int_from_to(int from,int to);
 	static CL_Point* randomPointi(int x1,int y1,int x2,int y2);
+	static bool randombool();
 protected:
 private:
 	

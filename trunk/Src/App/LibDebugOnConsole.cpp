@@ -52,5 +52,9 @@ void T_App::LibDebugOnConsole()
 // 		CL_Console::write_line("crap");
 // 	}
 
-
+	CL_Console::write_line("%1",entites->curBF->world->GetBodyCount());
+	for(b2Body*tb=entites->curBF->world->GetBodyList();tb!=NULL;tb=tb->GetNext())
+	{
+		CL_Console::write_line("dir x= %1 y= %2",tb->GetPosition().x,tb->GetPosition().y);
+	}
 }

@@ -1,7 +1,8 @@
 #include "bf.h"
-#include "cells.h"
+
 #include "../App/DestructionListener.h"
 #include "../App/globals.h"
+#include "../Libs/Conveter.h"
 
 int i=0;
 
@@ -87,9 +88,9 @@ void bf::update()
 			b2Body* t2=temp->GetNext();
 			if (tc->faction==0)
 			{
-				celllaunched--;
+				datas->celllaunched--;
 			}else
-				intruders--;
+				datas->intruder--;
 			delete temp->GetUserData();
 			world->DestroyBody(temp);
 			temp=t2;
@@ -110,33 +111,35 @@ void bf::initialize(defBF*ref)
 {
 	world=new b2World(b2Vec2(0.0f,0.0f),true);
 	
-	if (ref->celllaunched>0)
-	{
-		cells* temp;
-		b2BodyDef def;
-		for (int i=0;i<ref->celllaunched;i++)
-		{
-			temp=new cells();
-			temp->initialize(world);
-			temp->belong=ref;
-		}
-	}
+// 	if (ref->celllaunched>0)
+// 	{
+// 		cells* temp;
+// 		b2BodyDef def;
+// 		for (int i=0;i<ref->celllaunched;i++)
+// 		{
+// 			temp=new cells();
+// 			temp->initialize(world);
+// 			temp->belong=ref;
+// 		}
+// 	}
+// 
+// 	if (ref->intruder>0)
+// 	{
+// 		cells* temp;
+// 		b2BodyDef def;
+// 		for (int i=0;i<ref->intruder;i++)
+// 		{
+// 			temp=new cells();
+// 			temp->initialize(world,1);
+// 			temp->belong=ref;
+// 		}
+// 	}
 
-	if (ref->intruder>0)
-	{
-		cells* temp;
-		b2BodyDef def;
-		for (int i=0;i<ref->intruder;i++)
-		{
-			temp=new cells();
-			temp->initialize(world,1);
-			temp->belong=ref;
-		}
-	}
+// 	celldeployed=ref->celldeployed;
+// 	intruders=ref->intruder;
+// 	celllaunched=ref->celllaunched;
 
-	celldeployed=ref->celldeployed;
-	intruders=ref->intruder;
-	celllaunched=ref->celllaunched;
+	datas=ref;
 
 	b2BodyDef edgedef;
 	edgedef.type=b2_staticBody;
@@ -181,21 +184,28 @@ void bf::initialize(defBF*ref)
 		itr=itr->next;
 		itr->pos=RandomVal::randomPointi(330,60,780,510);
 		itr->refradius=10;
-		itr->ObjState=ScrObj::CANNON;
+
+		if(RandomVal::randombool())
+			itr->ObjState=ScrObj::CANNON;
+		else 
+			itr->ObjState=ScrObj::LYMPH;
+
 		if (i==ref->numCannon-1)
 		{
 			itr->next=NULL;
 		}else
 		itr->next=new ScrObj();
 	}
-	
 }
+
 
 bf::bf()
 {
 	world=NULL;
 	checkTimer=NULL;
 	SOselected=NULL;
+
+
 }
 
 void bf::DrawObjs(CL_GraphicContext *gc,b2Body* bodyref)
@@ -269,9 +279,10 @@ void bf::Draw(CL_GraphicContext &gc)
 	}
 }
 
-void bf::DataSynchronize(defBF*ref)
-{
-	ref->celllaunched=celllaunched;
-	ref->intruder=intruders;
-	ref->celldeployed=celldeployed;
-}
+// void bf::DataSynchronize(defBF*ref)
+// {
+// 	ref->celllaunched=celllaunched;
+// 	ref->intruder=intruders;
+// 	ref->celldeployed=celldeployed;
+// }
+

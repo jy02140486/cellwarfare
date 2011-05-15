@@ -41,7 +41,7 @@ void T_App::onMouseUp(const CL_InputEvent &, const CL_InputState &)
 		case TATICAL:
 		{
 			bf* tbf=entites->curBF;
-			if(tbf->SOselected==NULL||tbf->celldeployed<=0)
+			if(tbf->SOselected==NULL||tbf->datas->celldeployed<=0)
 				return;
 
 			
@@ -51,19 +51,24 @@ void T_App::onMouseUp(const CL_InputEvent &, const CL_InputState &)
 			b2Vec2 b2cannon=Conveter::Vec2from_c_to_b(cannon);
 			b2Vec2 b2mouse=Conveter::Vec2from_c_to_b(mouse);
 
-			cells*temp=new cells();
+			b2Vec2 dir=b2mouse-b2cannon;
 
-			b2BodyDef tempdef;
-			tempdef.type=b2_dynamicBody;
-			tempdef.position=b2cannon;
-			
-			temp->initialize(&tempdef,tbf->world);
-			temp->belong=entites->curBF->SOselected->datas;
-			temp->self->SetLinearVelocity(b2mouse-b2cannon);
 
-			tbf->celllaunched++;
-			tbf->celldeployed--;
-			tbf->SOselected=NULL;
+			LibDebugOnConsole();		
+
+// 			cells*temp=new cells();
+// 
+// 			b2BodyDef tempdef;
+// 			tempdef.type=b2_dynamicBody;
+// 			tempdef.position=b2cannon;
+// 			
+// 			temp->initialize(&tempdef,tbf->world);
+// 			temp->belong=entites->curBF->SOselected->datas;
+// 			temp->self->SetLinearVelocity(b2mouse-b2cannon);
+
+// 			tbf->celllaunched++;
+// 			tbf->celldeployed--;
+//			tbf->SOselected=NULL;
 		}break;
 	}
 }
@@ -179,7 +184,7 @@ void T_App::ButtonClick()
 		break;
 	case TATICAL:	
 		StateSwitching(STRATGY);
-		entites->curBF->DataSynchronize(entites->SOselected->datas);
+//		entites->curBF->DataSynchronize(entites->SOselected->datas);
 		entites->curBF->~bf();
 	//	delete entites->curBF;
 		break;

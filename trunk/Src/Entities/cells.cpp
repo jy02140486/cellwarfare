@@ -6,71 +6,6 @@ void cells::initialize()
 	_ImpDraw=new drawCells();
 }
 
-void cells::initialize(defCells* ref,b2World *world)
-{
-	_ImpDraw=new drawCells();
-	self=(b2Body*)world->CreateBody(&ref->def);
-	self->SetUserData(this);
-	b2Fixture *temp=self->CreateFixture(&ref->shape,1);
-	temp->SetRestitution(6.0);
-	faction=ref->faction;
-
-	switch(ref->cell_type)
-	{
-	case WC:
-		cell_type=WC;
-		break;
-	}
-	
-	living=true;
-}
-
-void cells::initialize(b2BodyDef *odef,b2World *world)
-{
-	_ImpDraw=new drawCells();
-	self=(b2Body*)world->CreateBody(odef);
-	self->SetUserData(this);
-	b2Fixture *temp=self->CreateFixture(&shape,1);
-	temp->SetRestitution(6.0);
-	faction=0;
-	living=true;
-}
-
-void cells::initialize(b2World *world)
-{
-	_ImpDraw=new drawCells();
-	self=(b2Body*)world->CreateBody(&def);
-	self->SetUserData(this);
-	b2Fixture *temp=self->CreateFixture(&shape,1);
-	temp->SetRestitution(6.0);
-	faction=0;
-	living=true;
-}
-
-//0 good;1 bad
-void cells::initialize(b2World *world,int faction)
-{
-	_ImpDraw=new drawCells();
-	self=(b2Body*)world->CreateBody(&def);
-	self->SetUserData(this);
-	b2Fixture *temp=self->CreateFixture(&shape,1);
-	temp->SetRestitution(6.0);
-	this->faction=faction;
-	living=true;
-}
-
-// void cells::launch(b2World*world,b2Vec2 dir)
-// {
-// 	_ImpDraw=new drawCells();
-// 	b2BodyDef tempdef=def;
-// 	tempdef.position=
-// 	self=(b2Body*)world->CreateBody(&def);
-// 	self->SetUserData(this);
-// 	self->CreateFixture(&shape,1);
-// 	this->faction=faction;
-// 	living=true;
-// }
-
 
 void cells::update()
 {
@@ -84,7 +19,6 @@ void cells::draw(CL_GraphicContext *gc,float x,float y)
 
 cells::cells()
 {
-	def.type=b2_dynamicBody;
 	b2Vec2 temp;
 	CL_Point cltemp;
 	cltemp=*RandomVal::randomPointi(320,50,770,450);
@@ -92,11 +26,6 @@ cells::cells()
 	temp.y=cltemp.y;
 // 	temp.x=400;
 // 	temp.y=400;
-	def.position=temp;
-	def.allowSleep=true;
-	def.linearVelocity=b2Vec2(RandomVal::int_from_to(0,90),RandomVal::int_from_to(0,90));
-	
-	shape.m_radius=10;
 }
 
 void cells::Draw(CL_GraphicContext *gc)
@@ -109,21 +38,48 @@ void cells::Draw(CL_GraphicContext *gc)
 // 		self->GetFixtureList()->GetShape()->m_radius,
 // 		CL_Colorf::blueviolet);
 
-	switch(faction)
+// 	switch(faction)
+// 	{
+// 	case 0:
+// 		CL_Draw::circle(*gc,
+// 			self->GetPosition().x,
+// 			self->GetPosition().y,
+// 			self->GetFixtureList()->GetShape()->m_radius,
+// 			CL_Colorf::white);
+// 		break;
+// 	case 1:
+// 		CL_Draw::circle(*gc,
+// 			self->GetPosition().x,
+// 			self->GetPosition().y,
+// 			self->GetFixtureList()->GetShape()->m_radius,
+// 			CL_Colorf::blueviolet);
+// 		break;
+// 	}
+
+
+	switch(cell_type)
 	{
-	case 0:
+	case WC:
 		CL_Draw::circle(*gc,
 			self->GetPosition().x,
 			self->GetPosition().y,
 			self->GetFixtureList()->GetShape()->m_radius,
 			CL_Colorf::white);
 		break;
-	case 1:
+	case NAKED:
 		CL_Draw::circle(*gc,
 			self->GetPosition().x,
 			self->GetPosition().y,
 			self->GetFixtureList()->GetShape()->m_radius,
 			CL_Colorf::blueviolet);
 		break;
+	case ARMORED:
+		CL_Draw::circle(*gc,
+			self->GetPosition().x,
+			self->GetPosition().y,
+			self->GetFixtureList()->GetShape()->m_radius,
+			CL_Colorf(255.0f,255.0f,0.0f,0.4f));
+		break;
 	}
+
 }
