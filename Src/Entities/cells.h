@@ -7,7 +7,7 @@
 #include "defBF.h"
 #include "defCells.h"
 
-class cells:public Ents,public Idraw
+class cells:public Ents
 {
 
 public:
@@ -21,13 +21,9 @@ public:
 	b2Body *self;
 	void update();
 	void initialize();
-	void initialize(b2World *world);
-	void initialize(defCells* ref,b2World *world);
+
+	void initialize(defCells* ref,b2World *world,defBF*belong);
 	void draw(CL_GraphicContext *gc,float x,float y);
-
-
-
-
 
 	int faction;
 	bool living;
