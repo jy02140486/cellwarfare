@@ -25,4 +25,8 @@ DataDefs::DataDefs()
 	TNaked->faction=0;
 	TNaked->reflectR=10;
 	TNaked->shape.m_radius=TNaked->reflectR;
+
+	NakedShape.m_radius=10;
+	ArmoredShape.m_radius=15;
+
 }

@@ -9,6 +9,7 @@
 #include "../Libs/RandomVal.h"
 #include "defCells.h"
 #include "cells.h"
+#include "DataDefs.h"
 
 class bf:public Ents
 {
@@ -16,6 +17,8 @@ class bf:public Ents
 public:
 	b2World* world;
 	ScrObj* itr,*head,*SOselected;
+
+	DataDefs TCells;
 
 	void initialize();
 	void initialize(defBF *ref);
@@ -27,7 +30,8 @@ public:
 	void DrawObjs(CL_GraphicContext *gc,b2Body* bodyref);
 	void checkalive();
 	~bf();
-//	void DataSynchronize(defBF*ref);
+	void launchWC(b2Vec2 dir);
+	//	void DataSynchronize(defBF*ref);
 	// 	int intruders;
 // 	int celldeployed;
 // 	int celllaunched;

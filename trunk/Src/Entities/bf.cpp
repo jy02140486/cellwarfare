@@ -286,3 +286,17 @@ void bf::Draw(CL_GraphicContext &gc)
 // 	ref->celldeployed=celldeployed;
 // }
 
+void bf::launchWC(b2Vec2 dir)
+{
+	cells* tc=new cells();
+	int x=SOselected->pos->x;
+	int y=SOselected->pos->y;
+	TCells.TWC->def.position.Set(x,y);
+	tc->initialize(TCells.TWC,world,datas);
+	dir;
+	tc->self->GetPosition();
+	tc->self->SetLinearVelocity(dir);
+}
+
+
+

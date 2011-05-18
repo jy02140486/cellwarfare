@@ -3,7 +3,6 @@
 
 void cells::initialize()
 {
-	_ImpDraw=new drawCells();
 }
 
 
@@ -12,9 +11,33 @@ void cells::update()
 
 }
 
-void cells::draw(CL_GraphicContext *gc,float x,float y)
+void cells::initialize(defCells* refTemplateC,b2World *world,defBF*refbelong)
 {
-	_ImpDraw->draw(gc,x,y,self->GetFixtureList()->GetShape()->m_radius);
+	refTemplateC->def.position;
+	self=world->CreateBody(&refTemplateC->def);
+	self->SetUserData(this);
+	living=refTemplateC->living;
+	faction=refTemplateC->faction;
+	reflectR=refTemplateC->reflectR;
+
+	switch(refTemplateC->cell_type)
+	{
+	case WC:
+		cell_type=WC;
+		break;
+	case TC:
+		cell_type=TC;
+		break;
+	case ARMORED:
+		cell_type=ARMORED;
+		break;
+	case NAKED:
+		cell_type=NAKED;
+		break;
+	}
+	
+	belong=refbelong;
+	self->CreateFixture(&refTemplateC->shape,1);
 }
 
 cells::cells()

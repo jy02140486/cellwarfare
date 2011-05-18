@@ -7,14 +7,10 @@
 class DataDefs
 {
 public:
-	b2BodyDef cell;
-
 	defCells *TWC;
 	defCells*TTC;
 	defCells*TArmored;
 	defCells*TNaked;
-
-	b2BodyDef def;
 
 	b2CircleShape NakedShape;
 	b2CircleShape ArmoredShape;
