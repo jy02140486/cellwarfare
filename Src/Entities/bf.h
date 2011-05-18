@@ -31,6 +31,7 @@ public:
 	void checkalive();
 	~bf();
 	void launchWC(b2Vec2 dir);
+	void intrudersGeneration();
 	//	void DataSynchronize(defBF*ref);
 	// 	int intruders;
 // 	int celldeployed;

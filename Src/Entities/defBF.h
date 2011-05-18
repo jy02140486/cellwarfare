@@ -6,7 +6,7 @@
 class defBF
 {
 public:
-	int celldeployed;
+	int ImmunityPoints;
 	int celllaunched;
 	int intruder;
 	int numCannon;

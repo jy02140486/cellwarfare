@@ -66,7 +66,7 @@ void EM::iniLVs()
 
 	curLV->lvtimer->func_expired().set(this,&EM::stageclear);
 
-	curLV->defbfs[0].celldeployed=RandomVal::int_from_to(0,10);
+	curLV->defbfs[0].ImmunityPoints=RandomVal::int_from_to(0,10);
 	curLV->defbfs[0].intruder=RandomVal::int_from_to(0,8);
 	curLV->defbfs[0].numCannon=4;
 
@@ -96,7 +96,7 @@ void EM::switchlevel()
 			itr->datas=&curLV->defbfs[i];
 			itr=itr->next;
 		}
-		curLV->defbfs[0].celldeployed=RandomVal::int_from_to(0,10);
+		curLV->defbfs[0].ImmunityPoints=RandomVal::int_from_to(0,10);
 		curLV->defbfs[2].intruder=RandomVal::int_from_to(0,8);
 		
 		curLV->start();
