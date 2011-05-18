@@ -299,4 +299,8 @@ void bf::launchWC(b2Vec2 dir)
 }
 
 
+void bf::intrudersGeneration()
+{
+	int probability=RandomVal::int_from_to(1,100);
 
+}

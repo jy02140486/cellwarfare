@@ -41,7 +41,7 @@ void T_App::onMouseUp(const CL_InputEvent &, const CL_InputState &)
 		case TATICAL:
 		{
 			bf* tbf=entites->curBF;
-			if(tbf->SOselected==NULL||tbf->datas->celldeployed<=0)
+			if(tbf->SOselected==NULL||tbf->datas->ImmunityPoints<=0)
 				return;
 
 			
@@ -177,7 +177,7 @@ void T_App::ButtonClick()
 			entites->setcurBF(entites->SOselected->datas);
 			
 			char *temp=new char(10);
-			sprintf(temp,"%d",entites->SOselected->datas->celldeployed);
+			sprintf(temp,"%d",entites->SOselected->datas->ImmunityPoints);
 			CL_StringRef str=temp;
 			Tcellsdeployed->set_text(temp);
 
@@ -197,7 +197,7 @@ void T_App::ButtonClick()
 void T_App::ScrObjSelect()
 {
 	ScrObj*temp=entites->SOselected;
-	cellsdeployed->set_value(temp->datas->celldeployed);
+	cellsdeployed->set_value(temp->datas->ImmunityPoints);
 	intruders->set_value(temp->datas->intruder);
 }
 
@@ -223,7 +223,7 @@ void T_App::invading_LogicLayer_Failure()
 void T_App::updateBoard()
 {
 	char *temp=new char(10);
-	sprintf(temp,"%d",entites->SOselected->datas->celldeployed);
+	sprintf(temp,"%d",entites->SOselected->datas->ImmunityPoints);
 	CL_StringRef str=temp;
 	Tcellsdeployed->set_text(temp);
 }

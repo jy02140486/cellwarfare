@@ -25,7 +25,7 @@ void T_App::loop()
 //	
 	if (global_state==LVSWITCHING)
 	{
-		cellsdeployed->set_value(entites->curLV->defbfs[0].celldeployed);
+		cellsdeployed->set_value(entites->curLV->defbfs[0].ImmunityPoints);
 	}
 
 	if (global_state==TATICAL)
