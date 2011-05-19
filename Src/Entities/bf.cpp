@@ -33,33 +33,33 @@ void bf::update()
 
   	cells*tc=NULL;
 
-// 	for(b2Body*temp=world->GetBodyList();temp!=NULL;temp=temp->GetNext())
-// 	{
-// 		CL_Console::write_line("%1",i++);
-// 		if (temp==NULL)
-// 		{
-// 			break;
-// 		}
-// 		if (temp->GetType()==b2_dynamicBody)
-// 		{
-// 			tc=(cells*)temp->GetUserData();
-// 		}
-// 		else continue;
-// 
-// 		if(tc!=NULL)
-// 		if (tc->living)
-// 		{
-// 			continue;
-// 		}
-// 		else {
-// 			b2Body* t2=temp->GetNext();
-// 			delete temp->GetUserData();
-// 			world->DestroyBody(temp);
-// 			temp=t2;
-//  		}
-// 
-// 		
-// 	}
+	for(b2Body*temp=world->GetBodyList();temp!=NULL;temp=temp->GetNext())
+	{
+	//	CL_Console::write_line("%1",i++);
+		if (temp==NULL)
+		{
+			break;
+		}
+		if (temp->GetType()==b2_dynamicBody)
+		{
+			tc=(cells*)temp->GetUserData();
+		}
+		else continue;
+
+		if(tc!=NULL)
+		if (tc->living)
+		{
+			continue;
+		}
+		else {
+			b2Body* t2=temp->GetNext();
+			delete temp->GetUserData();
+			world->DestroyBody(temp);
+			temp=t2;
+ 		}
+
+		
+	}
 
 	
 	b2Body*temp=world->GetBodyList();
@@ -176,7 +176,7 @@ void bf::initialize(defBF*ref)
 	checkTimer->begin(true);
 
 	head=new ScrObj();
-	head->pos=&RandomVal::randomPointi(330,60,780,510);
+	head->pos=RandomVal::randomPointi(330,60,780,510);
 	head->refradius=10;
 	head->ObjState=ScrObj::CANNON;
 	head->next=new ScrObj();
@@ -185,7 +185,7 @@ void bf::initialize(defBF*ref)
 	for(int i=0;i<ref->numCannon;i++)
 	{
 		itr=itr->next;
-		itr->pos=&RandomVal::randomPointi(330,60,780,510);
+		itr->pos=RandomVal::randomPointi(330,60,780,510);
 		itr->refradius=10;
 
 		if(RandomVal::randombool())
@@ -301,22 +301,41 @@ void bf::launchWC(b2Vec2 dir)
 	tc->self->SetLinearVelocity(dir);
 }
 
+void bf::launchTC(b2Vec2 dir)
+{
+	cells* tc=new cells();
+	int x=SOselected->pos->x;
+	int y=SOselected->pos->y;
+	TCells.TTC->def.position.Set(x,y);
+	tc->initialize(TCells.TTC,world,datas);
+	dir;
+	tc->self->GetPosition();
+	tc->self->SetLinearVelocity(dir);
+}
+
+
 
 void bf::intrudersGeneration()
 {
-	int probability=RandomVal::int_from_to(1,100);
+	int probability=RandomVal::int_from_to(20,90);
+	int dice;
 	
 	for(int i=0;i<datas->intruder;i++)
-		if (probability>50)
+	{
+		dice=RandomVal::int_from_to(1,100);
+		if (dice>probability)
 		{
 			cells* tc=new cells();
-			TCells.TArmored->def.position=Conveter::Vec2from_c_to_b(RandomVal::randomPointi(300,50,500,500));
+			TCells.TArmored->def.position=Conveter::Vec2from_c_to_b(*RandomVal::randomPointi(320,50,500,500));
 			tc->initialize(TCells.TArmored,world,datas);
+			tc->self->SetLinearVelocity(RandomVal::randomvec(100));
 		}
 		else{
 			cells* tc=new cells();
-			TCells.TNaked->def.position=Conveter::Vec2from_c_to_b(RandomVal::randomPointi(300,50,500,500));
+			TCells.TNaked->def.position=Conveter::Vec2from_c_to_b(*RandomVal::randomPointi(320,50,500,500));
 			tc->initialize(TCells.TNaked,world,datas);
+			tc->self->SetLinearVelocity(RandomVal::randomvec(100));
 		}
+	}
 
 }

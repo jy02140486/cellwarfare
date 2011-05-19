@@ -1,6 +1,8 @@
 #include "app.h"
 #include "../libs/querryback.h"
 #include "../Libs/Conveter.h"
+#include <time.h>
+
 #define FPS 44
 
 T_App::T_App()
@@ -10,6 +12,8 @@ T_App::T_App()
 
 int T_App::start()
 {
+	srand (time(NULL));
+
 	if (init() == false)
 	{
 		return -1;
@@ -53,24 +57,17 @@ void T_App::onMouseUp(const CL_InputEvent &, const CL_InputState &)
 
 			b2Vec2 dir=b2mouse-b2cannon;
 
-			tbf->launchWC(dir);
-
-
-			LibDebugOnConsole();		
-tbf->SOselected=NULL;
-// 			cells*temp=new cells();
-// 
-// 			b2BodyDef tempdef;
-// 			tempdef.type=b2_dynamicBody;
-// 			tempdef.position=b2cannon;
-// 			
-// 			temp->initialize(&tempdef,tbf->world);
-// 			temp->belong=entites->curBF->SOselected->datas;
-// 			temp->self->SetLinearVelocity(b2mouse-b2cannon);
-
-// 			tbf->celllaunched++;
-// 			tbf->celldeployed--;
-//			
+			switch(tbf->SOselected->ObjState)
+			{
+			case ScrObj::LYMPH:
+				tbf->launchTC(dir);
+				break;
+			case ScrObj::CANNON:
+				tbf->launchWC(dir);
+				break;
+			}
+			
+			tbf->SOselected=NULL;		
 		}break;
 	}
 }
@@ -113,8 +110,6 @@ void T_App::onMouseMove(const CL_InputEvent &, const CL_InputState &)
 {
 	mx->set_text(mMouse.get_x());
 	my->set_text(mMouse.get_y());
-
-
 }
 
 
