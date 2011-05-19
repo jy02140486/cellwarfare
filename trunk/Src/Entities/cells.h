@@ -35,6 +35,7 @@ public:
 
 	cells();
 	void Draw(CL_GraphicContext *gc);
+	void waste();
 protected:
 private:
 

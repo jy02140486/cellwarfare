@@ -57,8 +57,7 @@ void bf::update()
 			world->DestroyBody(temp);
 			temp=t2;
  		}
-
-		
+	
 	}
 
 	

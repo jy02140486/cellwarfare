@@ -1,6 +1,7 @@
 #include "DestructionListener.h"
 #include <ClanLib/core.h>
 #include "../Entities/cells.h"
+#include "../Libs/RandomVal.h"
 
 void DestructionListener::BeginContact(b2Contact* contact)
 {
@@ -20,8 +21,39 @@ void DestructionListener::BeginContact(b2Contact* contact)
 		return;
 	}
 
+	int dice=RandomVal::int_from_to(1,100);
+	switch(tc->cell_type)
+	{
+	case cells::WC:
+		if (tc2->cell_type==cells::NAKED)
+			if(dice>50)
+			{
+				tc->waste();
+				tc2->waste();
+				break;
+			}
+		if (tc2->cell_type==cells::ARMORED)
+			if(dice>50)
+				tc->waste();
+					
+		tc2->cell_type=cells::NAKED;
+				
+		break;
 
- 	CL_Console::write_line("%1 celllaunched left",tc->belong->celllaunched);
+	case cells::TC:
+		if (tc2->cell_type==cells::NAKED)
+			if(dice>50)
+			{
+				tc->waste();
+				tc2->waste();
+			}
+		break;
+	case cells::ARMORED:
+		break;
+	case cells::NAKED:
+		break;
+	}
+// 	CL_Console::write_line("%1 celllaunched left",tc->belong->celllaunched);
 // 	CL_Console::write_line("%1 cellsdeployed left",tc->belong->celldeployed);
 // 	CL_Console::write_line("%1 intruders left",tc->belong->intruder);
 

@@ -11,6 +11,10 @@ void cells::update()
 
 }
 
+void cells::waste()
+{
+	living=false;
+}
 void cells::initialize(defCells* refTemplateC,b2World *world,defBF*refbelong)
 {
 	refTemplateC->def.position;
