@@ -111,6 +111,7 @@ void bf::initialize(defBF*ref)
 {
 	world=new b2World(b2Vec2(0.0f,0.0f),true);
 	
+	
 // 	if (ref->celllaunched>0)
 // 	{
 // 		cells* temp;
@@ -140,6 +141,8 @@ void bf::initialize(defBF*ref)
 // 	celllaunched=ref->celllaunched;
 
 	datas=ref;
+
+	intrudersGeneration();
 
 	b2BodyDef edgedef;
 	edgedef.type=b2_staticBody;
@@ -173,7 +176,7 @@ void bf::initialize(defBF*ref)
 	checkTimer->begin(true);
 
 	head=new ScrObj();
-	head->pos=RandomVal::randomPointi(330,60,780,510);
+	head->pos=&RandomVal::randomPointi(330,60,780,510);
 	head->refradius=10;
 	head->ObjState=ScrObj::CANNON;
 	head->next=new ScrObj();
@@ -182,7 +185,7 @@ void bf::initialize(defBF*ref)
 	for(int i=0;i<ref->numCannon;i++)
 	{
 		itr=itr->next;
-		itr->pos=RandomVal::randomPointi(330,60,780,510);
+		itr->pos=&RandomVal::randomPointi(330,60,780,510);
 		itr->refradius=10;
 
 		if(RandomVal::randombool())
@@ -302,5 +305,18 @@ void bf::launchWC(b2Vec2 dir)
 void bf::intrudersGeneration()
 {
 	int probability=RandomVal::int_from_to(1,100);
+	
+	for(int i=0;i<datas->intruder;i++)
+		if (probability>50)
+		{
+			cells* tc=new cells();
+			TCells.TArmored->def.position=Conveter::Vec2from_c_to_b(RandomVal::randomPointi(300,50,500,500));
+			tc->initialize(TCells.TArmored,world,datas);
+		}
+		else{
+			cells* tc=new cells();
+			TCells.TNaked->def.position=Conveter::Vec2from_c_to_b(RandomVal::randomPointi(300,50,500,500));
+			tc->initialize(TCells.TNaked,world,datas);
+		}
 
 }

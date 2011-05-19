@@ -44,7 +44,7 @@ cells::cells()
 {
 	b2Vec2 temp;
 	CL_Point cltemp;
-	cltemp=*RandomVal::randomPointi(320,50,770,450);
+	cltemp=RandomVal::randomPointi(320,50,770,450);
 	temp.x=cltemp.x;
 	temp.y=cltemp.y;
 // 	temp.x=400;

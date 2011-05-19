@@ -48,8 +48,8 @@ void T_App::onMouseUp(const CL_InputEvent &, const CL_InputState &)
 			CL_Vec2i cannon(tbf->SOselected->pos->x,tbf->SOselected->pos->y);
 			CL_Vec2i mouse=mMouse.get_position();
 
-			b2Vec2 b2cannon=*Conveter::Vec2from_c_to_b(cannon);
-			b2Vec2 b2mouse=*Conveter::Vec2from_c_to_b(mouse);
+			b2Vec2 b2cannon=Conveter::Vec2from_c_to_b(cannon);
+			b2Vec2 b2mouse=Conveter::Vec2from_c_to_b(mouse);
 
 			b2Vec2 dir=b2mouse-b2cannon;
 
