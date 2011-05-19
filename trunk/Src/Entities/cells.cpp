@@ -44,7 +44,7 @@ cells::cells()
 {
 	b2Vec2 temp;
 	CL_Point cltemp;
-	cltemp=RandomVal::randomPointi(320,50,770,450);
+	cltemp=*RandomVal::randomPointi(320,50,770,450);
 	temp.x=cltemp.x;
 	temp.y=cltemp.y;
 // 	temp.x=400;
@@ -89,6 +89,13 @@ void cells::Draw(CL_GraphicContext *gc)
 			self->GetFixtureList()->GetShape()->m_radius,
 			CL_Colorf::white);
 		break;
+	case ARMORED:
+		CL_Draw::circle(*gc,
+			self->GetPosition().x,
+			self->GetPosition().y,
+			self->GetFixtureList()->GetShape()->m_radius,
+			CL_Colorf(255.0f,255.0f,0.0f,0.4f));
+	
 	case NAKED:
 		CL_Draw::circle(*gc,
 			self->GetPosition().x,
@@ -96,12 +103,13 @@ void cells::Draw(CL_GraphicContext *gc)
 			self->GetFixtureList()->GetShape()->m_radius,
 			CL_Colorf::blueviolet);
 		break;
-	case ARMORED:
+	
+	case TC:
 		CL_Draw::circle(*gc,
 			self->GetPosition().x,
 			self->GetPosition().y,
 			self->GetFixtureList()->GetShape()->m_radius,
-			CL_Colorf(255.0f,255.0f,0.0f,0.4f));
+			CL_Colorf::burlywood);
 		break;
 	}
 

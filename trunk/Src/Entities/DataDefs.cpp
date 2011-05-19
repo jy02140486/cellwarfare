@@ -16,13 +16,13 @@ DataDefs::DataDefs()
 
 	TArmored=new defCells();
 	TArmored->cell_type=defCells::ARMORED;
-	TArmored->faction=0;
+	TArmored->faction=1;
 	TArmored->reflectR=15;
 	TArmored->shape.m_radius=TArmored->reflectR;
 
 	TNaked=new defCells();
 	TNaked->cell_type=defCells::NAKED;
-	TNaked->faction=0;
+	TNaked->faction=1;
 	TNaked->reflectR=10;
 	TNaked->shape.m_radius=TNaked->reflectR;
 
