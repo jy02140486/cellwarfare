@@ -2,7 +2,7 @@
 
 #include "../App/DestructionListener.h"
 #include "../App/globals.h"
-#include "../Libs/Conveter.h"
+#include "../Libs/Converter.h"
 
 int i=0;
 
@@ -325,13 +325,13 @@ void bf::intrudersGeneration()
 		if (dice>probability)
 		{
 			cells* tc=new cells();
-			TCells.TArmored->def.position=Conveter::Vec2from_c_to_b(*RandomVal::randomPointi(320,50,500,500));
+			TCells.TArmored->def.position=Converter::Vec2from_c_to_b(*RandomVal::randomPointi(320,50,500,500));
 			tc->initialize(TCells.TArmored,world,datas);
 			tc->self->SetLinearVelocity(RandomVal::randomvec(100));
 		}
 		else{
 			cells* tc=new cells();
-			TCells.TNaked->def.position=Conveter::Vec2from_c_to_b(*RandomVal::randomPointi(320,50,500,500));
+			TCells.TNaked->def.position=Converter::Vec2from_c_to_b(*RandomVal::randomPointi(320,50,500,500));
 			tc->initialize(TCells.TNaked,world,datas);
 			tc->self->SetLinearVelocity(RandomVal::randomvec(100));
 		}
