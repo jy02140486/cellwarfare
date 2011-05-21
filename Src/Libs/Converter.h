@@ -3,7 +3,7 @@
 
 #include "../App/app.h"
 
-class Conveter
+class Converter
 {
 public:
 	static CL_Vec2i Vec2from_b_to_c(b2Vec2 ref);
