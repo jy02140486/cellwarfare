@@ -9,6 +9,7 @@ class Hero:public Ents
 public:
 	NatrualNum* HP;
 	NatrualNum* painkiller;
+	NatrualNum* ImmunityPoints;
 	Timer* eventTimer;
 	Hero();
 protected:

@@ -88,7 +88,6 @@ bool T_App::init()
 	cellsdeployed->set_geometry(CL_Rect(lboffset.x+80,lboffset.y, sspin));
 	cellsdeployed->set_step_size(1);
 	cellsdeployed->set_ranges(0,100);
-	cellsdeployed->func_value_changed().set(this,&T_App::CDVChanged);
 	cellsdeployed->set_value(entites->curLV->defbfs[0].ImmunityPoints);
 
 	lbintruders=new CL_Label(infoBF);
@@ -105,6 +104,11 @@ bool T_App::init()
 	timeleft->set_min(0);
 	timeleft->set_max(100);
 	timeleft->set_position(20);
+
+	SendingCirfirm=new CL_PushButton(infoBF);
+	SendingCirfirm->set_geometry(CL_Rect(lboffset.x,lboffset.y+95, slb));
+	SendingCirfirm->set_text("Send");
+	SendingCirfirm->func_clicked().set(this,&T_App::OnSendingCirfirmClick);
 
 	//tatical layer
 	TaticalBoard=new CL_Label(mpComWindow);
@@ -161,8 +165,11 @@ bool T_App::init()
 	return true;
 }
 
-
-void T_App::CDVChanged()
+void T_App::OnSendingCirfirmClick()
 {
-	entites->SOselected->datas->ImmunityPoints=cellsdeployed->get_value();
+	if (entites->SOselected!=NULL)
+	{
+		entites->SOselected->datas->ImmunityPoints+=cellsdeployed->get_value();
+		entites->hero->ImmunityPoints->val=entites->hero->ImmunityPoints->val-cellsdeployed->get_value();
+	}
 }

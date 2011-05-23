@@ -32,6 +32,8 @@ public:
 
 	CL_LineEdit* mx,*my;
 	CL_PushButton* cirfirm;
+	CL_PushButton* SendingCirfirm;
+
 
 	CL_Label* infoBF;
 	CL_Spin* cellsdeployed;
@@ -72,10 +74,11 @@ public:
 	void LibDebugOnConsole();
 	void StateSwitching(GLOBAL_STATE newstate);
 	void ButtonClick();
-	void CDVChanged();
+
 	void ScrObjSelect();
 	void invading_LogicLayer_Failure();
 	void updateBoard();
+	void OnSendingCirfirmClick();
 };
 
 #endif
