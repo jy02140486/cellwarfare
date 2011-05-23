@@ -170,6 +170,9 @@ void T_App::OnSendingCirfirmClick()
 	if (entites->SOselected!=NULL)
 	{
 		entites->SOselected->datas->ImmunityPoints+=cellsdeployed->get_value();
-		entites->hero->ImmunityPoints->val=entites->hero->ImmunityPoints->val-cellsdeployed->get_value();
+		if (entites->hero->ImmunityPoints->minusable(cellsdeployed->get_value()))
+		{
+			entites->hero->ImmunityPoints->minus(cellsdeployed->get_value());
+		}
 	}
 }

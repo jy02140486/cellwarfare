@@ -6,10 +6,12 @@ class NatrualNum
 public:
 	int val;
 	int maximun;
-	int operator+(int addnum);
-	int operator-(int minnum);
 	NatrualNum(int valref,int max);
 	NatrualNum(int max);
+	bool plusable(int addnum);
+	bool minusable(int minnum);
+	void minus(int minnum);
+	void plus(int addnum);
 protected:
 private:
 };
