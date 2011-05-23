@@ -25,6 +25,8 @@ public:
 	CL_Point *pos;
 	CL_Point posMouse;
 
+	CL_Timer timer;
+
 	CL_String *des;
 
 	enum {
