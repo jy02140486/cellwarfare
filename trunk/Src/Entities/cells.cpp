@@ -55,6 +55,10 @@ cells::cells()
 // 	temp.y=400;
 }
 
+void cells::ContactProcess(cells* refc)
+{
+
+}
 void cells::Draw(CL_GraphicContext *gc)
 {
 	// 	CL_Gradient color2(CL_Colorf::burlywood, CL_Colorf::honeydew);
@@ -118,3 +122,4 @@ void cells::Draw(CL_GraphicContext *gc)
 	}
 
 }
+

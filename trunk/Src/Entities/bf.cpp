@@ -3,6 +3,10 @@
 #include "../App/DestructionListener.h"
 #include "../App/globals.h"
 #include "../Libs/Converter.h"
+#include "TC.h"
+#include "WC.h"
+#include "Armored.h"
+#include "Naked.h"
 
 int i=0;
 
@@ -33,32 +37,32 @@ void bf::update()
 
   	cells*tc=NULL;
 
-	for(b2Body*temp=world->GetBodyList();temp!=NULL;temp=temp->GetNext())
-	{
-	//	CL_Console::write_line("%1",i++);
-		if (temp==NULL)
-		{
-			break;
-		}
-		if (temp->GetType()==b2_dynamicBody)
-		{
-			tc=(cells*)temp->GetUserData();
-		}
-		else continue;
-
-		if(tc!=NULL)
-		if (tc->living)
-		{
-			continue;
-		}
-		else {
-			b2Body* t2=temp->GetNext();
-			delete temp->GetUserData();
-			world->DestroyBody(temp);
-			temp=t2;
- 		}
-	
-	}
+// 	for(b2Body*temp=world->GetBodyList();temp!=NULL;temp=temp->GetNext())
+// 	{
+// 	//	CL_Console::write_line("%1",i++);
+// 		if (temp==NULL)
+// 		{
+// 			break;
+// 		}
+// 		if (temp->GetType()==b2_dynamicBody)
+// 		{
+// 			tc=(cells*)temp->GetUserData();
+// 		}
+// 		else continue;
+// 
+// 		if(tc!=NULL)
+// 		if (tc->living)
+// 		{
+// 			continue;
+// 		}
+// 		else {
+// 			b2Body* t2=temp->GetNext();
+// 			delete temp->GetUserData();
+// 			world->DestroyBody(temp);
+// 			temp=t2;
+//  		}
+// 	
+// 	}
 
 	
 	b2Body*temp=world->GetBodyList();
@@ -85,14 +89,25 @@ void bf::update()
 		}
 		else {
 			b2Body* t2=temp->GetNext();
+		
 			if (tc->faction==0)
 			{
 				datas->celllaunched--;
 			}else
 				datas->intruder--;
+		
+
+			if (tc->cell_type==cells::ARMORED)
+			{
+					cells* tec=new cells();
+					TCells.TNaked->def.position=temp->GetPosition();
+					tec->initialize(TCells.TNaked,world,datas);
+					tec->self->SetLinearVelocity(temp->GetLinearVelocity());
+			}
 			delete temp->GetUserData();
 			world->DestroyBody(temp);
 			temp=t2;
+
 
 // 
 // 			CL_Console::write_line("%1 celllaunched left",celllaunched);
@@ -290,7 +305,7 @@ void bf::Draw(CL_GraphicContext &gc)
 
 void bf::launchWC(b2Vec2 dir)
 {
-	cells* tc=new cells();
+	cells* tc=new Wcells();
 	int x=SOselected->pos->x;
 	int y=SOselected->pos->y;
 	TCells.TWC->def.position.Set(x,y);
@@ -302,7 +317,7 @@ void bf::launchWC(b2Vec2 dir)
 
 void bf::launchTC(b2Vec2 dir)
 {
-	cells* tc=new cells();
+	cells* tc=new Tcells();
 	int x=SOselected->pos->x;
 	int y=SOselected->pos->y;
 	TCells.TTC->def.position.Set(x,y);
@@ -324,7 +339,7 @@ void bf::intrudersGeneration()
 		dice=RandomVal::int_from_to(1,100);
 		if (dice>probability)
 		{
-			cells* tc=new cells();
+			cells* tc=new armored();
 			TCells.TArmored->def.position=Converter::Vec2from_c_to_b(*RandomVal::randomPointi(320,50,500,500));
 			tc->initialize(TCells.TArmored,world,datas);
 			tc->self->SetLinearVelocity(RandomVal::randomvec(100));
