@@ -51,6 +51,11 @@ void T_App::renderdes()
 				str=temp;
 				words->draw_text(mpComWindow->get_gc(),offset.x,offset.y+60,"Pills",CL_Colorf::yellow);
 				words->draw_text(mpComWindow->get_gc(),offset.x+40,offset.y+60,str,CL_Colorf::yellow);
+
+				sprintf(temp,"%d",entites->hero->ImmunityPoints->val);
+				str=temp;
+				words->draw_text(mpComWindow->get_gc(),offset.x,offset.y+80,"ImmunityPoints",CL_Colorf::yellow);
+				words->draw_text(mpComWindow->get_gc(),offset.x+140,offset.y+80,str,CL_Colorf::yellow);
 				//delete temp;
 		}
 		break;
@@ -60,7 +65,12 @@ void T_App::renderdes()
 		break;
 
 	case TATICAL:
+		
 		words->draw_text(mpComWindow->get_gc(),310,20,CL_StringRef (entites->SOselected->des->data()));
+		char *temp=new char(10);
+		sprintf(temp,"%d",entites->SOselected->datas->ImmunityPoints);
+		CL_StringRef str=temp;
+		words->draw_text(mpComWindow->get_gc(),380,20,str);
 	}
 }
 

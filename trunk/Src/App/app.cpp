@@ -66,7 +66,7 @@ void T_App::onMouseUp(const CL_InputEvent &, const CL_InputState &)
 				tbf->launchWC(dir);
 				break;
 			}
-			
+			tbf->datas->ImmunityPoints--;
 			tbf->SOselected=NULL;		
 		}break;
 	}
