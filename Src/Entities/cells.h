@@ -35,7 +35,9 @@ public:
 
 	cells();
 	void Draw(CL_GraphicContext *gc);
-	void waste();
+	virtual void waste();
+	virtual void ContactProcess(cells* refc);
+
 protected:
 private:
 
