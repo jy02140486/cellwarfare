@@ -96,9 +96,7 @@ void EM::switchlevel()
 			itr->datas=&curLV->defbfs[i];
 			itr=itr->next;
 		}
-		curLV->defbfs[0].ImmunityPoints=RandomVal::int_from_to(0,10);
-		curLV->defbfs[2].intruder=RandomVal::int_from_to(0,8);
-		
+
 		curLV->start();
 		
 		global_state=STRATGY;
@@ -108,6 +106,7 @@ void EM::switchlevel()
 void EM::stageclear()
 {
 	global_state=LVSWITCHING;
+	
 	curLV->lvdes=new CL_String("This stage is clear.");
 	Timer *temp=new Timer();
 	temp->init(2,false);
@@ -123,7 +122,6 @@ int EM::updateall(GLOBAL_STATE stateref)
 		for (itr=head;itr!=NULL;itr=itr->next)
 		{
 			itr->update(posMouse);
-		//	itr->stateSwitching();
 		}
 		break;
 
@@ -131,6 +129,11 @@ int EM::updateall(GLOBAL_STATE stateref)
 		curBF->update();
 	}
 	
+	if (hero->HP->val<=0)
+	{
+		return 0;
+	}
+
 	if (itrLV==_levels.end())
 	{
 		return 0;
