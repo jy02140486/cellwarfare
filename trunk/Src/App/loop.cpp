@@ -22,7 +22,6 @@ void T_App::loop()
 // 		CL_Console::write_line("aaa");
 // 	}
 
-//	
 	if (global_state==LVSWITCHING)
 	{
 		cellsdeployed->set_value(entites->curLV->defbfs[0].ImmunityPoints);
@@ -33,6 +32,12 @@ void T_App::loop()
 		updateBoard();
 	}
 
+	if (entites->SOselected!=NULL)
+		if (entites->SOselected->timer!=NULL)
+			timeleft->set_position(entites->SOselected->timer->get_curSec());
+
+//		CL_Console::write_line("%1",entites->SOselected->timer.get_timeout());
+	
 	if (!entites->updateall(global_state))
 	{
 		

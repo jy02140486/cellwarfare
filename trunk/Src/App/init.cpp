@@ -112,9 +112,9 @@ bool T_App::init()
 
 	//tatical layer
 	TaticalBoard=new CL_Label(mpComWindow);
-	TaticalBoard->set_geometry(CL_Rect(10,110, CL_Size(290, 300)));
+	TaticalBoard->set_geometry(CL_Rect(10,310, CL_Size(290, 300)));
 	TaticalBoard->set_text("TaticalBoard");
-	TaticalBoard->set_visible(false);
+	TaticalBoard->set_visible(true);
 
 	lbTcellsdeployed=new CL_Label(TaticalBoard);
 	lbTcellsdeployed->set_geometry(CL_Rect(lboffset.x,lboffset.y+5, slb));
