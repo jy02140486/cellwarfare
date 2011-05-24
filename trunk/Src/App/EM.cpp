@@ -183,6 +183,7 @@ ScrObj* EM::ScrObjTraversal(ScrObj* listhead)
 	for(ScrObj* temp=listhead;temp!=NULL;temp=temp->next)
 	{
 		if (temp->isCousurOn(posMouse))
+		//temp->isCousurOn(posMouse);
 		{
 			return temp;
 		}

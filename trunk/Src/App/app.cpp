@@ -89,11 +89,10 @@ void T_App::onMouseDown(const CL_InputEvent &, const CL_InputState &)
 					else entites->SOselected->ObjState=ScrObj::INTRUDED;
 			
 				entites->SOselected=temp;
-				entites->SOselected->ObjState=ScrObj::SELECTED;
 				ScrObjSelect();
 			}else 
 			{
-				entites->SOselected=NULL;
+				//entites->SOselected=NULL;
 				infoBF->set_visible(false);
 			}
 		break;
@@ -201,7 +200,7 @@ void T_App::ScrObjSelect()
 
 	if (temp->timer!=NULL)
 	{
-		timeleft->set_max(temp->timer->length);
+	//	timeleft->set_max(temp->timer->length);
 		timeleft->set_position(entites->SOselected->timer->length-entites->SOselected->timer->get_curSec());
 	}
 	infoBF->set_visible(true);
@@ -211,20 +210,19 @@ void T_App::invading_LogicLayer_Failure()
 {
 	if (global_state==STRATGY)
 	{
+
 		int i=RandomVal::int_from_to(0,3);
 		int ti=RandomVal::int_from_to(1,8);
-		entites->curLV->defbfs[i].intruder=ti;
-		intruders->set_value(ti);
-
 		ScrObj*temp=entites->head;
 			for(int j=0;j<i;j++)
 			{
 				temp=temp->next;
 			}
-			if (temp->ObjState==ScrObj::INTRUDED)
-			{
-				return;
-			}
+			if (temp->ObjState!=ScrObj::INTRUDED)
+			{			
+
+			entites->curLV->defbfs[i].intruder=ti;
+			intruders->set_value(ti);
 			temp->ObjState=ScrObj::INTRUDED;
 			temp->timer=new Timer();
 			Timer* tt=temp->timer;
@@ -233,12 +231,14 @@ void T_App::invading_LogicLayer_Failure()
 			tt->func_expired().set(this,&T_App::Ttimesup);
 
 			CL_Console::write_line("aa");
+			}
 	}
 }
 
 void T_App::Ttimesup()
 {
 	CL_Console::write_line("call");
+	entites->hero->HP->minus(intruders->get_value());
 }
 
 void T_App::updateBoard()

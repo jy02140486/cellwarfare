@@ -40,7 +40,6 @@ void T_App::loop()
 	
 	if (!entites->updateall(global_state))
 	{
-		
 		mQuit=true;
 	}
 	

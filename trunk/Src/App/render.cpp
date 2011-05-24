@@ -81,10 +81,16 @@ void T_App::renderScrObj()
 	case STRATGY:
 		for (entites->itr=entites->head;entites->itr!=NULL;entites->itr=entites->itr->next)
 			entites->itr->draw(&mpDisplayWindow->get_gc());
+		if (entites->SOselected!=NULL)
+		{
+
+			CL_Draw::circle(mpDisplayWindow->get_gc(),entites->SOselected->pos->x,entites->SOselected->pos->y,entites->SOselected->refradius/2,CL_Colorf::red);
+		}
 		break;
 	case TATICAL:
 		for (entites->curBF->itr=entites->curBF->head;entites->curBF->itr!=NULL;entites->curBF->itr=entites->curBF->itr->next)
 			entites->curBF->itr->draw(&mpDisplayWindow->get_gc());
+		
 	}
 
 /*	head->draw(&mpDisplayWindow->get_gc());*/

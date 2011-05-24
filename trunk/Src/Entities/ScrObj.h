@@ -14,9 +14,8 @@ public:
 	ScrObj();
 	ScrObj* next;
 	void draw(CL_GraphicContext *gc);
-	inline bool isCousurOn(CL_Point mouse);
+	bool isCousurOn(CL_Point mouse);
 	void update(CL_Point curMouse);
-	void stateSwitching();
 	int refradius;
 	defBF* datas;
 	CL_Point *pos;
@@ -28,9 +27,7 @@ public:
 
 	enum {
 		NORMAL=0,
-		MOUSEON,
 		INTRUDED,
-		SELECTED,
 		CANNON,
 		LYMPH
 	}ObjState;
