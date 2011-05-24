@@ -71,7 +71,7 @@ bool T_App::init()
 
 	cirfirm=new CL_PushButton(mpComWindow);
 	cirfirm->set_text("enter");
-	cirfirm->set_geometry(CL_Rect(40,480, CL_Size(150, 30)));
+	cirfirm->set_geometry(CL_Rect(40,500, CL_Size(150, 30)));
 	cirfirm->func_clicked().set(this,&T_App::ButtonClick);
 
 	CL_Point lboffset(10,10);
@@ -80,6 +80,7 @@ bool T_App::init()
 	infoBF=new CL_Label(mpComWindow);
 	infoBF->set_geometry(CL_Rect(10,110, CL_Size(290, 300)));
 	infoBF->set_text("infobf");
+	infoBF->set_visible(false);
 	
 	lbcellsdeployed=new CL_Label(infoBF);
 	lbcellsdeployed->set_geometry(CL_Rect(lboffset.x,lboffset.y+5, slb));
@@ -112,7 +113,7 @@ bool T_App::init()
 
 	//tatical layer
 	TaticalBoard=new CL_Label(mpComWindow);
-	TaticalBoard->set_geometry(CL_Rect(10,310, CL_Size(290, 300)));
+	TaticalBoard->set_geometry(CL_Rect(10,310, CL_Size(290, 200)));
 	TaticalBoard->set_text("TaticalBoard");
 	TaticalBoard->set_visible(true);
 

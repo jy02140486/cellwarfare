@@ -91,6 +91,10 @@ void T_App::onMouseDown(const CL_InputEvent &, const CL_InputState &)
 				entites->SOselected=temp;
 				entites->SOselected->ObjState=ScrObj::SELECTED;
 				ScrObjSelect();
+			}else 
+			{
+				entites->SOselected=NULL;
+				infoBF->set_visible(false);
 			}
 		break;
 		}
@@ -194,11 +198,13 @@ void T_App::ScrObjSelect()
 	ScrObj*temp=entites->SOselected;
 	cellsdeployed->set_value(temp->datas->ImmunityPoints);
 	intruders->set_value(temp->datas->intruder);
+
 	if (temp->timer!=NULL)
 	{
-		timeleft->set_position(entites->SOselected->timer->get_curSec());
+		timeleft->set_max(temp->timer->length);
+		timeleft->set_position(entites->SOselected->timer->length-entites->SOselected->timer->get_curSec());
 	}
-	
+	infoBF->set_visible(true);
 }
 
 void T_App::invading_LogicLayer_Failure()
@@ -222,10 +228,9 @@ void T_App::invading_LogicLayer_Failure()
 			temp->ObjState=ScrObj::INTRUDED;
 			temp->timer=new Timer();
 			Timer* tt=temp->timer;
-			tt->init(3,false);
+			tt->init(ti*4,false);
 			tt->begin(false);
 			tt->func_expired().set(this,&T_App::Ttimesup);
-			timeleft->set_max(ti*10+1);
 
 			CL_Console::write_line("aa");
 	}
