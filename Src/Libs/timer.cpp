@@ -13,7 +13,7 @@ int Timer::get_curSec()
 	int res = cur>length?-1:cur;
 	if (res==-1)
 	{
-		CL_Timer::stop();
+		//CL_Timer::stop();
 		return -1;
 	}
 	else return cur;

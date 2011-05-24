@@ -148,7 +148,7 @@ void T_App::StateSwitching(GLOBAL_STATE newstate)
 	case TATICAL:
 		cirfirm->set_text("Enter");
 		infoBF->set_visible(true);
-		TaticalBoard->set_visible(false);
+//		TaticalBoard->set_visible(false);
 		break;
 	}
 
@@ -194,6 +194,11 @@ void T_App::ScrObjSelect()
 	ScrObj*temp=entites->SOselected;
 	cellsdeployed->set_value(temp->datas->ImmunityPoints);
 	intruders->set_value(temp->datas->intruder);
+	if (temp->timer!=NULL)
+	{
+		timeleft->set_position(entites->SOselected->timer->get_curSec());
+	}
+	
 }
 
 void T_App::invading_LogicLayer_Failure()
@@ -210,9 +215,25 @@ void T_App::invading_LogicLayer_Failure()
 			{
 				temp=temp->next;
 			}
+			if (temp->ObjState==ScrObj::INTRUDED)
+			{
+				return;
+			}
 			temp->ObjState=ScrObj::INTRUDED;
+			temp->timer=new Timer();
+			Timer* tt=temp->timer;
+			tt->init(3,false);
+			tt->begin(false);
+			tt->func_expired().set(this,&T_App::Ttimesup);
+			timeleft->set_max(ti*10+1);
+
 			CL_Console::write_line("aa");
 	}
+}
+
+void T_App::Ttimesup()
+{
+	CL_Console::write_line("call");
 }
 
 void T_App::updateBoard()

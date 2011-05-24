@@ -5,14 +5,11 @@
 #include "../Libs/IDraw.h"
 #include "../Libs/ents.h"
 #include "defBF.h"
-
-
+#include "../Libs/timer.h"
 
 
 class ScrObj:public Idraw,public Ents
 {
-
-
 public:
 	ScrObj();
 	ScrObj* next;
@@ -25,7 +22,7 @@ public:
 	CL_Point *pos;
 	CL_Point posMouse;
 
-	CL_Timer timer;
+	Timer *timer;
 
 	CL_String *des;
 

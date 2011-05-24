@@ -79,6 +79,7 @@ public:
 	void invading_LogicLayer_Failure();
 	void updateBoard();
 	void OnSendingCirfirmClick();
+	void Ttimesup();
 };
 
 #endif
