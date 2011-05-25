@@ -191,6 +191,7 @@ void T_App::ButtonClick()
 		StateSwitching(STRATGY);
 //		entites->curBF->DataSynchronize(entites->SOselected->datas);
 		entites->retreat();
+		entites->SOselected->ObjState=ScrObj::NORMAL;
 		entites->curBF->~bf();
 	//	delete entites->curBF;
 		break;
@@ -210,6 +211,10 @@ void T_App::ScrObjSelect()
 		timeleft->set_position(entites->SOselected->timer->length-entites->SOselected->timer->get_curSec());
 	}
 	infoBF->set_visible(true);
+	char tempt[10];
+	sprintf(tempt,"%d",entites->SOselected->datas->intruder);
+	CL_StringRef str=tempt;
+	Tintruders->set_text(tempt);
 }
 
 void T_App::invading_LogicLayer_Failure()
@@ -233,7 +238,7 @@ void T_App::invading_LogicLayer_Failure()
 			temp->timer=new Timer();
 			Timer* tt=temp->timer;
 			int ttime=ti+8;
-			tt->init(4,false);
+			tt->init(ttime,false);
 			temp->datas->timeleft=ttime;
 			tt->begin(false);
 			tt->func_expired().set(this,&T_App::Ttimesup);
