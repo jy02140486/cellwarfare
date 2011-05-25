@@ -193,3 +193,17 @@ ScrObj* EM::ScrObjTraversal(ScrObj* listhead)
 	}
 	return NULL;
 }
+
+void EM::retreat()
+{
+	hero->HP->minus(curBF->datas->intruder);
+
+	curBF->datas->intruder=0;
+	SOselected->ObjState=ScrObj::NORMAL;
+	if (SOselected->timer!=NULL)
+	{	SOselected->timer->stop();
+	}
+
+//	delete SOselected->timer;
+//	SOselected->timer=NULL;
+}

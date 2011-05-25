@@ -42,8 +42,33 @@ void T_App::onMouseUp(const CL_InputEvent &, const CL_InputState &)
 {
 	switch(global_state)
 	{
+		case STRATGY:
+		{	
+			if (mpComWindow->get_client_area().contains(mMouse.get_position()))
+			{
+				return;
+			}
+			;
+			ScrObj*temp=entites->ScrObjTraversal();
+			if (temp!=NULL)
+			{
+			if(entites->SOselected!=NULL)
+				if (intruders==0)					
+					entites->SOselected->ObjState=ScrObj::NORMAL;
+				else entites->SOselected->ObjState=ScrObj::INTRUDED;
+
+				entites->SOselected=temp;
+				ScrObjSelect();
+			}else 
+			{
+				//entites->SOselected=NULL;
+				infoBF->set_visible(false);
+			}break;
+		}
+
 		case TATICAL:
 		{
+
 			bf* tbf=entites->curBF;
 			if(tbf->SOselected==NULL||tbf->datas->ImmunityPoints<=0)
 				return;
@@ -78,26 +103,6 @@ void T_App::onMouseDown(const CL_InputEvent &, const CL_InputState &)
 {
 	switch(global_state)
 	{
-	case STRATGY:
-		{
-			ScrObj*temp=entites->ScrObjTraversal();
-			if (temp!=NULL)
-			{
-				if(entites->SOselected!=NULL)
-					if (intruders==0)					
-					entites->SOselected->ObjState=ScrObj::NORMAL;
-					else entites->SOselected->ObjState=ScrObj::INTRUDED;
-			
-				entites->SOselected=temp;
-				ScrObjSelect();
-			}else 
-			{
-				//entites->SOselected=NULL;
-				infoBF->set_visible(false);
-			}
-		break;
-		}
-
 	case TATICAL:
 		bf* tbf=entites->curBF;
 		ScrObj*temp=entites->ScrObjTraversal(tbf->head);
@@ -185,6 +190,7 @@ void T_App::ButtonClick()
 	case TATICAL:	
 		StateSwitching(STRATGY);
 //		entites->curBF->DataSynchronize(entites->SOselected->datas);
+		entites->retreat();
 		entites->curBF->~bf();
 	//	delete entites->curBF;
 		break;
@@ -212,7 +218,7 @@ void T_App::invading_LogicLayer_Failure()
 	{
 
 		int i=RandomVal::int_from_to(0,3);
-		int ti=RandomVal::int_from_to(1,8);
+		int ti=RandomVal::int_from_to(1,28);
 		ScrObj*temp=entites->head;
 			for(int j=0;j<i;j++)
 			{
@@ -226,9 +232,12 @@ void T_App::invading_LogicLayer_Failure()
 			temp->ObjState=ScrObj::INTRUDED;
 			temp->timer=new Timer();
 			Timer* tt=temp->timer;
-			tt->init(ti*4,false);
+			int ttime=ti+8;
+			tt->init(4,false);
+			temp->datas->timeleft=ttime;
 			tt->begin(false);
 			tt->func_expired().set(this,&T_App::Ttimesup);
+	
 
 			CL_Console::write_line("aa");
 			}
@@ -238,7 +247,17 @@ void T_App::invading_LogicLayer_Failure()
 void T_App::Ttimesup()
 {
 	CL_Console::write_line("call");
-	entites->hero->HP->minus(intruders->get_value());
+	//entites->hero->HP->minus();
+	for(ScrObj* temp=entites->head;temp!=NULL;temp=temp->next)
+	{
+		if(temp->timer!=NULL)
+		if (temp->timer->get_curSec()<=0)
+		{
+			entites->hero->HP->minus(temp->datas->intruder);
+			temp->ObjState=ScrObj::NORMAL;
+			break;
+		}
+	}
 }
 
 void T_App::updateBoard()

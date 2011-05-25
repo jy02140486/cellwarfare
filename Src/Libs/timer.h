@@ -9,6 +9,8 @@ public:
 	int cursecond;
 	int secondsleft;
 
+	void* timingobj;
+
 	int startflag;
 	void init(int seconds,bool repeatflag);
 	int get_curSec();

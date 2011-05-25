@@ -27,14 +27,14 @@ void T_App::loop()
 // 		cellsdeployed->set_value(entites->curLV->defbfs[0].ImmunityPoints);
 // 	}
 
-	if (global_state==TATICAL)
-	{
-		updateBoard();
-	}
-
-	if (entites->SOselected!=NULL)
-		if (entites->SOselected->timer!=NULL)
-			timeleft->set_position(entites->SOselected->timer->length-entites->SOselected->timer->get_curSec());
+// 	if (global_state==TATICAL)
+// 	{
+// 		updateBoard();
+// 	}
+// 
+// 	if (entites->SOselected!=NULL)
+// 		if (entites->SOselected->timer!=NULL)
+// 			timeleft->set_position(entites->SOselected->timer->length-entites->SOselected->timer->get_curSec());
 
 //		CL_Console::write_line("%1",entites->SOselected->timer.get_timeout());
 	

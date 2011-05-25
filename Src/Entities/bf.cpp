@@ -34,7 +34,8 @@ void bf::update()
 	{
 		world->Step(1/60.0f,40,40);
 	}
-
+	
+	
   	cells*tc=NULL;
 
 // 	for(b2Body*temp=world->GetBodyList();temp!=NULL;temp=temp->GetNext())
@@ -351,5 +352,5 @@ void bf::intrudersGeneration()
 			tc->self->SetLinearVelocity(RandomVal::randomvec(100));
 		}
 	}
-
 }
+

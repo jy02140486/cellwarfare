@@ -116,6 +116,7 @@ bool T_App::init()
 	TaticalBoard->set_geometry(CL_Rect(10,310, CL_Size(290, 200)));
 	TaticalBoard->set_text("TaticalBoard");
 	TaticalBoard->set_visible(true);
+//	TaticalBoard->set_constant_repaint(true);
 
 	lbTcellsdeployed=new CL_Label(TaticalBoard);
 	lbTcellsdeployed->set_geometry(CL_Rect(lboffset.x,lboffset.y+5, slb));

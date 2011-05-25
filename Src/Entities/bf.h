@@ -33,11 +33,7 @@ public:
 	void launchWC(b2Vec2 dir);
 	void intrudersGeneration();
 	void launchTC(b2Vec2 dir);
-	//	void DataSynchronize(defBF*ref);
-	// 	int intruders;
-// 	int celldeployed;
-// 	int celllaunched;
-// 	int cannons;
+	
 
 	Timer* checkTimer;
 	defBF *datas;
