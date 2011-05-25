@@ -28,7 +28,7 @@ void Timer::begin()
 
 Timer::Timer()
 {
-
+	timingobj=NULL;
 }
 
 void Timer::begin(bool isRepeating)

@@ -37,7 +37,7 @@ public:
 	void stageclear();
 	ScrObj* ScrObjTraversal();
 	ScrObj* ScrObjTraversal(ScrObj* listhead);
-
+	void retreat();
 	CL_Point posMouse;
 
 	defLV lv1;
