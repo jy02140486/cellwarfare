@@ -103,7 +103,7 @@ bool T_App::init()
 	timeleft=new CL_ProgressBar(infoBF);
 	timeleft->set_geometry(CL_Rect(lboffset.x+80,lboffset.y+65, slb));
 	timeleft->set_min(0);
-	timeleft->set_max(30);
+	timeleft->set_max(40);
 	timeleft->set_position(20);
 
 	SendingCirfirm=new CL_PushButton(infoBF);

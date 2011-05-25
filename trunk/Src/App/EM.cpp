@@ -23,7 +23,7 @@ void EM::iniLVs()
 	
 	lv1.deslv=new CL_String("Stage1");
 	lv1.pills=10;
-	lv1.time=50;
+	lv1.time=500;
 	lv1.waves=3;
 
 	

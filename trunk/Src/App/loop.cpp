@@ -32,9 +32,9 @@ void T_App::loop()
 // 		updateBoard();
 // 	}
 // 
-// 	if (entites->SOselected!=NULL)
-// 		if (entites->SOselected->timer!=NULL)
-// 			timeleft->set_position(entites->SOselected->timer->length-entites->SOselected->timer->get_curSec());
+	if (entites->SOselected!=NULL)
+		if (entites->SOselected->timer!=NULL)
+			timeleft->set_position(entites->SOselected->timer->length-entites->SOselected->timer->get_curSec());
 
 //		CL_Console::write_line("%1",entites->SOselected->timer.get_timeout());
 	
