@@ -42,30 +42,6 @@ void T_App::onMouseUp(const CL_InputEvent &, const CL_InputState &)
 {
 	switch(global_state)
 	{
-		case STRATGY:
-		{	
-			if (mpComWindow->get_client_area().contains(mMouse.get_position()))
-			{
-				return;
-			}
-			;
-			ScrObj*temp=entites->ScrObjTraversal();
-			if (temp!=NULL)
-			{
-			if(entites->SOselected!=NULL)
-				if (intruders==0)					
-					entites->SOselected->ObjState=ScrObj::NORMAL;
-				else entites->SOselected->ObjState=ScrObj::INTRUDED;
-
-				entites->SOselected=temp;
-				ScrObjSelect();
-			}else 
-			{
-				//entites->SOselected=NULL;
-				infoBF->set_visible(false);
-			}break;
-		}
-
 		case TATICAL:
 		{
 
@@ -103,6 +79,30 @@ void T_App::onMouseDown(const CL_InputEvent &, const CL_InputState &)
 {
 	switch(global_state)
 	{
+	case STRATGY:
+		{	
+			if (mpComWindow->get_client_area().contains(mMouse.get_position()))
+			{
+				return;
+			}
+			;
+			ScrObj*temp=entites->ScrObjTraversal();
+			if (temp!=NULL)
+			{
+// 				if(entites->SOselected!=NULL)
+// 					if (intruders==0)					
+// 						entites->SOselected->ObjState=ScrObj::NORMAL;
+// 					else entites->SOselected->ObjState=ScrObj::INTRUDED;
+
+					entites->SOselected=temp;
+					ScrObjSelect();
+			}else 
+			{
+				//entites->SOselected=NULL;
+				infoBF->set_visible(false);
+			}break;
+		}
+
 	case TATICAL:
 		bf* tbf=entites->curBF;
 		ScrObj*temp=entites->ScrObjTraversal(tbf->head);
@@ -271,4 +271,20 @@ void T_App::updateBoard()
 	sprintf(temp,"%d",entites->SOselected->datas->ImmunityPoints);
 	CL_StringRef str=temp;
 	Tcellsdeployed->set_text(temp);
+}
+
+void T_App::takePill()
+{
+	if (!entites->hero->painkiller->minusable(1))
+	{
+		return;
+	}
+
+	for(ScrObj*temp=entites->head;temp!=NULL;temp=temp->next)
+	{
+		temp->ObjState=ScrObj::NORMAL;
+		temp->datas->intruder=0;
+	}
+
+	entites->hero->painkiller->minus(1);
 }

@@ -66,8 +66,6 @@ void EM::iniLVs()
 
 	curLV->lvtimer->func_expired().set(this,&EM::stageclear);
 
-	curLV->defbfs[0].ImmunityPoints=RandomVal::int_from_to(0,10);
-	curLV->defbfs[0].intruder=RandomVal::int_from_to(0,8);
 	curLV->defbfs[0].numCannon=4;
 
 	hero=new Hero();
