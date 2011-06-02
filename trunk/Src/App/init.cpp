@@ -74,6 +74,11 @@ bool T_App::init()
 	cirfirm->set_geometry(CL_Rect(40,500, CL_Size(150, 30)));
 	cirfirm->func_clicked().set(this,&T_App::ButtonClick);
 
+	PainKiller=new CL_PushButton(mpComWindow);
+	PainKiller->set_text("PainKiller");
+	PainKiller->set_geometry(CL_Rect(40,540, CL_Size(100, 20)));
+	PainKiller->func_clicked().set(this,&T_App::takePill);
+
 	CL_Point lboffset(10,10);
 	CL_Size sspin(80,20);
 	CL_Size slb(80,20);

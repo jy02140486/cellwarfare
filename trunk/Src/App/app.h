@@ -33,6 +33,7 @@ public:
 	CL_LineEdit* mx,*my;
 	CL_PushButton* cirfirm;
 	CL_PushButton* SendingCirfirm;
+	CL_PushButton* PainKiller;
 
 
 	CL_Label* infoBF;
@@ -80,6 +81,7 @@ public:
 	void updateBoard();
 	void OnSendingCirfirmClick();
 	void Ttimesup();
+	void takePill();
 };
 
 #endif
