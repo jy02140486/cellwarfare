@@ -28,7 +28,7 @@ public:
 	CL_Font *words;
 	CL_Point offset;
 	
-	CL_Image* body;
+	CL_Image* body,*stage_clear,*gameover;
 
 	CL_LineEdit* mx,*my;
 	CL_PushButton* cirfirm;

@@ -16,6 +16,11 @@ void T_App::render()
 			entites->curBF->Draw(mpDisplayWindow->get_gc());
 
 			break;
+		case LVSWITCHING:
+			stage_clear->draw(mpDisplayWindow->get_gc(), 300.0f, 0.0f);
+
+		case GAMEOVER:
+			gameover->draw(mpDisplayWindow->get_gc(), 300.0f, 0.0f);
 	}
 	renderScrObj();
 	renderdes();

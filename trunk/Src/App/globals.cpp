@@ -3,7 +3,8 @@
 enum GLOBAL_STATE{
 	STRATGY,
 	TATICAL,
-	LVSWITCHING
+	LVSWITCHING,
+	GAMEOVER
 } global_state;
 
 
