@@ -61,6 +61,14 @@ bool T_App::init()
 	entites->initScrObjs();
 
 	body=new CL_Image(mpDisplayWindow->get_gc(),"../res/body.png");
+	stage_clear=new CL_Image(mpDisplayWindow->get_gc(),"../res/stage clear.png");
+
+
+	if(RandomVal::randombool())
+		gameover=new CL_Image(mpDisplayWindow->get_gc(),"../res/gameover2.png");
+	else
+		gameover=new CL_Image(mpDisplayWindow->get_gc(),"../res/gameover.png");
+
 
 	//init menu items
 	mx=new CL_LineEdit(mpComWindow);

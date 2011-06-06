@@ -287,4 +287,5 @@ void T_App::takePill()
 	}
 
 	entites->hero->painkiller->minus(1);
+	entites->hero->HP->minus(20);
 }

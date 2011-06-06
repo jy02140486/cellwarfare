@@ -1,5 +1,6 @@
 #include "EM.h"
 #include "../Libs/RandomVal.h"
+#include "globals.h"
 
 void EM::setcurLV(levels *ref)
 {
@@ -15,6 +16,7 @@ void EM::setcurBF(defBF*ref)
 EM::EM()
 {
 	SOselected=NULL;
+	MrkBreak=1;
 }
 
 void EM::iniLVs()
@@ -23,7 +25,7 @@ void EM::iniLVs()
 	
 	lv1.deslv=new CL_String("Stage1");
 	lv1.pills=10;
-	lv1.time=500;
+	lv1.time=200;
 	lv1.waves=3;
 
 	
@@ -129,14 +131,22 @@ int EM::updateall(GLOBAL_STATE stateref)
 	
 	if (hero->HP->val<=0)
 	{
-		return 0;
+		global_state=GAMEOVER;
+		CL_Timer* temp=new CL_Timer();
+		temp->func_expired().set(this,&EM::defeated);
+		temp->start(3000,false);
 	}
 
 	if (itrLV==_levels.end())
 	{
 		return 0;
 	}
-	return 1;
+	return MrkBreak;
+}
+
+void EM::defeated()
+{
+	MrkBreak=0;
 }
 
 void EM::initScrObjs()

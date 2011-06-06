@@ -4,7 +4,8 @@
 enum GLOBAL_STATE{
 	STRATGY,
 	TATICAL,
-	LVSWITCHING
+	LVSWITCHING,
+	GAMEOVER
 } ;
 extern GLOBAL_STATE global_state;
 
