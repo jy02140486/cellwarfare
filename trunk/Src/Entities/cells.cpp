@@ -41,7 +41,8 @@ void cells::initialize(defCells* refTemplateC,b2World *world,defBF*refbelong)
 	}
 	
 	belong=refbelong;
-	self->CreateFixture(&refTemplateC->shape,1);
+	b2Fixture *tempf=self->CreateFixture(&refTemplateC->shape,1);
+	tempf->SetRestitution(6.0);
 }
 
 cells::cells()
@@ -61,33 +62,6 @@ void cells::ContactProcess(cells* refc)
 }
 void cells::Draw(CL_GraphicContext *gc)
 {
-	// 	CL_Gradient color2(CL_Colorf::burlywood, CL_Colorf::honeydew);
-
-// 	CL_Draw::circle(*gc,
-// 		self->GetPosition().x,
-// 		self->GetPosition().y,
-// 		self->GetFixtureList()->GetShape()->m_radius,
-// 		CL_Colorf::blueviolet);
-
-// 	switch(faction)
-// 	{
-// 	case 0:
-// 		CL_Draw::circle(*gc,
-// 			self->GetPosition().x,
-// 			self->GetPosition().y,
-// 			self->GetFixtureList()->GetShape()->m_radius,
-// 			CL_Colorf::white);
-// 		break;
-// 	case 1:
-// 		CL_Draw::circle(*gc,
-// 			self->GetPosition().x,
-// 			self->GetPosition().y,
-// 			self->GetFixtureList()->GetShape()->m_radius,
-// 			CL_Colorf::blueviolet);
-// 		break;
-// 	}
-
-
 	switch(cell_type)
 	{
 	case WC:
@@ -109,7 +83,7 @@ void cells::Draw(CL_GraphicContext *gc)
 			self->GetPosition().x,
 			self->GetPosition().y,
 			self->GetFixtureList()->GetShape()->m_radius,
-			CL_Colorf::blueviolet);
+			CL_Colorf::cadetblue);
 		break;
 	
 	case TC:

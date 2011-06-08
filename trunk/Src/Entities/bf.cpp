@@ -32,39 +32,10 @@ void bf::update()
 {
 	if (world!=NULL)
 	{
-		world->Step(1/60.0f,40,40);
+		world->Step(1/60.0f,60,60);
 	}
 	
-	
   	cells*tc=NULL;
-
-// 	for(b2Body*temp=world->GetBodyList();temp!=NULL;temp=temp->GetNext())
-// 	{
-// 	//	CL_Console::write_line("%1",i++);
-// 		if (temp==NULL)
-// 		{
-// 			break;
-// 		}
-// 		if (temp->GetType()==b2_dynamicBody)
-// 		{
-// 			tc=(cells*)temp->GetUserData();
-// 		}
-// 		else continue;
-// 
-// 		if(tc!=NULL)
-// 		if (tc->living)
-// 		{
-// 			continue;
-// 		}
-// 		else {
-// 			b2Body* t2=temp->GetNext();
-// 			delete temp->GetUserData();
-// 			world->DestroyBody(temp);
-// 			temp=t2;
-//  		}
-// 	
-// 	}
-
 	
 	b2Body*temp=world->GetBodyList();
 	while (temp!=NULL)
@@ -125,35 +96,6 @@ void bf::update()
 void bf::initialize(defBF*ref)
 {
 	world=new b2World(b2Vec2(0.0f,0.0f),true);
-	
-	
-// 	if (ref->celllaunched>0)
-// 	{
-// 		cells* temp;
-// 		b2BodyDef def;
-// 		for (int i=0;i<ref->celllaunched;i++)
-// 		{
-// 			temp=new cells();
-// 			temp->initialize(world);
-// 			temp->belong=ref;
-// 		}
-// 	}
-// 
-// 	if (ref->intruder>0)
-// 	{
-// 		cells* temp;
-// 		b2BodyDef def;
-// 		for (int i=0;i<ref->intruder;i++)
-// 		{
-// 			temp=new cells();
-// 			temp->initialize(world,1);
-// 			temp->belong=ref;
-// 		}
-// 	}
-
-// 	celldeployed=ref->celldeployed;
-// 	intruders=ref->intruder;
-// 	celllaunched=ref->celllaunched;
 
 	datas=ref;
 
@@ -289,20 +231,9 @@ void bf::Draw(CL_GraphicContext &gc)
 		else
 			DrawEdgy(&gc,bbbb);
 
-// 		CL_Draw::circle(gc,
-// 			bbbb->GetPosition().x,
-// 			bbbb->GetPosition().y,
-// 		bbbb->GetFixtureList()->GetShape()->m_radius,
-// 			CL_Colorf::blueviolet);
 	}
 }
 
-// void bf::DataSynchronize(defBF*ref)
-// {
-// 	ref->celllaunched=celllaunched;
-// 	ref->intruder=intruders;
-// 	ref->celldeployed=celldeployed;
-// }
 
 void bf::launchWC(b2Vec2 dir)
 {
@@ -313,7 +244,8 @@ void bf::launchWC(b2Vec2 dir)
 	tc->initialize(TCells.TWC,world,datas);
 	dir;
 	tc->self->GetPosition();
-	tc->self->SetLinearVelocity(dir);
+	b2Vec2 FVelocity(dir.x*1000,dir.y*1000);
+	tc->self->SetLinearVelocity(FVelocity);
 }
 
 void bf::launchTC(b2Vec2 dir)
@@ -325,7 +257,8 @@ void bf::launchTC(b2Vec2 dir)
 	tc->initialize(TCells.TTC,world,datas);
 	dir;
 	tc->self->GetPosition();
-	tc->self->SetLinearVelocity(dir);
+	b2Vec2 FVelocity(dir.x*1000,dir.y*1000);
+	tc->self->SetLinearVelocity(FVelocity);
 }
 
 

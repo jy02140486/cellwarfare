@@ -44,11 +44,12 @@ void T_App::onMouseUp(const CL_InputEvent &, const CL_InputState &)
 	{
 		case TATICAL:
 		{
-
 			bf* tbf=entites->curBF;
 			if(tbf->SOselected==NULL||tbf->datas->ImmunityPoints<=0)
+			{
+				tbf->SOselected=NULL;		
 				return;
-
+			}
 			
 			CL_Vec2i cannon(tbf->SOselected->pos->x,tbf->SOselected->pos->y);
 			CL_Vec2i mouse=mMouse.get_position();

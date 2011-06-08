@@ -14,6 +14,32 @@ void T_App::render()
 
 		case TATICAL:
 			entites->curBF->Draw(mpDisplayWindow->get_gc());
+		
+			{
+				if (entites->curBF->SOselected==NULL)
+				{
+					break;
+				}
+
+				CL_Vec4f red_color(1.0f, 0.0f, 0.0f, 1.0f);
+				CL_Vec4f green_color(0.0f, 1.0f, 0.0f, 1.0f);
+				CL_Vec4f black_color(0.0f, 0.0f,0.0f, 1.0f);
+
+				CL_Vec2i positions[2];
+				CL_Vec4f colors[] = { red_color, green_color};
+
+				positions[0]=CL_Vec2f(entites->curBF->SOselected->pos->x,entites->curBF->SOselected->pos->y);	
+				positions[1]=CL_Vec2f(mMouse.get_x(),mMouse.get_y());	
+
+				CL_GraphicContext *tgc=&mpDisplayWindow->get_gc();
+				CL_PrimitivesArray vecs(*tgc);
+
+				vecs.set_attributes(0,positions);
+				vecs.set_attributes(1,colors);
+
+				tgc->set_program_object(cl_program_color_only);
+				tgc->draw_primitives(cl_line_strip,2,vecs);
+			}
 
 			break;
 		case LVSWITCHING:

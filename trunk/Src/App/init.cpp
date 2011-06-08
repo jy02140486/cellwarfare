@@ -155,6 +155,8 @@ bool T_App::init()
 	entites->hero->eventTimer->begin(true);
 	
 
+
+
 	//LibDebugOnConsole();
 	
 
