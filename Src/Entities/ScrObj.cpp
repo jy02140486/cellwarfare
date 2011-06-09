@@ -3,11 +3,9 @@
 
 ScrObj::ScrObj()
 {
-	_ImpDraw=new drawScrObj();
 	refradius =20;
 	next=NULL;
 	timer=NULL;
-
 }
 
 void ScrObj::draw(CL_GraphicContext *gc)
