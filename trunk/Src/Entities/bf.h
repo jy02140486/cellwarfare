@@ -33,7 +33,8 @@ public:
 	void launchWC(b2Vec2 dir);
 	void intrudersGeneration();
 	void launchTC(b2Vec2 dir);
-	
+	void showVD(b2Vec2 dir);
+
 
 	Timer* checkTimer;
 	defBF *datas;

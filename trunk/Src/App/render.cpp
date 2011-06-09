@@ -1,5 +1,6 @@
 #include "app.h"
 #include <stdio.h>
+#include "../Libs/Converter.h"
 
 void T_App::render()
 {
@@ -39,6 +40,13 @@ void T_App::render()
 
 				tgc->set_program_object(cl_program_color_only);
 				tgc->draw_primitives(cl_line_strip,2,vecs);
+
+				int dice=RandomVal::int_from_to(1,100);
+// 				if (dice<=30)
+// 				{
+// 					entites->curBF->showVD(Converter::Vec2from_c_to_b(mMouse.get_position()));
+// 					tgc->draw_primitives(cl_points,1,vecs);
+// 				}
 			}
 
 			break;

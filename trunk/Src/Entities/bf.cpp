@@ -173,7 +173,9 @@ void bf::DrawObjs(CL_GraphicContext *gc,b2Body* bodyref)
 
 	cells*temp=((cells*)(bodyref->GetUserData()));
 
-	temp->Draw(gc);
+	if (temp!=NULL)
+		temp->Draw(gc);
+
 
 }
 
@@ -228,8 +230,14 @@ void bf::Draw(CL_GraphicContext &gc)
 	{
 		if (bbbb->GetFixtureList()->GetShape()->GetType()==b2Shape::e_circle)
 			DrawObjs(&gc,bbbb);
-		else
+		else if(bbbb->GetType()==b2_staticBody)
 			DrawEdgy(&gc,bbbb);
+		else if(bbbb->IsBullet())
+			CL_Draw::circle(gc,
+			bbbb->GetPosition().x,
+			bbbb->GetPosition().y,
+			2,
+			CL_Colorf::burlywood);
 
 	}
 }
@@ -261,7 +269,26 @@ void bf::launchTC(b2Vec2 dir)
 	tc->self->SetLinearVelocity(FVelocity);
 }
 
+void bf::showVD(b2Vec2 dir)
+{
+	b2BodyDef tdef;
+	tdef.bullet=true;
+	tdef.position=Converter::Vec2from_c_to_b(*SOselected->pos);
+	tdef.linearVelocity.Set(dir.x*1000,dir.y*1000);
 
+	b2Body *tbd=world->CreateBody(&tdef);
+	b2CircleShape tcs;
+	tcs.m_radius=2;
+
+	b2Fixture* tf=tbd->CreateFixture(&tcs,0);
+
+	tbd->SetUserData(NULL);
+
+	b2Filter tfilter;
+	tfilter.groupIndex=10;
+	tf->SetFilterData(tfilter);
+	
+}
 
 void bf::intrudersGeneration()
 {

@@ -1,7 +1,7 @@
 #ifndef SCROBJ_H
 #define SCROBJ_H
 
-#include "../App/drawScrObj.h"
+
 #include "../Libs/IDraw.h"
 #include "../Libs/ents.h"
 #include "defBF.h"

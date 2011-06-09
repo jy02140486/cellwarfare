@@ -110,6 +110,7 @@ void T_App::onMouseDown(const CL_InputEvent &, const CL_InputState &)
 
 		if (temp!=NULL)
 			tbf->SOselected=temp;
+
 		break;
 	//default:temp;
 	}

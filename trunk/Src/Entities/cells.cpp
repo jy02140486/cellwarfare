@@ -77,7 +77,12 @@ void cells::Draw(CL_GraphicContext *gc)
 			self->GetPosition().y,
 			self->GetFixtureList()->GetShape()->m_radius,
 			CL_Colorf(255.0f,255.0f,0.0f,0.4f));
-	
+		CL_Draw::circle(*gc,
+			self->GetPosition().x,
+			self->GetPosition().y,
+			self->GetFixtureList()->GetShape()->m_radius/2,
+			CL_Colorf::cadetblue);
+		break;
 	case NAKED:
 		CL_Draw::circle(*gc,
 			self->GetPosition().x,
