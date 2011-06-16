@@ -76,12 +76,29 @@ void bf::update()
 					tec->initialize(TCells.TNaked,world,datas);
 					tec->self->SetLinearVelocity(temp->GetLinearVelocity());
 			}
+			
+			if (tc->cell_type==cells::WC)
+			{
+				Wcells* curwc=(Wcells*)tc->self->GetUserData();
+				Wcells *twc=new Wcells(curwc->lv-1);
+				if (twc->lv<=0)
+				{
+					delete temp->GetUserData();
+				
+					delete twc;
+					world->DestroyBody(temp);
+					temp=t2;
+					temp=temp->GetNext();
+					continue;
+				}
+				TCells.TWC->def.position=temp->GetPosition();
+				twc->initialize(TCells.TWC,world,datas);
+				twc->self->SetLinearVelocity(temp->GetLinearVelocity());
+
+			}
 			delete temp->GetUserData();
 			world->DestroyBody(temp);
 			temp=t2;
-
-
-// 
 // 			CL_Console::write_line("%1 celllaunched left",celllaunched);
 // 			CL_Console::write_line("%1 cellsdeployed left",celldeployed);
 // 			CL_Console::write_line("%1 intruders left",intruders);

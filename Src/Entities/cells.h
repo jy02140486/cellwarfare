@@ -21,7 +21,7 @@ public:
 	void update();
 	void initialize();
 
-	void initialize(defCells* ref,b2World *world,defBF*belong);
+	virtual void initialize(defCells* ref,b2World *world,defBF*belong);
 	void draw(CL_GraphicContext *gc,float x,float y);
 
 	int faction;
