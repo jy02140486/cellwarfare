@@ -31,47 +31,4 @@ void DestructionListener::BeginContact(b2Contact* contact)
 	{
 		tc2->ContactProcess(tc);
 	}
-
-// 	int dice=RandomVal::int_from_to(1,100);
-// 	switch(tc->cell_type)
-// 	{
-// 	case cells::WC:
-// 		if (tc2->cell_type==cells::NAKED)
-// 			if(dice>50)
-// 			{
-// 				tc->waste();
-// 				tc2->waste();
-// 				break;
-// 			}
-// 		if (tc2->cell_type==cells::ARMORED)
-// 			if(dice>50)
-// 				tc->waste();
-// 					
-// 		tc2->cell_type=cells::NAKED;
-// 				
-// 		break;
-// 
-// 	case cells::TC:
-// 		if (tc2->cell_type==cells::NAKED)
-// 			if(dice>50)
-// 			{
-// 				tc->waste();
-// 				tc2->waste();
-// 			}
-// 		break;
-// 	case cells::ARMORED:
-// 		break;
-// 	case cells::NAKED:
-// 		break;
-//	}
-// 	CL_Console::write_line("%1 celllaunched left",tc->belong->celllaunched);
-// 	CL_Console::write_line("%1 cellsdeployed left",tc->belong->celldeployed);
-// 	CL_Console::write_line("%1 intruders left",tc->belong->intruder);
-
-// 	if (tc->faction!=tc2->faction)
-// 	{
-// 		tc->living=false;
-// 
-// 		tc2->living=false;
-// 	}
 }
