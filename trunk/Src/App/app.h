@@ -28,7 +28,7 @@ public:
 	CL_Font *words;
 	CL_Point offset;
 	
-	CL_Image* body,*stage_clear,*gameover;
+	CL_Image* body,*stage_clear,*gameover,*all_clear;
 
 	CL_LineEdit* mx,*my;
 	CL_PushButton* cirfirm;
@@ -46,6 +46,8 @@ public:
 
 	CL_ProgressBar* timeleft;
 	CL_Label* lbcellsdeployed,*lbintruders,*lbtimeleft;
+
+	levels* timingtarget;
 
 	time_t Atime;
 	DWORD mrk;

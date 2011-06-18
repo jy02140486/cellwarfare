@@ -52,9 +52,14 @@ void T_App::render()
 			break;
 		case LVSWITCHING:
 			stage_clear->draw(mpDisplayWindow->get_gc(), 300.0f, 0.0f);
-
+			break;
 		case GAMEOVER:
 			gameover->draw(mpDisplayWindow->get_gc(), 300.0f, 0.0f);
+			break;
+		case ALL_CLEAR:
+			all_clear->draw(mpDisplayWindow->get_gc(), 300.0f, 0.0f);
+			break;
+
 	}
 	renderScrObj();
 	renderdes();
@@ -129,9 +134,7 @@ void T_App::renderScrObj()
 	case TATICAL:
 		for (entites->curBF->itr=entites->curBF->head;entites->curBF->itr!=NULL;entites->curBF->itr=entites->curBF->itr->next)
 			entites->curBF->itr->draw(&mpDisplayWindow->get_gc());
-		
 	}
 
-/*	head->draw(&mpDisplayWindow->get_gc());*/
 
 }
