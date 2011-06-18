@@ -69,6 +69,9 @@ bool T_App::init()
 	else
 		gameover=new CL_Image(mpDisplayWindow->get_gc(),"../res/gameover.png");
 
+	all_clear=new CL_Image(mpDisplayWindow->get_gc(),"../res/allclear.png");
+
+
 
 	//init menu items
 	mx=new CL_LineEdit(mpComWindow);

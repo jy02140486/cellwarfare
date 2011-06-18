@@ -39,6 +39,7 @@ public:
 	ScrObj* ScrObjTraversal(ScrObj* listhead);
 	void retreat();
 	void defeated();
+	void victory();
 	CL_Point posMouse;
 
 	int MrkBreak;

@@ -225,7 +225,7 @@ void T_App::invading_LogicLayer_Failure()
 	{
 
 		int i=RandomVal::int_from_to(0,3);
-		int ti=RandomVal::int_from_to(1,28);
+		int ti=RandomVal::int_from_to(10,28);
 		ScrObj*temp=entites->head;
 			for(int j=0;j<i;j++)
 			{
@@ -233,7 +233,7 @@ void T_App::invading_LogicLayer_Failure()
 			}
 			if (temp->ObjState!=ScrObj::INTRUDED)
 			{			
-
+			timingtarget=entites->curLV;
 			entites->curLV->defbfs[i].intruder=ti;
 			intruders->set_value(ti);
 			temp->ObjState=ScrObj::INTRUDED;
@@ -258,6 +258,7 @@ void T_App::Ttimesup()
 	for(ScrObj* temp=entites->head;temp!=NULL;temp=temp->next)
 	{
 		if(temp->timer!=NULL)
+		if(timingtarget==entites->curLV)
 		if (temp->timer->get_curSec()<=0)
 		{
 			entites->hero->HP->minus(temp->datas->intruder);

@@ -25,7 +25,7 @@ void EM::iniLVs()
 	
 	lv1.deslv=new CL_String("Stage1");
 	lv1.pills=10;
-	lv1.time=200;
+	lv1.time=20;
 	lv1.waves=3;
 
 	
@@ -40,7 +40,7 @@ void EM::iniLVs()
 	
 	lv2.deslv=new CL_String("Stage2");
 	lv2.pills=5;
-	lv2.time=5;
+	lv2.time=300;
 	lv2.waves=4;
 
 	_levels.push_back(new levels());
@@ -53,7 +53,7 @@ void EM::iniLVs()
 	
 	lv3.deslv=new CL_String("Stage3");
 	lv3.pills=5;
-	lv3.time=5;
+	lv3.time=400;
 	lv3.waves=5;
 
 	_levels.push_back(new levels());
@@ -85,22 +85,35 @@ void EM::switchlevel()
 
 		if (++itrLV==_levels.end())
 		{
+			global_state=GLOBAL_STATE::ALL_CLEAR;
+			CL_Timer* vic=new CL_Timer();
+			vic->func_expired().set(this,&EM::victory);
+			vic->start(4000,false);
 			return;
 		}
 
 		curLV=*itrLV;
 
+		itr=head;
+
 		for(int i=0;i<4;i++)
 		{
-			itr=head;
+			
+			itr->ObjState=ScrObj::NORMAL;
 			itr->datas=&curLV->defbfs[i];
 			itr=itr->next;
 		}
 
 		curLV->start();
+		hero->HP->val=100;
 		
 		global_state=STRATGY;
 		return;
+}
+
+void EM::victory()
+{
+	MrkBreak=0;
 }
 
 void EM::stageclear()
@@ -135,11 +148,6 @@ int EM::updateall(GLOBAL_STATE stateref)
 		CL_Timer* temp=new CL_Timer();
 		temp->func_expired().set(this,&EM::defeated);
 		temp->start(3000,false);
-	}
-
-	if (itrLV==_levels.end())
-	{
-		return 0;
 	}
 	return MrkBreak;
 }
@@ -208,10 +216,7 @@ void EM::retreat()
 
 	curBF->datas->intruder=0;
 	SOselected->ObjState=ScrObj::NORMAL;
-	if (SOselected->timer!=NULL)
-	{	SOselected->timer->stop();
-	}
 
-//	delete SOselected->timer;
-//	SOselected->timer=NULL;
+	if (SOselected->timer!=NULL)
+		SOselected->timer->stop();
 }
