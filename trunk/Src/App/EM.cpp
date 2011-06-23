@@ -25,7 +25,7 @@ void EM::iniLVs()
 	
 	lv1.deslv=new CL_String("Stage1");
 	lv1.pills=10;
-	lv1.time=20;
+	lv1.time=60;
 	lv1.waves=3;
 
 	
@@ -40,7 +40,7 @@ void EM::iniLVs()
 	
 	lv2.deslv=new CL_String("Stage2");
 	lv2.pills=5;
-	lv2.time=300;
+	lv2.time=120;
 	lv2.waves=4;
 
 	_levels.push_back(new levels());
@@ -53,7 +53,7 @@ void EM::iniLVs()
 	
 	lv3.deslv=new CL_String("Stage3");
 	lv3.pills=5;
-	lv3.time=400;
+	lv3.time=240;
 	lv3.waves=5;
 
 	_levels.push_back(new levels());
@@ -106,6 +106,8 @@ void EM::switchlevel()
 
 		curLV->start();
 		hero->HP->val=100;
+		hero->ImmunityPoints->val=curLV->lvtimer->length/2+20;
+		hero->painkiller->val=curLV->pills;
 		
 		global_state=STRATGY;
 		return;
