@@ -9,7 +9,6 @@ void levels::initialize(defLV* ref)
 	
 	lvtimer=new Timer();
 	lvtimer->init(time,true);
-
 }
 
 void levels::update()
