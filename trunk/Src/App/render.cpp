@@ -106,15 +106,24 @@ void T_App::renderdes()
 
 	case LVSWITCHING:
 		words->draw_text(mpComWindow->get_gc(),offset.x,offset.y+20,"times up");
+		words->draw_text(mpComWindow->get_gc(),offset.x,offset.y+40,"Stage Clear");
 		break;
 
-	case TATICAL:
-		
+	case TATICAL:	
+		{
 		words->draw_text(mpComWindow->get_gc(),310,20,CL_StringRef (entites->SOselected->des->data()));
 		char *temp=new char(10);
 		sprintf(temp,"%d",entites->SOselected->datas->ImmunityPoints);
 		CL_StringRef str=temp;
 		words->draw_text(mpComWindow->get_gc(),380,20,str);
+		break;
+		}
+	case ALL_CLEAR:
+		words->draw_text(mpComWindow->get_gc(),offset.x,offset.y+20,"Congratulations!You helped Billy survive.");
+		words->draw_text(mpComWindow->get_gc(),offset.x,offset.y+40,"Thanks for playing");
+		break;
+	case GAMEOVER:
+		words->draw_text(mpComWindow->get_gc(),offset.x,offset.y+20,"Shame.Game over.Billy can't take more.");
 	}
 }
 

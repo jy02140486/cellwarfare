@@ -88,7 +88,7 @@ void EM::switchlevel()
 			global_state=GLOBAL_STATE::ALL_CLEAR;
 			CL_Timer* vic=new CL_Timer();
 			vic->func_expired().set(this,&EM::victory);
-			vic->start(4000,false);
+			vic->start(6000,false);
 			return;
 		}
 
@@ -106,7 +106,7 @@ void EM::switchlevel()
 
 		curLV->start();
 		hero->HP->val=100;
-		hero->ImmunityPoints->val=curLV->lvtimer->length/2+20;
+		hero->ImmunityPoints->val=curLV->lvtimer->length*2+80;
 		hero->painkiller->val=curLV->pills;
 		
 		global_state=STRATGY;
@@ -124,7 +124,7 @@ void EM::stageclear()
 	
 	curLV->lvdes=new CL_String("This stage is clear.");
 	Timer *temp=new Timer();
-	temp->init(2,false);
+	temp->init(3,false);
 	temp->func_expired().set(this,&EM::switchlevel);
 	temp->begin();
 }
@@ -149,7 +149,7 @@ int EM::updateall(GLOBAL_STATE stateref)
 		global_state=GAMEOVER;
 		CL_Timer* temp=new CL_Timer();
 		temp->func_expired().set(this,&EM::defeated);
-		temp->start(3000,false);
+		temp->start(5000,false);
 	}
 	return MrkBreak;
 }
